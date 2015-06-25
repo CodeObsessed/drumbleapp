@@ -1,0 +1,165 @@
+﻿<phone:PhoneApplicationPage
+    x:Class="Drumble.Views.About"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:phone="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone"
+    xmlns:shell="clr-namespace:Microsoft.Phone.Shell;assembly=Microsoft.Phone"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:usercontrols="clr-namespace:Drumble.UserControls"
+    xmlns:i="clr-namespace:System.Windows.Interactivity;assembly=System.Windows.Interactivity"
+    xmlns:cmd="clr-namespace:GalaSoft.MvvmLight.Command;assembly=GalaSoft.MvvmLight.Extras.WP71"
+    DataContext="{Binding About, Source={StaticResource Locator}}"
+    SupportedOrientations="Portrait" Orientation="Portrait"
+    mc:Ignorable="d"
+    shell:SystemTray.IsVisible="False">
+
+    <i:Interaction.Triggers>
+        <i:EventTrigger EventName="Loaded">
+            <cmd:EventToCommand Command="{Binding PageLoadedCommand}"/>
+        </i:EventTrigger>
+        <i:EventTrigger EventName="Unloaded">
+            <cmd:EventToCommand Command="{Binding PageUnloadedCommand}"/>
+        </i:EventTrigger>
+    </i:Interaction.Triggers>
+
+    <Grid Style="{StaticResource DefaultPageGrid}">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+
+        <usercontrols:Header Grid.Row="0" />
+        
+        <Grid Grid.Row="1">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="2"/>
+                <RowDefinition Height="70"/>
+            </Grid.RowDefinitions>
+            
+            <ScrollViewer Grid.Row="0">
+                <Grid>
+                    <Grid Visibility="{Binding AppInfoOnVisibility}">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="60"/>
+                            <RowDefinition Height="60"/>
+                            <RowDefinition Height="60"/>
+                            <RowDefinition/>
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition/>
+                            <ColumnDefinition/>
+                        </Grid.ColumnDefinitions>
+
+                        <TextBlock Grid.Row="0" Grid.Column="0" Style="{StaticResource DefaultText}" Text="{Binding Path=LocalizedResources.AboutVersion, Source={StaticResource LocalizedStrings}}" TextAlignment="Left"></TextBlock>
+                        <TextBlock x:Name="VersionTextBlock" Grid.Row="0" Grid.Column="1" Style="{StaticResource DefaultText}" TextAlignment="Right"></TextBlock>
+
+                        <TextBlock Grid.Row="1" Grid.Column="0" Style="{StaticResource DefaultText}" Text="{Binding Path=LocalizedResources.AboutReleaseDate, Source={StaticResource LocalizedStrings}}" TextAlignment="Left"></TextBlock>
+                        <TextBlock x:Name="ReleaseDateTextBlock" Grid.Row="1" Grid.Column="1" Style="{StaticResource DefaultText}" TextAlignment="Right"></TextBlock>
+
+                        <TextBlock Grid.Row="2" Grid.Column="0" Style="{StaticResource DefaultText}" Text="{Binding Path=LocalizedResources.AboutReleaseDetails, Source={StaticResource LocalizedStrings}}" TextAlignment="Left"></TextBlock>
+
+                        <RichTextBox Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="2" Style="{StaticResource RichTextBoxStyle}" VerticalAlignment="Top">
+                            <Paragraph TextAlignment="Justify">
+                                •
+                                <Run Text="{Binding Path=LocalizedResources.AboutReleaseNotes1, Source={StaticResource LocalizedStrings}}" />
+                            </Paragraph>
+                            <Paragraph/>
+                            <Paragraph TextAlignment="Justify">
+                                •
+                                <Run Text="{Binding Path=LocalizedResources.AboutReleaseNotes2, Source={StaticResource LocalizedStrings}}" />
+                            </Paragraph>
+                            <Paragraph/>
+                            <Paragraph TextAlignment="Justify">
+                                •
+                                <Run Text="{Binding Path=LocalizedResources.AboutReleaseNotes3, Source={StaticResource LocalizedStrings}}" />
+                            </Paragraph>
+                            <Paragraph/>
+                            <Paragraph TextAlignment="Justify">
+                                •
+                                <Run Text="{Binding Path=LocalizedResources.AboutReleaseNotes4, Source={StaticResource LocalizedStrings}}" />
+                            </Paragraph>
+                        </RichTextBox>
+
+                    </Grid>
+
+                    <RichTextBox Style="{StaticResource RichTextBoxStyle}" Padding="0, 10, 0, 10" VerticalAlignment="Top" Visibility="{Binding PoliciesOnVisibility}">
+                        <Paragraph TextAlignment="Justify">
+                            <Run Text="{Binding Path=LocalizedResources.AboutPolicyPart1, Source={StaticResource LocalizedStrings}}" />
+                            <Hyperlink Foreground="{StaticResource White}" Command="{Binding SettingsCommand}" >
+                                <Run Text="{Binding Path=LocalizedResources.AboutPolicySettingsText, Source={StaticResource LocalizedStrings}}" />
+                            </Hyperlink>.
+                        </Paragraph>
+                        <Paragraph/>
+                        <Paragraph TextAlignment="Justify">
+                            <Run Text="{Binding Path=LocalizedResources.AboutPolicyPart2, Source={StaticResource LocalizedStrings}}" />
+                        </Paragraph>
+                        <Paragraph/>
+                        <Paragraph TextAlignment="Justify">
+                            <Run Text="{Binding Path=LocalizedResources.AboutPolicyPart3, Source={StaticResource LocalizedStrings}}" />
+                            <Hyperlink Foreground="{StaticResource White}" Command="{Binding ContactCommand}" >
+                                <Run Text="{Binding Path=LocalizedResources.AboutPolicyHereButtonText, Source={StaticResource LocalizedStrings}}" />
+                            </Hyperlink>.
+                        </Paragraph>
+                    </RichTextBox>
+
+                    <Grid Visibility="{Binding DeveloperOnVisibility}">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="60"/>
+                            <RowDefinition/>
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="120"/>
+                            <ColumnDefinition/>
+                        </Grid.ColumnDefinitions>
+
+                        <TextBlock Grid.Row="0" Grid.Column="0" Style="{StaticResource DefaultText}" Text="{Binding Path=LocalizedResources.AboutCompany, Source={StaticResource LocalizedStrings}}" TextAlignment="Left"></TextBlock>
+                        <HyperlinkButton x:Name="CompanyHyperlinkButton" Grid.Row="0" Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Right" Style="{StaticResource DefaultHyperText}" Padding="0,0,0,6" Command="{Binding CompanyCommand}"></HyperlinkButton>
+                    </Grid>
+                   
+                </Grid>
+            </ScrollViewer>
+
+            <Border Grid.Row="1" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Background="{StaticResource LightGrey}"/>
+            
+            <Grid Grid.Row="2">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                    <ColumnDefinition Width="2"/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition Width="2"/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+
+                <Button Grid.Column="0" Style="{StaticResource ImageButtonStyle}" Visibility="{Binding AppInfoOffVisibility}" Command="{Binding AppInfoOffCommand}">
+                    <TextBlock Text="{Binding Path=LocalizedResources.AboutAppInfo, Source={StaticResource LocalizedStrings}}" Style="{StaticResource AboutButtonOffText}" />
+                </Button>
+
+                <Button Grid.Column="0" Style="{StaticResource ImageButtonStyle}" Visibility="{Binding AppInfoOnVisibility}">
+                    <TextBlock Text="{Binding Path=LocalizedResources.AboutAppInfo, Source={StaticResource LocalizedStrings}}" Style="{StaticResource AboutButtonOnText}" />
+                </Button>
+
+                <Button Grid.Column="2" Style="{StaticResource ImageButtonStyle}" Visibility="{Binding PoliciesOffVisibility}" Command="{Binding PoliciesOffCommand}">
+                    <TextBlock Text="{Binding Path=LocalizedResources.AboutPolicies, Source={StaticResource LocalizedStrings}}" Style="{StaticResource AboutButtonOffText}" />
+                </Button>
+
+                <Button Grid.Column="2" Style="{StaticResource ImageButtonStyle}" Visibility="{Binding PoliciesOnVisibility}">
+                    <TextBlock Text="{Binding Path=LocalizedResources.AboutPolicies, Source={StaticResource LocalizedStrings}}" Style="{StaticResource AboutButtonOnText}" />
+                </Button>
+
+                <Button Grid.Column="4" Style="{StaticResource ImageButtonStyle}" Visibility="{Binding DeveloperOffVisibility}" Command="{Binding DeveloperOffCommand}">
+                    <TextBlock Text="{Binding Path=LocalizedResources.AboutDeveloper, Source={StaticResource LocalizedStrings}}" Style="{StaticResource AboutButtonOffText}" />
+                </Button>
+
+                <Button Grid.Column="4" Style="{StaticResource ImageButtonStyle}" Visibility="{Binding DeveloperOnVisibility}">
+                    <TextBlock Text="{Binding Path=LocalizedResources.AboutDeveloper, Source={StaticResource LocalizedStrings}}" Style="{StaticResource AboutButtonOnText}" />
+                </Button>
+
+                <Border Grid.Column="1" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Background="{StaticResource LightGrey}"/>
+                <Border Grid.Column="3" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Background="{StaticResource LightGrey}"/>
+            </Grid>
+        </Grid>
+    </Grid>
+</phone:PhoneApplicationPage>

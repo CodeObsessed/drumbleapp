@@ -1,0 +1,73 @@
+﻿<phone:PhoneApplicationPage
+    x:Class="Drumble.Views.Maps"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:phone="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone"
+    xmlns:shell="clr-namespace:Microsoft.Phone.Shell;assembly=Microsoft.Phone"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:delay="clr-namespace:Delay;assembly=PhonePerformance"    
+    xmlns:usercontrols="clr-namespace:Drumble.UserControls"
+    xmlns:i="clr-namespace:System.Windows.Interactivity;assembly=System.Windows.Interactivity"
+    xmlns:cmd="clr-namespace:GalaSoft.MvvmLight.Command;assembly=GalaSoft.MvvmLight.Extras.WP71"
+    xmlns:toolkit="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone.Controls.Toolkit"
+    SupportedOrientations="Portrait" Orientation="Portrait"
+    DataContext="{Binding Maps, Source={StaticResource Locator}}"
+    mc:Ignorable="d"
+    shell:SystemTray.IsVisible="False">
+
+    <i:Interaction.Triggers>
+        <i:EventTrigger EventName="Loaded">
+            <cmd:EventToCommand Command="{Binding PageLoadedCommand}"/>
+        </i:EventTrigger>
+        <i:EventTrigger EventName="Unloaded">
+            <cmd:EventToCommand Command="{Binding PageUnloadedCommand}"/>
+        </i:EventTrigger>
+    </i:Interaction.Triggers>
+    
+    <Grid Style="{StaticResource MapsPageGrid}">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <usercontrols:Header Grid.Row="0" />
+
+        <Grid Grid.Row="1" Height="60" Background="{StaticResource DarkGrey}">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="20" />
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="100" />
+            </Grid.ColumnDefinitions>
+           
+            <Button Grid.Column="1" Command="{Binding SelectOperatorCommand}" Style="{StaticResource TransparentButtonStyle}" Content="{Binding OperatorName}" HorizontalAlignment="Stretch">
+            </Button>
+
+            <Button Grid.Column="2" Command="{Binding SelectOperatorCommand}" Style="{StaticResource TransparentButtonStyle}" HorizontalAlignment="Stretch" HorizontalContentAlignment="Center">
+                <Image  Source="/Images/64/GY/IconArrowExpandDown-Grey.png" Width="24" />
+            </Button>
+            
+        </Grid>
+
+        <Image x:Name="ImgZoom" Grid.Row="2"
+               delay:LowProfileImageLoader.UriSource="{Binding OperatorMapUrl}"  
+               RenderTransformOrigin="0,0" CacheMode="BitmapCache"
+               Stretch="UniformToFill"
+               >
+            <toolkit:GestureService.GestureListener>
+                <toolkit:GestureListener
+                        PinchStarted="OnPinchStarted"
+                        PinchDelta="OnPinchDelta"
+                        DragDelta="OnDragDelta"
+                        DoubleTap="OnDoubleTap"/>
+            </toolkit:GestureService.GestureListener>
+            <Image.RenderTransform>
+                <CompositeTransform
+                        ScaleX="1" ScaleY="1"
+                        TranslateX="0" TranslateY="0"/>
+            </Image.RenderTransform>
+        </Image>
+    </Grid>
+
+</phone:PhoneApplicationPage>

@@ -1,0 +1,126 @@
+﻿<phone:PhoneApplicationPage
+    x:Class="Drumble.Views.Settings"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:phone="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone"
+    xmlns:shell="clr-namespace:Microsoft.Phone.Shell;assembly=Microsoft.Phone"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:usercontrols="clr-namespace:Drumble.UserControls"
+    xmlns:i="clr-namespace:System.Windows.Interactivity;assembly=System.Windows.Interactivity"
+    xmlns:cmd="clr-namespace:GalaSoft.MvvmLight.Command;assembly=GalaSoft.MvvmLight.Extras.WP71"
+    xmlns:bar="clr-namespace:BindableApplicationBar;assembly=BindableApplicationBar"
+    DataContext="{Binding Settings, Source={StaticResource Locator}}"
+    SupportedOrientations="Portrait" Orientation="Portrait"
+    mc:Ignorable="d"
+    shell:SystemTray.IsVisible="False">
+
+    <i:Interaction.Triggers>
+        <i:EventTrigger EventName="Loaded">
+            <cmd:EventToCommand Command="{Binding PageLoadedCommand}"/>
+        </i:EventTrigger>
+        <i:EventTrigger EventName="Unloaded">
+            <cmd:EventToCommand Command="{Binding PageUnloadedCommand}"/>
+        </i:EventTrigger>
+    </i:Interaction.Triggers>
+
+    <Grid Style="{StaticResource DefaultPageGrid}">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+
+        <usercontrols:Header Grid.Row="0" />
+
+        <ScrollViewer Grid.Row="1" Margin="15, 15, 15, 15">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+
+                <StackPanel Grid.Row="0">
+                    <CheckBox Content="{Binding Path=LocalizedResources.SettingsLocationServiceText, Source={StaticResource LocalizedStrings}}" VerticalAlignment="Top" IsChecked="{Binding LocationIsChecked,Mode=TwoWay}" Style="{StaticResource DefaultCheckBoxStyle}" />
+                    <TextBlock TextWrapping="Wrap" Text="{Binding Path=LocalizedResources.SettingsLocationServiceDescription, Source={StaticResource LocalizedStrings}}" Style="{StaticResource CheckBoxDescriptionText}" VerticalAlignment="Top" />
+                </StackPanel>
+
+                <StackPanel Grid.Row="2">
+                    <CheckBox Content="{Binding Path=LocalizedResources.SettingsShowWeather, Source={StaticResource LocalizedStrings}}" VerticalAlignment="Top" IsChecked="{Binding ShowWeatherIsChecked,Mode=TwoWay}" Style="{StaticResource DefaultCheckBoxStyle}" />
+                    <TextBlock TextWrapping="Wrap" Text="{Binding Path=LocalizedResources.SettingsShowWeatherDescription, Source={StaticResource LocalizedStrings}}" Style="{StaticResource CheckBoxDescriptionText}" VerticalAlignment="Center" />
+                </StackPanel>
+
+                <StackPanel Grid.Row="8">
+                    <CheckBox Content="{Binding Path=LocalizedResources.SettingsMetric, Source={StaticResource LocalizedStrings}}" VerticalAlignment="Top" IsChecked="{Binding UseMetricIsChecked,Mode=TwoWay}" Style="{StaticResource DefaultCheckBoxStyle}" />
+                    <TextBlock TextWrapping="Wrap" Text="{Binding Path=LocalizedResources.SettingsMetricDescription, Source={StaticResource LocalizedStrings}}" Style="{StaticResource CheckBoxDescriptionText}" VerticalAlignment="Center" />
+                </StackPanel>
+
+                <StackPanel Grid.Row="9">
+                    <CheckBox Content="{Binding Path=LocalizedResources.SettingsUber, Source={StaticResource LocalizedStrings}}" VerticalAlignment="Top" IsChecked="{Binding UseUberIsChecked,Mode=TwoWay}" Style="{StaticResource DefaultCheckBoxStyle}" />
+                    <TextBlock TextWrapping="Wrap" Text="{Binding Path=LocalizedResources.SettingsUberDescription, Source={StaticResource LocalizedStrings}}" Style="{StaticResource CheckBoxDescriptionText}" VerticalAlignment="Center" />
+                </StackPanel>
+
+                <StackPanel Grid.Row="10">
+                    <CheckBox Content="{Binding Path=LocalizedResources.SettingsLoginUber, Source={StaticResource LocalizedStrings}}" VerticalAlignment="Top" IsChecked="{Binding LoginUberIsChecked,Mode=TwoWay}" Style="{StaticResource DefaultCheckBoxStyle}" />
+                    <TextBlock TextWrapping="Wrap" Text="{Binding Path=LocalizedResources.SettingsLoginUberDescription, Source={StaticResource LocalizedStrings}}" Style="{StaticResource CheckBoxDescriptionText}" VerticalAlignment="Center" />
+                </StackPanel>
+
+                <StackPanel Grid.Row="4">
+                    <CheckBox Content="{Binding Path=LocalizedResources.SettingsPopulateLocation, Source={StaticResource LocalizedStrings}}" VerticalAlignment="Top" IsChecked="{Binding PopulateLocationIsChecked,Mode=TwoWay}" Style="{StaticResource DefaultCheckBoxStyle}" />
+                    <TextBlock TextWrapping="Wrap" Text="{Binding Path=LocalizedResources.SesttingsPopulateLocationDescription, Source={StaticResource LocalizedStrings}}" Style="{StaticResource CheckBoxDescriptionText}" VerticalAlignment="Center" />
+                </StackPanel>
+
+                <StackPanel Grid.Row="5">
+                    <CheckBox Content="{Binding Path=LocalizedResources.SettingsPopulateRecent, Source={StaticResource LocalizedStrings}}" VerticalAlignment="Top" IsChecked="{Binding PopulateRecentIsChecked,Mode=TwoWay}" Style="{StaticResource DefaultCheckBoxStyle}" />
+                    <TextBlock TextWrapping="Wrap" Text="{Binding Path=LocalizedResources.SettingsPopulateRecentDescription, Source={StaticResource LocalizedStrings}}" Style="{StaticResource CheckBoxDescriptionText}" VerticalAlignment="Center" />
+                </StackPanel>
+
+                <StackPanel Grid.Row="6">
+                    <CheckBox Content="{Binding Path=LocalizedResources.SettingsPopulateMostUsed, Source={StaticResource LocalizedStrings}}" VerticalAlignment="Top" IsChecked="{Binding PopulateMostUsedIsChecked,Mode=TwoWay}" Style="{StaticResource DefaultCheckBoxStyle}" />
+                    <TextBlock TextWrapping="Wrap" Text="{Binding Path=LocalizedResources.SettingsPopulateMostUsedDescription, Source={StaticResource LocalizedStrings}}" Style="{StaticResource CheckBoxDescriptionText}" VerticalAlignment="Center" />
+                </StackPanel>
+
+                <StackPanel Grid.Row="7">
+                    <CheckBox Content="{Binding Path=LocalizedResources.SettingsStoreRecent, Source={StaticResource LocalizedStrings}}" VerticalAlignment="Top" IsChecked="{Binding StoreRecentIsChecked,Mode=TwoWay}" Style="{StaticResource DefaultCheckBoxStyle}" />
+                    <TextBlock TextWrapping="Wrap" Text="{Binding Path=LocalizedResources.SettingsStoreRecentDescription, Source={StaticResource LocalizedStrings}}" Style="{StaticResource CheckBoxDescriptionText}" VerticalAlignment="Center" />
+                </StackPanel>
+
+                <StackPanel Grid.Row="3">
+                    <CheckBox Content="{Binding Path=LocalizedResources.SettingsSkipTripSelection, Source={StaticResource LocalizedStrings}}" VerticalAlignment="Top" IsChecked="{Binding SkipTripSelectionIsChecked,Mode=TwoWay}" Style="{StaticResource DefaultCheckBoxStyle}" />
+                    <TextBlock TextWrapping="Wrap" Text="{Binding Path=LocalizedResources.SettingsSkipTripSelectionDescription, Source={StaticResource LocalizedStrings}}" Style="{StaticResource CheckBoxDescriptionText}" VerticalAlignment="Center" />
+                </StackPanel>
+
+                <StackPanel Grid.Row="11">
+                    <CheckBox Content="{Binding Path=LocalizedResources.SettingsShowAnnouncementApplicationBar, Source={StaticResource LocalizedStrings}}" VerticalAlignment="Top" IsChecked="{Binding ShowAnnouncementsApplicationBarIsChecked,Mode=TwoWay}" Style="{StaticResource DefaultCheckBoxStyle}" />
+                    <TextBlock TextWrapping="Wrap" Text="{Binding Path=LocalizedResources.SettingsShowAnnouncementApplicationBarDescription, Source={StaticResource LocalizedStrings}}" Style="{StaticResource CheckBoxDescriptionText}" VerticalAlignment="Center" />
+                </StackPanel>
+
+                <StackPanel Grid.Row="12">
+                    <CheckBox Content="{Binding Path=LocalizedResources.SettingsShowTripApplicationBar, Source={StaticResource LocalizedStrings}}" VerticalAlignment="Top" IsChecked="{Binding ShowTripApplicationBarIsChecked,Mode=TwoWay}" Style="{StaticResource DefaultCheckBoxStyle}" />
+                    <TextBlock TextWrapping="Wrap" Text="{Binding Path=LocalizedResources.SettingsShowTripApplicationBarDescription, Source={StaticResource LocalizedStrings}}" Style="{StaticResource CheckBoxDescriptionText}" VerticalAlignment="Center" />
+                </StackPanel>
+            </Grid>
+        </ScrollViewer>
+    </Grid>
+
+    <bar:Bindable.ApplicationBar>
+        <bar:BindableApplicationBar IsMenuEnabled="True" Mode="Minimized">
+            <bar:BindableApplicationBar.MenuItems>
+                <bar:BindableApplicationBarMenuItem Text="{Binding Path=LocalizedResources.SettingsResetApp, Source={StaticResource LocalizedStrings}}" Command="{Binding ResetAppCommand}" />
+                <bar:BindableApplicationBarMenuItem Text="{Binding Path=LocalizedResources.SettingsChangeCountry, Source={StaticResource LocalizedStrings}}" Command="{Binding ChangeCountryCommand}" />
+            </bar:BindableApplicationBar.MenuItems>
+        </bar:BindableApplicationBar>
+    </bar:Bindable.ApplicationBar>
+
+</phone:PhoneApplicationPage>

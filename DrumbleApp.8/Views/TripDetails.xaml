@@ -1,0 +1,518 @@
+﻿<phone:PhoneApplicationPage
+    x:Class="Drumble.Views.TripDetails"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:phone="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone"
+    xmlns:shell="clr-namespace:Microsoft.Phone.Shell;assembly=Microsoft.Phone"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:usercontrols="clr-namespace:Drumble.UserControls"
+    xmlns:i="clr-namespace:System.Windows.Interactivity;assembly=System.Windows.Interactivity"
+    xmlns:cmd="clr-namespace:GalaSoft.MvvmLight.Command;assembly=GalaSoft.MvvmLight.Extras.WP71"
+    xmlns:Controls="clr-namespace:Microsoft.Phone.Maps.Controls;assembly=Microsoft.Phone.Maps"
+    xmlns:maptk="clr-namespace:Microsoft.Phone.Maps.Toolkit;assembly=Microsoft.Phone.Controls.Toolkit"
+    xmlns:toolkit="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone.Controls.Toolkit"
+    xmlns:bar="clr-namespace:BindableApplicationBar;assembly=BindableApplicationBar"
+    xmlns:dp="clr-namespace:Drumble.Utilities"
+    DataContext="{Binding TripDetails, Source={StaticResource Locator}}"
+    SupportedOrientations="Portrait" Orientation="Portrait"
+    mc:Ignorable="d"
+    shell:SystemTray.IsVisible="False">
+
+    <i:Interaction.Triggers>
+        <i:EventTrigger EventName="Loaded">
+            <cmd:EventToCommand Command="{Binding PageLoadedCommand}"/>
+        </i:EventTrigger>
+        <i:EventTrigger EventName="Unloaded">
+            <cmd:EventToCommand Command="{Binding PageUnloadedCommand}"/>
+        </i:EventTrigger>
+    </i:Interaction.Triggers>
+
+
+    <Grid Style="{StaticResource DefaultPageGrid}">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*" />
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+
+        <usercontrols:Header Grid.Row="0" />
+
+        <Grid Grid.Row="1" Background="{StaticResource DarkGrey}">
+            <toolkit:GestureService.GestureListener>
+                <toolkit:GestureListener Flick="OnHeaderFlick"/>
+            </toolkit:GestureService.GestureListener>
+            
+            <Grid.RowDefinitions>
+                <RowDefinition Height="55" />
+                <RowDefinition Height="2" />
+                <RowDefinition Height="55" />
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="55"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="55"/>
+            </Grid.ColumnDefinitions>
+
+            <Button Grid.Column="0" Grid.RowSpan="3" Style="{StaticResource IconArrowOptionLeftImageButtonStyle}" Margin="5" Command="{Binding PreviousButtonCommand}">
+                <Button.Background>
+                    <ImageBrush ImageSource="/Images/Custom/W/IconArrowOptionLeft.png" />
+                </Button.Background>
+            </Button>
+            
+            <Border Grid.Row="1" Grid.Column="1" Background="{StaticResource LightBlue}"/>
+
+            <Button Grid.Column="2" Grid.RowSpan="3" Style="{StaticResource IconArrowOptionRightImageButtonStyle}" Margin="5" Command="{Binding NextButtonCommand}">
+                <Button.Background>
+                    <ImageBrush ImageSource="/Images/Custom/W/IconArrowOptionRight.png" />
+                </Button.Background>
+            </Button>
+            
+            <Grid Grid.Row="0" Grid.Column="1" HorizontalAlignment="Center">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="Auto"/>
+                </Grid.ColumnDefinitions>
+
+                <Button Grid.Column="0" Margin="5" Padding="0" Style="{StaticResource ImageButtonStyle}" Visibility="{Binding PathResultsModel.TripAVisibility}" Command="{Binding PathResultsModel.TripACommand}">
+                    <Image Source="{Binding PathResultsModel.TripAImage}" />
+                </Button>
+                <Button Grid.Column="1" Margin="5" Padding="0" Style="{StaticResource ImageButtonStyle}" Visibility="{Binding PathResultsModel.TripBVisibility}" Command="{Binding PathResultsModel.TripBCommand}">
+                    <Image Source="{Binding PathResultsModel.TripBImage}"/>
+                </Button>
+                <Button Grid.Column="2" Margin="5" Padding="0" Style="{StaticResource ImageButtonStyle}" Visibility="{Binding PathResultsModel.TripCVisibility}" Command="{Binding PathResultsModel.TripCCommand}">
+                    <Image Source="{Binding PathResultsModel.TripCImage}"/>
+                </Button>
+                <Button Grid.Column="3" Margin="5" Padding="0" Style="{StaticResource ImageButtonStyle}" Visibility="{Binding PathResultsModel.TripDVisibility}" Command="{Binding PathResultsModel.TripDCommand}">
+                    <Image Source="{Binding PathResultsModel.TripDImage}"/>
+                </Button>
+                <Button Grid.Column="4" Margin="5" Padding="0" Style="{StaticResource ImageButtonStyle}" Visibility="{Binding PathResultsModel.TripEVisibility}" Command="{Binding PathResultsModel.TripECommand}">
+                    <Image Source="{Binding PathResultsModel.TripEImage}"/>
+                </Button>
+            </Grid>
+
+            <Grid Grid.Row="2" Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Center">
+                <Grid.RowDefinitions>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+
+                <TextBlock Grid.Row="0" Text="{Binding PathResultsModel.SelectedPathOption.DepartureTime}" HorizontalAlignment="Center" VerticalAlignment="Center" Style="{StaticResource TripDetailsWhiteText}"/>
+
+                <TextBlock Grid.Row="1" Margin="0,0,0,5" Text="{Binding PathResultsModel.SelectedPathOption.ArrivalTime}" HorizontalAlignment="Center" VerticalAlignment="Center" Style="{StaticResource TripDetailsLightLightGreyTextBold}"/>
+            </Grid>
+        </Grid>
+
+        <Button Grid.Row="2" Command="{Binding SwitchToMapCommand}" Visibility="{Binding ListVisibility}" VerticalAlignment="Bottom" Height="22" Margin="0" Style="{StaticResource MapOverlayImageButtonStyle}">
+            <toolkit:GestureService.GestureListener>
+                <toolkit:GestureListener Flick="OnHeaderFlick"/>
+            </toolkit:GestureService.GestureListener>
+            
+            <Image Source="/Images/64/W/IconArrowDown.png" />
+        </Button>
+
+        <Grid Grid.Row="3">
+            <Controls:Map x:Name="RouteMap"
+                          HorizontalAlignment="Stretch" 
+                          VerticalAlignment="Stretch" 
+                          Center="{Binding MapCenterPoint, Mode=TwoWay}" 
+                          ZoomLevel="{Binding MapZoomLevel, Mode=TwoWay}"
+                          dp:MapPushPinDependency.ItemsSource="{Binding Path=PathResultsModel.SelectedRouteStops}"
+                          >
+                <maptk:MapExtensions.Children>
+                    <maptk:MapItemsControl>
+                        <maptk:MapItemsControl.ItemTemplate>
+                            <DataTemplate>
+                                <maptk:Pushpin GeoCoordinate="{Binding StopPoint.Location.GeoCoordinate}" PositionOrigin="0.5,1">
+                                    <maptk:Pushpin.Template>
+                                        <ControlTemplate TargetType="maptk:Pushpin">
+                                            <StackPanel>
+                                                <Border Background="{StaticResource White}" Margin="0,0,0,5" BorderBrush="{StaticResource DrumbleBlue}" BorderThickness="2" MaxWidth="200">
+                                                    <TextBlock Text="{Binding StopPoint.Name}" Margin="2,0,2,0" TextWrapping="Wrap" Style="{StaticResource MapStopNameText}"/>
+                                                </Border>
+                                                <Image HorizontalAlignment="Center" Width="32" Height="32" Margin="0,0,0,0" Source="/Images/32/LB/PinBlue.png"/>
+                                            </StackPanel>
+                                        </ControlTemplate>
+                                    </maptk:Pushpin.Template>
+                                </maptk:Pushpin>
+                            </DataTemplate>
+                        </maptk:MapItemsControl.ItemTemplate>
+                    </maptk:MapItemsControl>
+                    <maptk:UserLocationMarker Visibility="{Binding UserLocationVisibility}" GeoCoordinate="{Binding UserLocation}" PositionOrigin="0.5,0.5" />
+                    
+                </maptk:MapExtensions.Children>
+            </Controls:Map>
+
+            <Button Margin="0,0,12,12" Width="65" Height="65" Command="{Binding CenterUserLocationCommand}" Visibility="{Binding SelectedListItemVisibility}" HorizontalAlignment="Right" VerticalAlignment="Bottom" Style="{StaticResource MapButtonStyle}">
+                <Image Margin="-3" Source="/Images/64/GY/IconCenterOnGPS-Grey.png"/>
+            </Button>
+        </Grid>
+
+        <Grid Grid.Row="3" Background="{StaticResource BlackTransparent}" Visibility="{Binding ListVisibility}" VerticalAlignment="Stretch" Margin="0">
+            <toolkit:GestureService.GestureListener>
+                <toolkit:GestureListener Flick="OnFlick"/>
+            </toolkit:GestureService.GestureListener>
+  
+            <ListBox CacheMode="BitmapCache" VerticalAlignment="Stretch" Margin="12,12,12,0" ItemsSource="{Binding PathResultsModel.SelectedPathOption.Stages}">
+                <ListBox.ItemTemplate>
+                    <DataTemplate>
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                            </Grid.RowDefinitions>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="55"/>
+                                <ColumnDefinition Width="32" />
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="51"/>
+                            </Grid.ColumnDefinitions>
+
+                            <!--Times-->
+                            <Grid Grid.Row="0" Grid.Column="0" HorizontalAlignment="Left">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="30"/>
+                                    <RowDefinition Height="78"/>
+                                    <RowDefinition Height="Auto"/>
+                                    <RowDefinition Height="30"/>
+                                </Grid.RowDefinitions>
+
+                                <TextBlock Grid.Row="0" Text="{Binding StartTimeDisplay}" Style="{StaticResource TripDetailsLightLightGreyTextBold}" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0"/>
+                                <Image Grid.Row="1" Width="32" Margin="0,15,0,0" Height="32" Source="{Binding Mode.ModeImage}" VerticalAlignment="Top" HorizontalAlignment="Center"/>
+
+                                <ListBox Grid.Row="2" ItemsSource="{Binding StagePointDisplays}" ScrollViewer.VerticalScrollBarVisibility="Disabled" Visibility="{Binding IntermediateStopVisibility}">
+                                    <ListBox.ItemTemplate>
+                                        <DataTemplate>
+                                            <TextBlock Height="30" Text="{Binding TimeDisplay}" Style="{StaticResource TripDetailsLightLightGreyTextBold}" />
+                                        </DataTemplate>
+                                    </ListBox.ItemTemplate>
+                                    <ListBox.ItemContainerStyle>
+                                        <Style TargetType="ListBoxItem">
+                                            <Setter Property="HorizontalContentAlignment" Value="Stretch"/>
+                                        </Style>
+                                    </ListBox.ItemContainerStyle>
+                                </ListBox>
+
+                                <TextBlock Grid.Row="3" Text="{Binding EndTimeDisplay}" Style="{StaticResource TripDetailsLightLightGreyTextBold}" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0"/>
+
+                            </Grid>
+
+                            <!--Circles and lines-->
+                            <Grid Grid.Row="0" Grid.Column="1" HorizontalAlignment="Left">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="30"/>
+                                    <RowDefinition Height="78"/>
+                                    <RowDefinition Height="Auto"/>
+                                    <RowDefinition Height="30"/>
+                                </Grid.RowDefinitions>
+
+                                <Grid Grid.Row="0" Height="30">
+                                    <Canvas Width="32" Height="30">
+                                        <Rectangle Width="4" Height="8" Fill="{StaticResource DrumbleBlue}" Canvas.Top="22" Canvas.Left="12" Visibility="{Binding PedestrianVisbility}">
+                                        </Rectangle>
+                                        <Rectangle Width="6" Height="8" Fill="{Binding Colour}" Canvas.Top="22" Canvas.Left="11" Visibility="{Binding NotPedestrianVisbility}">
+                                        </Rectangle>
+                                        <Ellipse Fill="{StaticResource DrumbleBlue}" Height="22" Width="22" StrokeThickness="0" Canvas.Top="5" Canvas.Left="3" Visibility="{Binding PedestrianVisbility}" />
+                                        <Ellipse Fill="{Binding Colour}" Height="22" Width="22" StrokeThickness="0" Canvas.Top="5" Canvas.Left="3" Visibility="{Binding NotPedestrianVisbility}" />
+                                    </Canvas>
+                                </Grid>
+
+                                <Grid Grid.Row="1" Height="78">
+                                    <Canvas Width="32" VerticalAlignment="Top">
+                                        <Rectangle Width="6" Height="78" Fill="{Binding Colour}" Canvas.Left="11" Canvas.Top="0" Visibility="{Binding NotPedestrianVisbility}">
+                                        </Rectangle>
+                                        <Rectangle Width="4" Height="78" Fill="{StaticResource DrumbleBlue}" Canvas.Left="12" Canvas.Top="0" Visibility="{Binding PedestrianVisbility}">
+                                        </Rectangle>
+                                        <Ellipse Fill="{StaticResource Clickable}" Height="26" Width="26" Canvas.Top="18" Canvas.Left="1" StrokeThickness="2" Stroke="{Binding Colour}" Visibility="{Binding StagePointCountVisibility}"/>
+                                    </Canvas>
+                                    <TextBlock Visibility="{Binding StagePointCountVisibility}" Text="{Binding StagePointTotal}" Style="{StaticResource TripDetailsIntermediateStopsCountWhiteText}" Margin="-3,18,0,0" TextAlignment="Center" />
+                                </Grid>
+
+                                <ListBox Grid.Row="2" ItemsSource="{Binding StagePointDisplays}" ScrollViewer.VerticalScrollBarVisibility="Disabled" Visibility="{Binding IntermediateStopVisibility}">
+                                    <ListBox.ItemTemplate>
+                                        <DataTemplate>
+                                            <Canvas Width="32" Height="30">
+                                                <Rectangle Width="6" Height="30" Fill="{Binding RouteColour}" Canvas.Left="11" Canvas.Top="0">
+                                                </Rectangle>
+                                                <Ellipse Fill="{Binding RouteColour}" Height="18" Width="18" Canvas.Top="6" Canvas.Left="5" StrokeThickness="0" />
+                                            </Canvas>
+                                        </DataTemplate>
+                                    </ListBox.ItemTemplate>
+                                    <ListBox.ItemContainerStyle>
+                                        <Style TargetType="ListBoxItem">
+                                            <Setter Property="HorizontalContentAlignment" Value="Stretch"/>
+                                        </Style>
+                                    </ListBox.ItemContainerStyle>
+                                </ListBox>
+
+                                <Grid Grid.Row="3" Height="30">
+                                    <Canvas Width="32" Height="30" VerticalAlignment="Top">
+                                        <Rectangle Width="6" Height="15" Fill="{Binding Colour}" Canvas.Left="11" Canvas.Top="0" Visibility="{Binding NotPedestrianVisbility}">
+                                        </Rectangle>
+                                        <Rectangle Width="4" Height="15" Fill="{StaticResource DrumbleBlue}" Canvas.Left="12" Canvas.Top="0" Visibility="{Binding PedestrianVisbility}">
+                                        </Rectangle>
+                                        <Ellipse Fill="{Binding Colour}" Height="22" Width="22" Canvas.Top="6" Canvas.Left="3" StrokeThickness="0" Visibility="{Binding NotPedestrianVisbility}" />
+                                        <Ellipse Fill="{StaticResource DrumbleBlue}" Height="22" Width="22" Canvas.Top="6" Canvas.Left="3" StrokeThickness="0" Visibility="{Binding PedestrianVisbility}" />
+                                    </Canvas>
+                                </Grid>
+                                
+                            </Grid>
+
+                            <!--Stops and directions-->
+                            <Grid Grid.Row="0" Grid.Column="2" HorizontalAlignment="Left" Visibility="{Binding StopsAndDirectionsVisibility}">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="30"/>
+                                    <RowDefinition Height="78"/>
+                                    <RowDefinition Height="Auto"/>
+                                    <RowDefinition Height="30"/>
+                                </Grid.RowDefinitions>
+
+                                <TextBlock Grid.Row="0" Text="{Binding Operator}" Style="{StaticResource TripDetailsWhiteText}" VerticalAlignment="Center" Margin="0"/>
+
+                                <Button Grid.Row="1" Margin="0" Padding="0" Height="78" Style="{StaticResource ImageButtonStyle}" Command="{Binding ExpandIntermediateDetailsCommand}">
+                                    <Grid>
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="35"/>
+                                            <ColumnDefinition Width="*" />
+                                        </Grid.ColumnDefinitions>
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="25"/>
+                                            <RowDefinition Height="53"/>
+                                        </Grid.RowDefinitions>
+
+                                        <Image Grid.Row="0" Grid.Column="0" Visibility="{Binding ExpandIntermediateStopsDownVisibility}" Source="/Images/64/GY/IconArrowExpandDown-Grey.png" Width="20" Height="20" Margin="0,2,0,0" />
+                                        <Image Grid.Row="0" Grid.Column="0" Visibility="{Binding ExpandIntermediateStopsUpVisibility}" Source="/Images/64/GY/IconArrowExpandUp-Grey.png" Width="20" Height="20" Margin="0,2,0,0" />
+
+                                        <TextBlock Grid.Row="0" Grid.Column="1" Text="{Binding StartPointDisplay}" Style="{StaticResource TripDetailsLightLightGreyTextBold}" VerticalAlignment="Center" Margin="0"/>
+
+                                        <TextBlock Grid.Row="1" Grid.Column="1" Text="{Binding Description}" Style="{StaticResource TripDetailsLightLightGreyText}" VerticalAlignment="Top" Margin="0" TextWrapping="Wrap"/>
+                                    </Grid>
+                                </Button>
+
+                                <ListBox Grid.Row="2" ItemsSource="{Binding StagePointDisplays}" ScrollViewer.VerticalScrollBarVisibility="Disabled" Visibility="{Binding IntermediateStopVisibility}">
+                                    <ListBox.ItemTemplate>
+                                        <DataTemplate>
+                                            <Grid>
+                                                <Grid.ColumnDefinitions>
+                                                    <ColumnDefinition Width="35"/>
+                                                    <ColumnDefinition Width="*" />
+                                                </Grid.ColumnDefinitions>
+
+                                                <TextBlock Height="30" Grid.Column="1" Text="{Binding StopPoint.Name}" Style="{StaticResource TripDetailsLightWhiteText}" />
+                                            </Grid>
+                                        </DataTemplate>
+                                    </ListBox.ItemTemplate>
+                                    <ListBox.ItemContainerStyle>
+                                        <Style TargetType="ListBoxItem">
+                                            <Setter Property="HorizontalContentAlignment" Value="Stretch"/>
+                                        </Style>
+                                    </ListBox.ItemContainerStyle>
+                                </ListBox>
+
+                                <TextBlock Grid.Row="3" Text="{Binding EndPointDisplay}" Style="{StaticResource TripDetailsLightLightGreyTextBold}" VerticalAlignment="Center" Margin="0"/>
+
+                            </Grid>
+
+                            <!--Announcement Details-->
+                            <ScrollViewer Grid.Row="0" Grid.Column="2" MaxHeight="138" Margin="0,2,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Visibility="{Binding AnnouncementDetailsVisibility}">
+                                <TextBlock Text="{Binding AnnouncementDetails}" Style="{StaticResource TripDetailsLightLightGreyTextBold}" Margin="0" TextWrapping="Wrap"/>
+                            </ScrollViewer>
+
+                            <!--Additional Info Details-->
+                            <ScrollViewer Grid.Row="0" Grid.Column="2" MaxHeight="138" Margin="0,2,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Visibility="{Binding AdditionalInfoVisibility}">
+                                <StackPanel>
+                                    <TextBlock Text="{Binding Description}" Style="{StaticResource TripDetailsWhiteText}" VerticalAlignment="Top" Margin="0" TextWrapping="Wrap"/>
+
+                                    <TextBlock Text="{Binding CostDetails}" Style="{StaticResource TripDetailsLightLightGreyText}" VerticalAlignment="Top" Margin="0" TextWrapping="Wrap"/>
+
+                                </StackPanel>
+                            </ScrollViewer>
+                               
+                            <!--Announcement Button-->
+                            <Grid Grid.Row="0" Grid.Column="3" VerticalAlignment="Stretch">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="1" />
+                                    <ColumnDefinition Width="50" />
+                                </Grid.ColumnDefinitions>
+
+                                <Border Background="{StaticResource LightGreyTransparent}" Grid.Column="0" Width="1" VerticalAlignment="Stretch" Margin="0,12,0,12" />
+                                <StackPanel  Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Center">
+                                    <Button Visibility="{Binding AnnouncementVisibility}" Command="{Binding ShowHideAnnouncementCommand}" Style="{StaticResource ImageButtonStyle}" Margin="0,0,0,10" Padding="0" >
+                                        <Image Width="40" Height="40" Source="/Images/64/W/IconAlertsIndicator.png" />
+                                    </Button>
+                                    <Button Visibility="{Binding InfoVisibility}" Command="{Binding ShowHideInfoCommand}" Style="{StaticResource ImageButtonStyle}" Margin="0" Padding="0" >
+                                        <Image Width="35" Height="35" Source="/Images/64/W/MenuAbout.png" />
+                                    </Button>
+                                </StackPanel>
+                            </Grid>
+                           
+                            <Grid Grid.Row="1" Grid.ColumnSpan="4" Height="20" Visibility="{Binding NoWaitingStageVisibility}">
+                                <Border Height="2" HorizontalAlignment="Stretch" VerticalAlignment="Center" Background="{StaticResource LightLightGrey}"/>
+                            </Grid>
+
+                            <Grid Grid.Row="1" Grid.ColumnSpan="4" Height="60" Visibility="{Binding WaitingStageVisibility}">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition />
+                                    <RowDefinition Height="27" />
+                                    <RowDefinition />
+                                </Grid.RowDefinitions>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="55"/>
+                                    <ColumnDefinition Width="32" />
+                                    <ColumnDefinition Width="Auto"/>
+                                    <ColumnDefinition Width="*"/>
+                                </Grid.ColumnDefinitions>
+
+                                <Canvas Grid.Row="0" Grid.Column="1" Width="32" Height="60">
+                                    <Rectangle Width="4" Height="70" Fill="{StaticResource LightLightLightGrey}" Canvas.Left="12" Canvas.Top="-2">
+                                    </Rectangle>
+                                    <Ellipse Fill="{StaticResource LightLightLightGrey}" Height="22" Width="22" Canvas.Top="20" Canvas.Left="3" StrokeThickness="0" />
+                                </Canvas>
+
+                                <Border Grid.Row="0" Grid.Column="2" Grid.ColumnSpan="2" Height="2" HorizontalAlignment="Stretch" VerticalAlignment="Center" Background="{StaticResource LightLightGrey}"/>
+
+                                <TextBlock Grid.Row="1" Grid.Column="2" Text="{Binding WaitingStage.Name}" Style="{StaticResource TripDetailsWhiteText}" VerticalAlignment="Top" Margin="0"/>
+                                <TextBlock Grid.Row="1" Grid.Column="3" Text="{Binding WaitingStage.WaitTimeDisplay}" Style="{StaticResource TripDetailsLightWhiteText}" VerticalAlignment="Top" Margin="5,0,0,0"/>
+
+                                <Image Visibility="{Binding WaitingStage.LongWaitingTimeVisibility}" Source="/Images/32/R/Alert.png" Grid.Row="1" Grid.Column="3" HorizontalAlignment="Right" VerticalAlignment="Top" />
+                                
+                                <Border Grid.Row="2" Grid.Column="2" Grid.ColumnSpan="2" Height="2" HorizontalAlignment="Stretch" VerticalAlignment="Center" Background="{StaticResource LightLightGrey}"/>
+                            </Grid>
+                        </Grid>
+                    </DataTemplate>
+                </ListBox.ItemTemplate>
+                <ListBox.ItemContainerStyle>
+                    <Style TargetType="ListBoxItem">
+                        <Setter Property="HorizontalContentAlignment" Value="Stretch"/>
+                    </Style>
+                </ListBox.ItemContainerStyle>
+            </ListBox>
+        </Grid>
+
+        <Grid Grid.Row="4" Margin="0" Visibility="{Binding SelectedListItemVisibility}">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="22"/>
+                <RowDefinition Height="150"/>
+            </Grid.RowDefinitions>
+
+            <Button Grid.Row="0" Command="{Binding SwitchToListCommand}" VerticalAlignment="Bottom" Height="22" Margin="0" Style="{StaticResource MapOverlayImageButtonStyle}">
+                <Image Source="/Images/64/W/IconArrowUp.png" />
+            </Button>
+
+            <Grid Grid.Row="1" Margin="12,6,12,6" DataContext="{Binding PathResultsModel.SelectedPathOption.SelectedStage}">
+                <toolkit:GestureService.GestureListener>
+                    <toolkit:GestureListener Flick="OnFlickBottom"/>
+                </toolkit:GestureService.GestureListener>
+                
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="55"/>
+                    <ColumnDefinition Width="32" />
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+
+                <!--Times-->
+                <Grid Grid.Row="0" Grid.Column="0" HorizontalAlignment="Left">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="30"/>
+                        <RowDefinition Height="78"/>
+                        <RowDefinition Height="30"/>
+                    </Grid.RowDefinitions>
+
+                    <TextBlock Grid.Row="0" Text="{Binding StartTimeDisplay}" Style="{StaticResource TripDetailsLightLightGreyTextBold}" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0"/>
+                    <Image Grid.Row="1" Width="32" Margin="0,15,0,0" Height="32" Source="{Binding Mode.ModeImage}" VerticalAlignment="Top" HorizontalAlignment="Center"/>
+                    <TextBlock Grid.Row="2" Text="{Binding EndTimeDisplay}" Style="{StaticResource TripDetailsLightLightGreyTextBold}" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0"/>
+                </Grid>
+
+                <!--Circles and lines-->
+                <Grid Grid.Row="0" Grid.Column="1" HorizontalAlignment="Left">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="30"/>
+                        <RowDefinition Height="78"/>
+                        <RowDefinition Height="30"/>
+                    </Grid.RowDefinitions>
+
+                    <Grid Grid.Row="0" Height="30">
+                        <Canvas Width="32" Height="30">
+                            <Rectangle Width="4" Height="8" Fill="{StaticResource DrumbleBlue}" Canvas.Top="22" Canvas.Left="12" Visibility="{Binding PedestrianVisbility}">
+                            </Rectangle>
+                            <Rectangle Width="6" Height="8" Fill="{Binding Colour}" Canvas.Top="22" Canvas.Left="11" Visibility="{Binding NotPedestrianVisbility}">
+                            </Rectangle>
+                            <Ellipse Fill="{StaticResource DrumbleBlue}" Height="22" Width="22" StrokeThickness="0" Canvas.Top="5" Canvas.Left="3" Visibility="{Binding PedestrianVisbility}" />
+                            <Ellipse Fill="{Binding Colour}" Height="22" Width="22" StrokeThickness="0" Canvas.Top="5" Canvas.Left="3" Visibility="{Binding NotPedestrianVisbility}" />
+                        </Canvas>
+                    </Grid>
+
+                    <Grid Grid.Row="1" Height="78">
+                        <Canvas Width="32" VerticalAlignment="Top">
+                            <Rectangle Width="6" Height="78" Fill="{Binding Colour}" Canvas.Left="11" Canvas.Top="0" Visibility="{Binding NotPedestrianVisbility}">
+                            </Rectangle>
+                            <Rectangle Width="4" Height="78" Fill="{StaticResource DrumbleBlue}" Canvas.Left="12" Canvas.Top="0" Visibility="{Binding PedestrianVisbility}">
+                            </Rectangle>
+                            <Ellipse Fill="{StaticResource Clickable}" Height="26" Width="26" Canvas.Top="18" Canvas.Left="1" StrokeThickness="2" Stroke="{Binding Colour}" Visibility="{Binding StagePointCountVisibility}"/>
+                        </Canvas>
+                        <TextBlock Visibility="{Binding StagePointCountVisibility}" Text="{Binding StagePointTotal}" Style="{StaticResource TripDetailsIntermediateStopsCountWhiteText}" Margin="-3,18,0,0" TextAlignment="Center" />
+                    </Grid>
+
+                    <Grid Grid.Row="2" Height="30">
+                        <Canvas Width="32" Height="30" VerticalAlignment="Top">
+                            <Rectangle Width="6" Height="15" Fill="{Binding Colour}" Canvas.Left="11" Canvas.Top="0" Visibility="{Binding NotPedestrianVisbility}">
+                            </Rectangle>
+                            <Rectangle Width="4" Height="15" Fill="{StaticResource DrumbleBlue}" Canvas.Left="12" Canvas.Top="0" Visibility="{Binding PedestrianVisbility}">
+                            </Rectangle>
+                            <Ellipse Fill="{Binding Colour}" Height="22" Width="22" Canvas.Top="6" Canvas.Left="3" StrokeThickness="0" Visibility="{Binding NotPedestrianVisbility}" />
+                            <Ellipse Fill="{StaticResource DrumbleBlue}" Height="22" Width="22" Canvas.Top="6" Canvas.Left="3" StrokeThickness="0" Visibility="{Binding PedestrianVisbility}" />
+                        </Canvas>
+                    </Grid>
+                </Grid>
+
+                <!--Stops and directions-->
+                <Grid Grid.Row="0" Grid.Column="2" HorizontalAlignment="Left">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="30"/>
+                        <RowDefinition Height="78"/>
+                        <RowDefinition Height="30"/>
+                    </Grid.RowDefinitions>
+
+                    <TextBlock Grid.Row="0" Text="{Binding Operator}" Style="{StaticResource TripDetailsWhiteText}" VerticalAlignment="Center" Margin="0"/>
+
+                    <Grid Grid.Row="1">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="35"/>
+                            <ColumnDefinition Width="*" />
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="25"/>
+                            <RowDefinition Height="53"/>
+                        </Grid.RowDefinitions>
+
+                        <TextBlock Grid.Row="0" Grid.Column="1" Text="{Binding StartPointDisplay}" Style="{StaticResource TripDetailsLightLightGreyTextBold}" VerticalAlignment="Center" Margin="0"/>
+
+                        <TextBlock Grid.Row="1" Grid.Column="1" Text="{Binding Description}" Style="{StaticResource TripDetailsLightLightGreyText}" VerticalAlignment="Top" Margin="0" TextWrapping="Wrap"/>
+                    </Grid>
+                    
+                    <TextBlock Grid.Row="2" Text="{Binding EndPointDisplay}" Style="{StaticResource TripDetailsLightLightGreyTextBold}" VerticalAlignment="Center" Margin="0"/>
+                </Grid>
+            </Grid>
+        </Grid>
+    </Grid>
+
+    <bar:Bindable.ApplicationBar>
+        <bar:BindableApplicationBar IsVisible="{Binding ApplicationBarIsVisibile}" IsMenuEnabled="True" Mode="Minimized">
+            <bar:BindableApplicationBar.MenuItems>
+                <bar:BindableApplicationBarMenuItem Text="{Binding Path=LocalizedResources.TripDetailsViewMap, Source={StaticResource LocalizedStrings}}" Command="{Binding SwitchToMapCommand}" />
+                <bar:BindableApplicationBarMenuItem Text="{Binding Path=LocalizedResources.TripDetailsPin, Source={StaticResource LocalizedStrings}}" Command="{Binding PinTripCommand}" />
+                <bar:BindableApplicationBarMenuItem Text="{Binding Path=LocalizedResources.TripDetailsHideMenu, Source={StaticResource LocalizedStrings}}" Command="{Binding HideApplicationBarCommand}" />
+            </bar:BindableApplicationBar.MenuItems>
+        </bar:BindableApplicationBar>
+    </bar:Bindable.ApplicationBar>
+
+</phone:PhoneApplicationPage>

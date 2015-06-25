@@ -1,0 +1,424 @@
+﻿<phone:PhoneApplicationPage
+    x:Class="Drumble.Views.StationsAndPlacesOfInterest"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:phone="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone"
+    xmlns:shell="clr-namespace:Microsoft.Phone.Shell;assembly=Microsoft.Phone"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:usercontrols="clr-namespace:Drumble.UserControls"
+    xmlns:i="clr-namespace:System.Windows.Interactivity;assembly=System.Windows.Interactivity"
+    xmlns:cmd="clr-namespace:GalaSoft.MvvmLight.Command;assembly=GalaSoft.MvvmLight.Extras.WP71"
+    xmlns:m="clr-namespace:Microsoft.Phone.Controls.Maps;assembly=Microsoft.Phone.Controls.Maps"
+    xmlns:modeImages="clr-namespace:DrumbleApp.Shared.Converters"
+    DataContext="{Binding StationsAndPlacesOfInterest, Source={StaticResource Locator}}"
+    SupportedOrientations="Portrait" Orientation="Portrait"
+    mc:Ignorable="d"
+    shell:SystemTray.IsVisible="False">
+
+    <i:Interaction.Triggers>
+        <i:EventTrigger EventName="Loaded">
+            <cmd:EventToCommand Command="{Binding PageLoadedCommand}"/>
+        </i:EventTrigger>
+        <i:EventTrigger EventName="Unloaded">
+            <cmd:EventToCommand Command="{Binding PageUnloadedCommand}"/>
+        </i:EventTrigger>
+    </i:Interaction.Triggers>
+
+    <Grid Style="{StaticResource DefaultPageGrid}">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <usercontrols:Header x:Name="Header" Grid.Row="0" />
+
+        <usercontrols:Modes Grid.Row="1"/>
+
+        <Grid Grid.Row="2" Visibility="{Binding ListVisibility}">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+
+            <Grid Grid.Row="0" Height="60">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="60"/>
+                    <ColumnDefinition Width="2"/>
+                    <ColumnDefinition Width="58"/>
+                    <ColumnDefinition Width="2"/>
+                    <ColumnDefinition Width="58"/>
+                </Grid.ColumnDefinitions>
+
+                <TextBox Grid.Column="0" HorizontalAlignment="Stretch" Text="{Binding SearchText, Mode=TwoWay, UpdateSourceTrigger=Explicit}" Style="{StaticResource TransparentTextBoxStyle}" TextChanged="TextBoxTextChanged">
+                    <i:Interaction.Triggers>
+                        <i:EventTrigger EventName="GotFocus">
+                            <cmd:EventToCommand Command="{Binding SearchTextBoxGotFocusCommand}"/>
+                        </i:EventTrigger>
+                        <i:EventTrigger EventName="LostFocus">
+                            <cmd:EventToCommand Command="{Binding SearchTextBoxLostFocusCommand}"/>
+                        </i:EventTrigger>
+                    </i:Interaction.Triggers>
+                </TextBox>
+
+                <Image Margin="12" Grid.Column="1" Source="/Images/64/W/IconSearch.png" Visibility="{Binding SearchImageVisibility}"></Image>
+
+                <Button Grid.Column="1" Margin="12" Command="{Binding ClearSearchTextBoxCommand}" Style="{StaticResource ImageButtonStyle}" Visibility="{Binding ClearSearchImageVisibility}">
+                    <Button.Background>
+                        <ImageBrush ImageSource="/Images/64/W/Delete.png"/>
+                    </Button.Background>
+                </Button>
+
+                <Border Grid.Column="2" Background="{StaticResource LightLightGrey}" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"></Border>
+
+                <Border Grid.Column="3" Background="{StaticResource DarkDarkGreyTransparent}" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Visibility="{Binding SearchVisibility}">
+                    <Image Margin="12" Grid.Column="3" Source="/Images/64/W/MenuExplore.png" ></Image>
+                </Border>
+
+                <Border Grid.Column="3" Background="{StaticResource DarkDarkGreyTransparent}" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Visibility="{Binding StationsVisibility}">
+                    <Button Grid.Column="3" Margin="12" Command="{Binding SearchCommand}" Style="{StaticResource ImageButtonStyle}" >
+                        <Button.Background>
+                            <ImageBrush ImageSource="/Images/64/GY/IconExplore-Grey.png"/>
+                        </Button.Background>
+                    </Button>
+                </Border>
+
+                <Border Grid.Column="4" Background="{StaticResource LightLightGrey}" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"></Border>
+
+                <Border Grid.Column="5" Background="{StaticResource DarkDarkGreyTransparent}" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Visibility="{Binding StationsVisibility}">
+                    <Image Margin="12" Grid.Column="3" Source="/Images/64/W/MenuStations.png" ></Image>
+                </Border>
+
+                <Border Grid.Column="5" Background="{StaticResource DarkDarkGreyTransparent}" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Visibility="{Binding SearchVisibility}">
+                    <Button Grid.Column="3" Margin="12" Command="{Binding StationsCommand}" Style="{StaticResource ImageButtonStyle}" >
+                        <Button.Background>
+                            <ImageBrush ImageSource="/Images/128/GY/IconStations-Grey.png"/>
+                        </Button.Background>
+                    </Button>
+                </Border>
+            </Grid>
+
+            <Border Grid.Row="1" Height="2" Background="{StaticResource LightLightGrey}" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"></Border>
+
+            <Button Grid.Row="2" Command="{Binding SwitchToMapCommand}" Visibility="{Binding SwitchToMapVisibility}" VerticalAlignment="Bottom" Height="22" Margin="0" Style="{StaticResource MapOverlayImageButtonStyle}">
+                <Image Source="/Images/64/W/IconArrowDown.png" />
+            </Button>
+
+            <TextBlock Visibility="{Binding NoResultsVisibility}" Grid.Row="3" VerticalAlignment="Center" HorizontalAlignment="Center" Text="{Binding Path=LocalizedResources.SearchNoResults, Source={StaticResource LocalizedStrings}}" Style="{StaticResource LoadingText}"></TextBlock>
+
+            <ListBox Grid.Row="3" CacheMode="BitmapCache" Visibility="{Binding StopListVisibility}" VerticalAlignment="Stretch" Margin="12,0,12,0" ItemsSource="{Binding Stations}" SelectedItem="{Binding SelectedStation, Mode=TwoWay}">
+                <ListBox.ItemTemplate>
+                    <DataTemplate>
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="28"/>
+                                <RowDefinition Height="30"/>
+                                <RowDefinition Height="2"/>
+                            </Grid.RowDefinitions>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="45"/>
+                                <ColumnDefinition />
+                                <ColumnDefinition Width="Auto"/>
+                            </Grid.ColumnDefinitions>
+                            <Image Grid.Row="0" Grid.Column="0" Grid.RowSpan="2" Source="/Images/64/W/Stop.png" VerticalAlignment="Center" />
+
+                            <TextBlock Grid.Row="0" Grid.Column="1" Text="{Binding Name}" Style="{StaticResource ListItemText}" VerticalAlignment="Center" Margin="6,0,6,0"/>
+                            <TextBlock Grid.Row="1" Grid.Column="2" Text="{Binding DistanceFromUserLocation}" Style="{StaticResource DistanceText}" VerticalAlignment="Center"/>
+
+                            <TextBlock Grid.Row="1" Grid.Column="1" Text="{Binding OperatorName}" Style="{StaticResource SmallListItemText}" VerticalAlignment="Top" Margin="6,0,6,0"/>
+
+                            <Border Grid.Row="2" Grid.ColumnSpan="3" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Background="{StaticResource LightLightGrey}"/>
+                        </Grid>
+                    </DataTemplate>
+                </ListBox.ItemTemplate>
+                <ListBox.ItemContainerStyle>
+                    <Style TargetType="ListBoxItem">
+                        <Setter Property="HorizontalContentAlignment" Value="Stretch"/>
+                    </Style>
+                </ListBox.ItemContainerStyle>
+            </ListBox>
+
+            <ListBox Grid.Row="3" CacheMode="BitmapCache" Visibility="{Binding SearchListVisibility}" VerticalAlignment="Stretch" Margin="12,0,12,0" ItemsSource="{Binding SearchResults}" SelectedItem="{Binding SelectedSearchResult, Mode=TwoWay}">
+                <ListBox.ItemTemplate>
+                    <DataTemplate>
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="28"/>
+                                <RowDefinition Height="30"/>
+                                <RowDefinition Height="2"/>
+                            </Grid.RowDefinitions>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="45"/>
+                                <ColumnDefinition />
+                                <ColumnDefinition Width="Auto"/>
+                            </Grid.ColumnDefinitions>
+
+                            <Image Grid.Row="0" Grid.RowSpan="2" Grid.Column="0" Source="{Binding PlaceOfInterestCategory.Image}" VerticalAlignment="Center" />
+
+                            <TextBlock Grid.Row="0" Grid.Column="1" Text="{Binding Name}" Style="{StaticResource ListItemText}" VerticalAlignment="Center" Margin="6,0,6,0"/>
+                            <TextBlock Grid.Row="1" Grid.Column="2" Text="{Binding DistanceFromUserLocation}" Style="{StaticResource DistanceText}" VerticalAlignment="Center"/>
+
+                            <TextBlock Grid.Row="1" Grid.Column="1" Text="{Binding Address}" Style="{StaticResource SmallListItemText}" VerticalAlignment="Top" Margin="6,0,6,0"/>
+
+                            <Border Grid.Row="2" Grid.ColumnSpan="3" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Background="{StaticResource LightLightGrey}"/>
+                        </Grid>
+                    </DataTemplate>
+                </ListBox.ItemTemplate>
+                <ListBox.ItemContainerStyle>
+                    <Style TargetType="ListBoxItem">
+                        <Setter Property="HorizontalContentAlignment" Value="Stretch"/>
+                    </Style>
+                </ListBox.ItemContainerStyle>
+            </ListBox>
+        </Grid>
+
+        <Grid Grid.Row="2" Visibility="{Binding MapVisibility}">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="60"/>
+            </Grid.RowDefinitions>
+
+            <Grid Grid.Row="0" Grid.RowSpan="2">
+                <m:Map 
+                   HorizontalAlignment="Stretch" 
+                   VerticalAlignment="Stretch" 
+                   Hold="Map_Hold"
+                   Center="{Binding MapCenterPoint, Mode=TwoWay}" 
+                   ZoomLevel="{Binding MapZoomLevel, Mode=TwoWay}"
+                   CopyrightVisibility="Collapsed" LogoVisibility="Collapsed"
+                   >
+                    <m:Map.Children>
+                        <m:MapItemsControl ItemsSource="{Binding MapStops}">
+                            <m:MapItemsControl.ItemTemplate>
+                                <DataTemplate>
+                                    <m:Pushpin Location="{Binding Location.GeoCoordinate}">
+                                        <m:Pushpin.Template>
+                                            <ControlTemplate TargetType="m:Pushpin">
+                                                <Grid>
+                                                    <Image Margin="-64,0,0,0" Width="64" Height="64" Source="/Images/64/GY/StopMapMarker.png"/>
+                                                    <Button Width="64" Height="64" Margin="-64,0,0,0" Style="{StaticResource ImageButtonStyle}" Command="{Binding SelectPointOnMapCommand}">
+                                                    </Button>
+                                                </Grid>
+                                            </ControlTemplate>
+                                        </m:Pushpin.Template>
+                                    </m:Pushpin>
+                                </DataTemplate>
+                            </m:MapItemsControl.ItemTemplate>
+                        </m:MapItemsControl>
+                        <m:MapItemsControl ItemsSource="{Binding MapSearchResults}">
+                            <m:MapItemsControl.ItemTemplate>
+                                <DataTemplate>
+                                    <m:Pushpin Location="{Binding Location.GeoCoordinate}">
+                                        <m:Pushpin.Template>
+                                            <ControlTemplate TargetType="m:Pushpin">
+                                                <Grid>
+                                                    <Image Margin="-64,0,0,0" Width="64" Height="64" Source="/Images/64/GY/PoiMapMarker.png"/>
+                                                    <Button Width="64" Height="64" Margin="-64,0,0,0" Style="{StaticResource ImageButtonStyle}" Command="{Binding SelectPointOnMapCommand}">
+                                                    </Button>
+                                                </Grid>
+                                            </ControlTemplate>
+                                        </m:Pushpin.Template>
+                                    </m:Pushpin>
+                                </DataTemplate>
+                            </m:MapItemsControl.ItemTemplate>
+                        </m:MapItemsControl>
+                        <m:Pushpin Visibility="{Binding UserLocationVisibility}" Location="{Binding UserLocation.GeoCoordinate}" Content="{Binding Path=LocalizedResources.UserLocationMarkerText, Source={StaticResource LocalizedStrings}}"/>
+                        <m:Pushpin Location="{Binding PointA.Location.GeoCoordinate}" Visibility="{Binding PointA.PointVisibility}">
+                            <m:Pushpin.Template>
+                                <ControlTemplate TargetType="m:Pushpin">
+                                    <Grid>
+                                        <Image HorizontalAlignment="Left" Margin="-64,0,0,0" Width="64" Height="70" Source="{Binding PointA.PointChosenImage}"/>
+                                        <Button Width="34" Height="34" Margin="-32,-50,0,0" Style="{StaticResource ImageButtonStyle}" Command="{Binding RemovePointACommand}">
+                                        </Button>
+                                    </Grid>
+                                </ControlTemplate>
+                            </m:Pushpin.Template>
+                        </m:Pushpin>
+                        <m:Pushpin Location="{Binding PointB.Location.GeoCoordinate}" Visibility="{Binding PointB.PointVisibility}">
+                            <m:Pushpin.Template>
+                                <ControlTemplate TargetType="m:Pushpin">
+                                    <Grid>
+                                        <Image HorizontalAlignment="Left" Margin="-64,0,0,0" Width="64" Height="70" Source="{Binding PointB.PointChosenImage}"/>
+                                        <Button Width="34" Height="34" Margin="-32,-50,0,0" Style="{StaticResource ImageButtonStyle}" Command="{Binding RemovePointBCommand}">
+                                        </Button>
+                                    </Grid>
+                                </ControlTemplate>
+                            </m:Pushpin.Template>
+                        </m:Pushpin>
+                    </m:Map.Children>
+                </m:Map>
+
+                <Grid Height="62" VerticalAlignment="Top">
+                    <Grid.RowDefinitions>
+                        <RowDefinition/>
+                        <RowDefinition Height="2"/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition/>
+                        <ColumnDefinition Width="2"/>
+                        <ColumnDefinition/>
+                        <ColumnDefinition Width="120"/>
+                    </Grid.ColumnDefinitions>
+
+                    <Button Background="{StaticResource DarkGreyTransparent}" Command="{Binding PointACommand}" Grid.Column="0" Grid.Row="0" Style="{StaticResource MapPointImageButtonStyle}">
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock Style="{StaticResource PopupText}" Text="{Binding Path=LocalizedResources.MapPointSelectionPointText, Source={StaticResource LocalizedStrings}}"  VerticalAlignment="Center" HorizontalAlignment="Center" />
+                            <Image Source="{Binding PointA.PointImage}" Margin="8" />
+                        </StackPanel>
+                    </Button>
+
+                    <Border Grid.Column="1" Grid.Row="0" Background="{StaticResource DarkGreyTransparent}" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" />
+                    <Border Grid.Column="1" Grid.Row="0" Background="{StaticResource White}" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="0,12,0,12" />
+
+                    <Button Background="{StaticResource DarkGreyTransparent}" Command="{Binding PointBCommand}" Grid.Column="2" Grid.Row="0" Style="{StaticResource MapPointImageButtonStyle}">
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock Style="{StaticResource PopupText}" Text="{Binding Path=LocalizedResources.MapPointSelectionPointText, Source={StaticResource LocalizedStrings}}"  VerticalAlignment="Center" HorizontalAlignment="Center" />
+                            <Image Source="{Binding PointB.PointImage}" Margin="8" />
+                        </StackPanel>
+                    </Button>
+
+                    <Border Grid.Row="0" Grid.Column="3" Background="{StaticResource LightGreyTransparent}">
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition/>
+                                <ColumnDefinition Width="2"/>
+                                <ColumnDefinition/>
+                            </Grid.ColumnDefinitions>
+                            <Border Grid.Column="0" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Visibility="{Binding SearchVisibility}">
+                                <Image Margin="12" Grid.Column="3" Source="/Images/64/W/MenuExplore.png"></Image>
+                            </Border>
+
+                            <Border Grid.Column="0" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Visibility="{Binding StationsVisibility}">
+                                <Button Margin="12" Command="{Binding SearchCommand}" Style="{StaticResource ImageButtonStyle}" >
+                                    <Button.Background>
+                                        <ImageBrush ImageSource="/Images/64/GY/IconExplore-Grey.png"/>
+                                    </Button.Background>
+                                </Button>
+                            </Border>
+
+                            <Border Grid.Column="1" Background="{StaticResource DarkGreyTransparent}" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"></Border>
+
+                            <Border Grid.Column="2" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Visibility="{Binding StationsVisibility}">
+                                <Image Margin="12" Grid.Column="3" Source="/Images/64/W/MenuStations.png" ></Image>
+                            </Border>
+
+                            <Border Grid.Column="2" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Visibility="{Binding SearchVisibility}">
+                                <Button Margin="12" Command="{Binding StationsCommand}" Style="{StaticResource ImageButtonStyle}" >
+                                    <Button.Background>
+                                        <ImageBrush ImageSource="/Images/128/GY/IconStations-Grey.png"/>
+                                    </Button.Background>
+                                </Button>
+                            </Border>
+                        </Grid>
+                    </Border>
+
+                    <Border Grid.ColumnSpan="4" Grid.Row="1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Background="{StaticResource DarkGreyTransparent}"/>
+
+                </Grid>
+            </Grid>
+
+            <Button Margin="0,0,12,12" Width="65" Height="65" Command="{Binding CenterUserLocationCommand}" HorizontalAlignment="Right" VerticalAlignment="Bottom" Style="{StaticResource MapButtonStyle}">
+                <Image Margin="-3" Source="/Images/64/GY/IconCenterOnGPS-Grey.png"/>
+            </Button>
+
+            <Button Margin="12,0,0,12" Width="65" Height="65" Command="{Binding CenterUserLocationCommand}" HorizontalAlignment="Left" VerticalAlignment="Bottom" Style="{StaticResource MapButtonStyle}">
+                <Image Margin="-3" Source="/Images/64/GY/IconSwitchPoints-Grey.png"/>
+            </Button>
+
+            <Grid Grid.Row="1" Margin="0">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="22"/>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+
+                <Button Grid.Row="0" Command="{Binding SwitchToListCommand}" VerticalAlignment="Bottom" Height="22" Margin="0" Style="{StaticResource MapOverlayImageButtonStyle}">
+                    <Image Source="/Images/64/W/IconArrowUp.png" />
+                </Button>
+                <Button Grid.Row="1" Command="{Binding ReCenterOnPointCommand}" Visibility="{Binding SelectedStationVisibility}" Height="60" Margin="0" Padding="0" Style="{StaticResource MapOverlayImageButtonStyle}" HorizontalContentAlignment="Stretch" VerticalContentAlignment="Center">
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="30"/>
+                            <RowDefinition Height="30"/>
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="12"/>
+                            <ColumnDefinition Width="45"/>
+                            <ColumnDefinition />
+                            <ColumnDefinition Width="Auto"/>
+                            <ColumnDefinition Width="12"/>
+                        </Grid.ColumnDefinitions>
+                        <Image Grid.RowSpan="2" Grid.Column="1" Source="/Images/64/LB/Stop-Blue.png" />
+                        <TextBlock Grid.Row="0" Grid.Column="2" Text="{Binding SelectedStationForView.Name}" Style="{StaticResource ListItemText}" VerticalAlignment="Top" Margin="6,0,6,0" />
+                        <TextBlock Grid.Row="1" Grid.Column="3" Text="{Binding SelectedStationForView.DistanceFromUserLocation}" Style="{StaticResource DistanceText}" VerticalAlignment="Center" />
+                        <TextBlock Grid.Row="1" Grid.Column="2" Text="{Binding SelectedStationForView.OperatorName}" Style="{StaticResource SmallListItemText}" VerticalAlignment="Top" Margin="6,0,6,0" />
+                    </Grid>
+                </Button>
+                <Button Grid.Row="1" Command="{Binding ReCenterOnPointCommand}" Visibility="{Binding SelectedCustomPointVisibility}" Height="60" Margin="0" Padding="0" Style="{StaticResource MapOverlayImageButtonStyle}" HorizontalContentAlignment="Stretch" VerticalContentAlignment="Center">
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="30"/>
+                            <RowDefinition Height="30"/>
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="12"/>
+                            <ColumnDefinition Width="45"/>
+                            <ColumnDefinition />
+                            <ColumnDefinition Width="Auto"/>
+                            <ColumnDefinition Width="12"/>
+                        </Grid.ColumnDefinitions>
+                        <Image Grid.RowSpan="2" Grid.Column="1" Source="/Images/64/LB/MarkerBlueHole.png" />
+                        <TextBlock Grid.Row="0" Grid.Column="2" Text="{Binding SelectedCustomPointForView.Name}" Style="{StaticResource ListItemText}" VerticalAlignment="Center" Margin="6,0,6,0"/>
+                        <TextBlock Grid.Row="1" Grid.Column="3" Text="{Binding SelectedCustomPointForView.DistanceFromUserLocation}" Style="{StaticResource DistanceText}" VerticalAlignment="Center"/>
+                        <TextBlock Grid.Row="1" Grid.Column="2" Text="{Binding SelectedCustomPointForView.Address}" Style="{StaticResource SmallListItemText}" VerticalAlignment="Top" Margin="6,0,6,0" />
+                    </Grid>
+                </Button>
+                <Button Grid.Row="1" Command="{Binding ReCenterOnPointCommand}" Visibility="{Binding SelectedSearchItemVisibility}" Height="60" Margin="0" Padding="0" Style="{StaticResource MapOverlayImageButtonStyle}" HorizontalContentAlignment="Stretch" VerticalContentAlignment="Center">
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="30"/>
+                            <RowDefinition Height="30"/>
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="12"/>
+                            <ColumnDefinition Width="45"/>
+                            <ColumnDefinition Width="90*" />
+                            <ColumnDefinition Width="47*"/>
+                            <ColumnDefinition Width="Auto"/>
+                            <ColumnDefinition Width="12"/>
+                        </Grid.ColumnDefinitions>
+                        <Image Grid.RowSpan="2" Grid.Column="1" Source="{Binding SelectedSearchItemForView.PlaceOfInterestCategory.Image}" />
+                        <TextBlock Grid.Row="0" Grid.Column="2" Text="{Binding SelectedSearchItemForView.Name}" Style="{StaticResource ListItemText}" VerticalAlignment="Center" Margin="6,15" Grid.ColumnSpan="2"/>
+                        <TextBlock Grid.Row="1" Grid.Column="5" Text="{Binding SelectedSearchItemForView.DistanceFromUserLocation}" Style="{StaticResource DistanceText}" VerticalAlignment="Center" Margin="0,15,12,15"/>
+                        <TextBlock Grid.Row="1" Grid.Column="2" Text="{Binding SelectedSearchItemForView.Address}" Style="{StaticResource SmallListItemText}" VerticalAlignment="Top" Margin="6,0,6,0" Grid.ColumnSpan="2" />
+                    </Grid>
+                </Button>
+            </Grid>
+
+            <Grid Grid.Row="2" Height="60">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="2"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+
+                <Border Grid.Row="0" Grid.ColumnSpan="2" Background="{StaticResource LightGrey}" />
+
+                <Button Grid.Row="1" Grid.Column="0" Command="{Binding SubmitCommand}" Style="{StaticResource ActiveFooterButtonStyle}" Content="{Binding Path=LocalizedResources.MapPointSelectionSubmitButtonText, Source={StaticResource LocalizedStrings}}">
+                </Button>
+
+                <Button  Grid.Row="1" Grid.Column="1" Command="{Binding CancelCommand}" Style="{StaticResource InActiveFooterButtonStyle}" Content="{Binding Path=LocalizedResources.MapPointSelectionCancelButtonText, Source={StaticResource LocalizedStrings}}">
+                </Button>
+            </Grid>
+        </Grid>
+    </Grid>
+
+
+</phone:PhoneApplicationPage>

@@ -1,0 +1,182 @@
+﻿<phone:PhoneApplicationPage
+    x:Class="Drumble.Views.Search"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:phone="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone"
+    xmlns:shell="clr-namespace:Microsoft.Phone.Shell;assembly=Microsoft.Phone"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:usercontrols="clr-namespace:Drumble.UserControls"
+    xmlns:i="clr-namespace:System.Windows.Interactivity;assembly=System.Windows.Interactivity"
+    xmlns:cmd="clr-namespace:GalaSoft.MvvmLight.Command;assembly=GalaSoft.MvvmLight.Extras.WP71"
+    xmlns:modeImages="clr-namespace:DrumbleApp.Shared.Converters"
+    DataContext="{Binding Search, Source={StaticResource Locator}}"
+    SupportedOrientations="Portrait" Orientation="Portrait"
+    mc:Ignorable="d"
+    shell:SystemTray.IsVisible="False">
+
+    <i:Interaction.Triggers>
+        <i:EventTrigger EventName="Loaded">
+            <cmd:EventToCommand Command="{Binding PageLoadedCommand}"/>
+        </i:EventTrigger>
+        <i:EventTrigger EventName="Unloaded">
+            <cmd:EventToCommand Command="{Binding PageUnloadedCommand}"/>
+        </i:EventTrigger>
+    </i:Interaction.Triggers>
+
+    <Grid Style="{StaticResource DefaultPageGrid}">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="60"/>
+            <RowDefinition Height="2"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="2"/>
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+
+        <usercontrols:Header Grid.Row="0" />
+
+        <Grid Grid.Row="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="60"/>
+            </Grid.ColumnDefinitions>
+
+            <TextBox Grid.Column="0" HorizontalAlignment="Stretch" Text="{Binding SearchText, Mode=TwoWay, UpdateSourceTrigger=Explicit}" Style="{StaticResource TransparentTextBoxStyle}" TextChanged="TextBoxTextChanged">
+                <i:Interaction.Triggers>
+                    <i:EventTrigger EventName="GotFocus">
+                        <cmd:EventToCommand Command="{Binding SearchTextBoxGotFocusCommand}"/>
+                    </i:EventTrigger>
+                    <i:EventTrigger EventName="LostFocus">
+                        <cmd:EventToCommand Command="{Binding SearchTextBoxLostFocusCommand}"/>
+                    </i:EventTrigger>
+                </i:Interaction.Triggers>
+            </TextBox>
+
+            <Image Margin="12" Grid.Column="1" Source="/Images/64/W/IconSearch.png" Visibility="{Binding SearchImageVisibility}"></Image>
+
+            <Button Grid.Column="1" Margin="12" Command="{Binding ClearSearchTextBoxCommand}" Style="{StaticResource ImageButtonStyle}" Visibility="{Binding ClearSearchImageVisibility}">
+                <Button.Background>
+                    <ImageBrush ImageSource="/Images/64/W/Delete.png"/>
+                </Button.Background>
+            </Button>
+        </Grid>
+
+        <Border Grid.Row="2" Background="{StaticResource LightLightGrey}" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"></Border>
+
+        <Grid Grid.Row="3">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="2"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+
+            <Button Grid.Column="0" Style="{StaticResource TransparentButtonStyle}" HorizontalAlignment="Center" Command="{Binding FindOnMapCommand}">
+                <StackPanel>
+                    <Image Source="/Images/64/W/MarkerWhiteHole.png" Margin="0,5,0,0" Width="32" HorizontalAlignment="Center" />
+                    <TextBlock Text="{Binding Path=LocalizedResources.SearchFindOnMap, Source={StaticResource LocalizedStrings}}" HorizontalAlignment="Center" />
+                </StackPanel>
+            </Button>
+
+            <Border Grid.Column="1" Background="{StaticResource LightLightGrey}" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"></Border>
+
+            <Button Grid.Column="2" Style="{StaticResource TransparentButtonStyle}" HorizontalAlignment="Center" Command="{Binding CurrentLocationCommand}">
+                <StackPanel>
+                    <Image Source="/Images/64/W/IconGPS.png" Margin="0,5,0,0" Width="32" HorizontalAlignment="Center" />
+                    <TextBlock Text="{Binding Path=LocalizedResources.SearchCurrentLocation, Source={StaticResource LocalizedStrings}}" HorizontalAlignment="Center" />
+                </StackPanel>
+            </Button>
+        </Grid>
+        
+        <Border Grid.Row="4" Background="{StaticResource LightLightGrey}" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"></Border>
+
+        <Grid Grid.Row="5" Visibility="{Binding SearchResultRowVisibility}">
+            <TextBlock Visibility="{Binding NoSearchResultsVisibility}" VerticalAlignment="Center" HorizontalAlignment="Center" Text="{Binding Path=LocalizedResources.SearchNoResults, Source={StaticResource LocalizedStrings}}" Style="{StaticResource LoadingText}"></TextBlock>
+
+            <ProgressBar Background="Transparent" Foreground="{StaticResource DrumbleBlue}" VerticalAlignment="Top" HorizontalAlignment="Stretch" IsIndeterminate="{Binding LoaderIsIndeterminate}" Visibility="{Binding LoaderVisibility}" Height="10" Margin="12,0,12,0"/>
+        
+            <ListBox CacheMode="BitmapCache" Visibility="{Binding ListVisibility}" VerticalAlignment="Stretch" Margin="12,0,12,0" ItemsSource="{Binding SearchResults}" SelectedItem="{Binding SelectedSearchResult, Mode=TwoWay}">
+                <ListBox.ItemTemplate>
+                    <DataTemplate>
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="45"/>
+                                <RowDefinition Height="35"/>
+                                <RowDefinition Height="3"/>
+                            </Grid.RowDefinitions>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition />
+                                <ColumnDefinition Width="Auto"/>
+                            </Grid.ColumnDefinitions>
+
+                            <TextBlock Grid.Row="0" Grid.Column="0" Text="{Binding Name}" Style="{StaticResource ListItemText}" VerticalAlignment="Center" Margin="0,0,6,0"/>
+                        
+                            <Button Command="{Binding MapSelectCommand}" Grid.Row="0" Grid.RowSpan="2" Grid.Column="1" Style="{StaticResource ImageButtonStyle}" Margin="0,0,0,0">
+                                <StackPanel HorizontalAlignment="Right">
+                                    <TextBlock Text="{Binding DistanceFromUserLocation}" Style="{StaticResource DistanceText}" HorizontalAlignment="Right" VerticalAlignment="Center"/>
+                                    <Image Width="45" Height="45" Source="/Images/64/LB/Map.png" HorizontalAlignment="Right" Margin="0,0,0,0"/>
+                                </StackPanel>
+                            </Button>
+                            <TextBlock Grid.Row="1" Grid.Column="0" Text="{Binding Description}" Style="{StaticResource SmallListItemText}" VerticalAlignment="Top"/>
+
+                            <Border Grid.Row="2" Grid.ColumnSpan="2" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Background="{StaticResource LightLightGrey}"/>
+                        </Grid>
+                    </DataTemplate>
+                </ListBox.ItemTemplate>
+                <ListBox.ItemContainerStyle>
+                    <Style TargetType="ListBoxItem">
+                        <Setter Property="HorizontalContentAlignment" Value="Stretch"/>
+                    </Style>
+                </ListBox.ItemContainerStyle>
+            </ListBox>
+        </Grid>
+
+        <Grid Grid.Row="5" Visibility="{Binding RecentRowVisibility}">
+            <TextBlock Visibility="{Binding NoRecentsVisibility}" VerticalAlignment="Center" HorizontalAlignment="Center" Text="{Binding Path=LocalizedResources.SeachNoRecentTrips, Source={StaticResource LocalizedStrings}}" Style="{StaticResource LoadingText}"></TextBlock>
+            
+            <ListBox Margin="24" Visibility="{Binding RecentTripsListVisibility}" ItemsSource="{Binding RecentTrips}" SelectedItem="{Binding SelectedRecentTrip, Mode=TwoWay}">
+                <ListBox.ItemTemplate>
+                    <DataTemplate>
+                        <Border Background="{StaticResource DarkBlue}" Margin="0,0,0,12">
+                            <Grid Background="{StaticResource Clickable}" Height="100" Margin="2">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="70"/>
+                                    <ColumnDefinition Width="*" />
+                                </Grid.ColumnDefinitions>
+
+                                <Grid Grid.Column="0">
+                                    <Grid.Background>
+                                        <ImageBrush ImageSource="/Images/Custom/LB/TileFavouritesLeft.png" />
+                                    </Grid.Background>
+
+                                    <TextBlock Text="{Binding NumberOfUses}" VerticalAlignment="Top" HorizontalAlignment="Center" Style="{StaticResource LowNumberOfUsesText}" Visibility="{Binding LowNumberOfUsesVisibility}" />
+                                    <TextBlock Text="{Binding NumberOfUses}" VerticalAlignment="Top" HorizontalAlignment="Center" Style="{StaticResource MediumNumberOfUsesText}" Visibility="{Binding MediumNumberOfUsesVisibility}" />
+                                    <TextBlock Text="{Binding NumberOfUses}" VerticalAlignment="Top" HorizontalAlignment="Center" Style="{StaticResource HighNumberOfUsesText}" Visibility="{Binding HighNumberOfUsesVisibility}" />
+                                </Grid>
+
+                                <Grid Grid.Column="1" Margin="10,5,5,5" VerticalAlignment="Center">
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="Auto" />
+                                        <RowDefinition Height="Auto" />
+                                    </Grid.RowDefinitions>
+
+                                    <TextBlock Grid.Row="0" Text="{Binding Text}" Style="{StaticResource ListItemText}" VerticalAlignment="Top"/>
+
+                                    <TextBlock Grid.Row="1" Text="{Binding RelativeLastUsedDateString}" Style="{StaticResource ListItemText}" VerticalAlignment="Top"/>
+
+                                </Grid>
+                            </Grid>
+                        </Border>
+                    </DataTemplate>
+                </ListBox.ItemTemplate>
+                <ListBox.ItemContainerStyle>
+                    <Style TargetType="ListBoxItem">
+                        <Setter Property="HorizontalContentAlignment" Value="Stretch"/>
+                    </Style>
+                </ListBox.ItemContainerStyle>
+            </ListBox>
+
+        </Grid>
+    </Grid>
+
+</phone:PhoneApplicationPage>

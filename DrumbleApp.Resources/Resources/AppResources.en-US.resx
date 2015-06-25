@@ -1,0 +1,645 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="AboutAppInfo" xml:space="preserve">
+    <value>App Info</value>
+  </data>
+  <data name="AboutClose" xml:space="preserve">
+    <value>Close</value>
+  </data>
+  <data name="AboutCompany" xml:space="preserve">
+    <value>Company:</value>
+  </data>
+  <data name="AboutDeveloper" xml:space="preserve">
+    <value>Developer</value>
+  </data>
+  <data name="AboutPolicies" xml:space="preserve">
+    <value>Policies</value>
+  </data>
+  <data name="AboutPolicyHereButtonText" xml:space="preserve">
+    <value>here</value>
+  </data>
+  <data name="AboutPolicyPart1" xml:space="preserve">
+    <value>Your privacy is important to us. This application uses your location to improve your transport experience. This may be stored and shared, however you may disable 'Location Services' under</value>
+  </data>
+  <data name="AboutPolicyPart2" xml:space="preserve">
+    <value>Bumble (Pty) Ltd. will not use this information to contact you in any way.</value>
+  </data>
+  <data name="AboutPolicyPart3" xml:space="preserve">
+    <value>Bumble (Pty) Ltd. is committed to protecting the security of your personal information. All data is stored and transferred securely. If you have further questions, contact us</value>
+  </data>
+  <data name="AboutPolicySettingsText" xml:space="preserve">
+    <value>settings</value>
+  </data>
+  <data name="AboutReleaseDate" xml:space="preserve">
+    <value>Release Date:</value>
+  </data>
+  <data name="AboutReleaseDetails" xml:space="preserve">
+    <value>New in this release:</value>
+  </data>
+  <data name="AboutVersion" xml:space="preserve">
+    <value>Version:</value>
+  </data>
+  <data name="CustomPopupGenericOkMessage" xml:space="preserve">
+    <value>ok</value>
+  </data>
+  <data name="CustomPopupMessageTypeWarning" xml:space="preserve">
+    <value>Warning</value>
+  </data>
+  <data name="DateTimeSelectionArrivingText" xml:space="preserve">
+    <value>Arriving</value>
+  </data>
+  <data name="DateTimeSelectionDateText" xml:space="preserve">
+    <value>Date:</value>
+  </data>
+  <data name="DateTimeSelectionDepartingText" xml:space="preserve">
+    <value>Departing</value>
+  </data>
+  <data name="DateTimeSelectionIntervalText" xml:space="preserve">
+    <value>Select Interval</value>
+  </data>
+  <data name="DateTimeSelectionSpecifyDateText" xml:space="preserve">
+    <value>Specify Date</value>
+  </data>
+  <data name="DateTimeSelectionTimeText" xml:space="preserve">
+    <value>Time:</value>
+  </data>
+  <data name="ExitMessage" xml:space="preserve">
+    <value>Are you sure you wish to exit?</value>
+  </data>
+  <data name="Favourites" xml:space="preserve">
+    <value>Favorites</value>
+  </data>
+  <data name="FavouritesLoading" xml:space="preserve">
+    <value>Loading ...</value>
+  </data>
+  <data name="FavouritesNoResults" xml:space="preserve">
+    <value>No results found.</value>
+  </data>
+  <data name="FooterAlerts" xml:space="preserve">
+    <value>Alerts</value>
+  </data>
+  <data name="FooterFavourites" xml:space="preserve">
+    <value>Favorites</value>
+  </data>
+  <data name="FooterGetKarma" xml:space="preserve">
+    <value>Get Karma</value>
+  </data>
+  <data name="FooterRecent" xml:space="preserve">
+    <value>Recent</value>
+  </data>
+  <data name="FooterShareApp" xml:space="preserve">
+    <value>Share App</value>
+  </data>
+  <data name="FooterTripOptions" xml:space="preserve">
+    <value>Trip Options</value>
+  </data>
+  <data name="HeaderAbout" xml:space="preserve">
+    <value>About</value>
+  </data>
+  <data name="HeaderAnnouncements" xml:space="preserve">
+    <value>Announcements</value>
+  </data>
+  <data name="HeaderCountrySelection" xml:space="preserve">
+    <value>Select a Country</value>
+  </data>
+  <data name="HeaderDateTimeSelection" xml:space="preserve">
+    <value>Select Departure Time</value>
+  </data>
+  <data name="HeaderExploreCity" xml:space="preserve">
+    <value>Explore your City</value>
+  </data>
+  <data name="HeaderFavourites" xml:space="preserve">
+    <value>Favorite Trips</value>
+  </data>
+  <data name="HeaderFilterPoiCategories" xml:space="preserve">
+    <value>Filter Place Categories</value>
+  </data>
+  <data name="HeaderIdentify" xml:space="preserve">
+    <value>Authorize</value>
+  </data>
+  <data name="HeaderLogin" xml:space="preserve">
+    <value>Login</value>
+  </data>
+  <data name="HeaderMainMenu" xml:space="preserve">
+    <value>Main Menu</value>
+  </data>
+  <data name="HeaderMaps" xml:space="preserve">
+    <value>Transportation Maps</value>
+  </data>
+  <data name="HeaderMessage" xml:space="preserve">
+    <value>Message Drumble</value>
+  </data>
+  <data name="HeaderMode" xml:space="preserve">
+    <value>Modes Filter</value>
+  </data>
+  <data name="HeaderProfile" xml:space="preserve">
+    <value>My Profile</value>
+  </data>
+  <data name="HeaderRecent" xml:space="preserve">
+    <value>Recent Trips</value>
+  </data>
+  <data name="HeaderRegionSelection" xml:space="preserve">
+    <value>Select a Region</value>
+  </data>
+  <data name="HeaderRegister" xml:space="preserve">
+    <value>Register</value>
+  </data>
+  <data name="HeaderSearch" xml:space="preserve">
+    <value>Enter Search Text</value>
+  </data>
+  <data name="HeaderSettings" xml:space="preserve">
+    <value>App Settings</value>
+  </data>
+  <data name="HeaderShare" xml:space="preserve">
+    <value>Tell a Friend</value>
+  </data>
+  <data name="HeaderStationsNearby" xml:space="preserve">
+    <value>Select a Station</value>
+  </data>
+  <data name="HeaderTimeSelection" xml:space="preserve">
+    <value>Select a Time</value>
+  </data>
+  <data name="HeaderTripDetails" xml:space="preserve">
+    <value>Trip Details</value>
+  </data>
+  <data name="HeaderTripKarma" xml:space="preserve">
+    <value>Trip Karma</value>
+  </data>
+  <data name="HeaderTripSelection" xml:space="preserve">
+    <value>Trip Selection</value>
+  </data>
+  <data name="HeaderWhereTo" xml:space="preserve">
+    <value>Find a Trip</value>
+  </data>
+  <data name="IdentifyAuthoriseButtonText" xml:space="preserve">
+    <value>Authorize</value>
+  </data>
+  <data name="IdentifyCancelButtonText" xml:space="preserve">
+    <value>Cancel</value>
+  </data>
+  <data name="IdentifyResendPinButtonText" xml:space="preserve">
+    <value>Resend Pin</value>
+  </data>
+  <data name="LocationPhoneDisabledHelpAlert" xml:space="preserve">
+    <value>Click ok to go to your location settings and turn location services on.</value>
+    <comment>Popup text to tell the user to turn on location services in the phone settings</comment>
+  </data>
+  <data name="LocationPhoneDisabledHelpCaption" xml:space="preserve">
+    <value>Location Disabled</value>
+    <comment>Caption of the popup telling the user to turn on location services in the phone settings</comment>
+  </data>
+  <data name="LocationPhoneErrorHelpAlert" xml:space="preserve">
+    <value>Location services are not functioning on your device.</value>
+    <comment>Popup text to tell the user that location services are not working</comment>
+  </data>
+  <data name="LoginCloseButtonText" xml:space="preserve">
+    <value>Close</value>
+  </data>
+  <data name="LoginFacebook" xml:space="preserve">
+    <value>Log In with Facebook</value>
+  </data>
+  <data name="LoginHelpTextPart1" xml:space="preserve">
+    <value>Already used the app before? Have you changed devices or do you simply want to sync your settings across devices? Choose the option you used to sign into app the first time.</value>
+  </data>
+  <data name="LoginHelpTextPart2" xml:space="preserve">
+    <value>Note: You must have created an account or signed in with us before to use this feature.</value>
+  </data>
+  <data name="LoginRequestPin" xml:space="preserve">
+    <value>Request One Time Pin</value>
+  </data>
+  <data name="LoginTwitter" xml:space="preserve">
+    <value>Log In with Twitter</value>
+  </data>
+  <data name="MainMenuEnableGpsPopupText" xml:space="preserve">
+    <value>Enable GPS</value>
+  </data>
+  <data name="MainMenuSignUpPopupText" xml:space="preserve">
+    <value>Sync settings and more</value>
+  </data>
+  <data name="MapPointSelectionCancelButtonText" xml:space="preserve">
+    <value>Cancel</value>
+  </data>
+  <data name="MapPointSelectionHeaderA" xml:space="preserve">
+    <value>Place Point A</value>
+  </data>
+  <data name="MapPointSelectionHeaderB" xml:space="preserve">
+    <value>Place Point B</value>
+  </data>
+  <data name="MapPointSelectionPointText" xml:space="preserve">
+    <value>Point</value>
+  </data>
+  <data name="MapPointSelectionSubmitButtonText" xml:space="preserve">
+    <value>Submit</value>
+  </data>
+  <data name="MessageUsRateAppPopupText" xml:space="preserve">
+    <value>Please rate the app</value>
+  </data>
+  <data name="MessageUsThankYouTextPart1" xml:space="preserve">
+    <value>Thanks for using our app.</value>
+  </data>
+  <data name="MessageUsThankYouTextPart2" xml:space="preserve">
+    <value>Leave us a message to let us know what you think.</value>
+  </data>
+  <data name="MessageUsThankYouTextPart3" xml:space="preserve">
+    <value>Happy commuting.</value>
+  </data>
+  <data name="MessageUsThankYouTextPart4" xml:space="preserve">
+    <value>The Drumble Team :)</value>
+  </data>
+  <data name="ModeButtonText" xml:space="preserve">
+    <value>Modes</value>
+  </data>
+  <data name="ModeCancelButtonText" xml:space="preserve">
+    <value>Cancel</value>
+  </data>
+  <data name="ModePrivateText" xml:space="preserve">
+    <value>Private</value>
+  </data>
+  <data name="ModePrivateTransport" xml:space="preserve">
+    <value>Private Transport</value>
+  </data>
+  <data name="ModePublicTransport" xml:space="preserve">
+    <value>Public Transport</value>
+  </data>
+  <data name="ModeSaveButtonText" xml:space="preserve">
+    <value>Save</value>
+  </data>
+  <data name="PlacesOfInterestCancelButtonText" xml:space="preserve">
+    <value>Cancel</value>
+  </data>
+  <data name="PlacesOfInterestDirectionsButtonText" xml:space="preserve">
+    <value>Directions</value>
+  </data>
+  <data name="PlacesOfInterestFindTripButtonText" xml:space="preserve">
+    <value>Find a Trip</value>
+  </data>
+  <data name="PlacesOfInterestListButtonText" xml:space="preserve">
+    <value>List</value>
+  </data>
+  <data name="PlacesOfInterestMapButtonText" xml:space="preserve">
+    <value>Map</value>
+  </data>
+  <data name="PlacesOfInterestNoResults" xml:space="preserve">
+    <value>No results found.</value>
+  </data>
+  <data name="PlacesOfInterestSaveButtonText" xml:space="preserve">
+    <value>Save</value>
+  </data>
+  <data name="Recent" xml:space="preserve">
+    <value>Recent Trips</value>
+  </data>
+  <data name="RegisterHelpText" xml:space="preserve">
+    <value>Authorise using any of the below methods to unlock features, securely store your preferences, trips and favourites.</value>
+  </data>
+  <data name="SeachNoRecentTrips" xml:space="preserve">
+    <value>You have no recent trips.</value>
+  </data>
+  <data name="SearchCurrentLocation" xml:space="preserve">
+    <value>Current Location</value>
+  </data>
+  <data name="SearchFindOnMap" xml:space="preserve">
+    <value>Find on map</value>
+  </data>
+  <data name="SearchNoResults" xml:space="preserve">
+    <value>No results found.</value>
+  </data>
+  <data name="SelectATripText" xml:space="preserve">
+    <value>Select a trip:</value>
+  </data>
+  <data name="SesttingsPopulateLocationDescription" xml:space="preserve">
+    <value>Always loads your current location when you start the app.</value>
+  </data>
+  <data name="SettingsCloseButtonText" xml:space="preserve">
+    <value>Close</value>
+  </data>
+  <data name="SettingsEnableTripKarma" xml:space="preserve">
+    <value>Enable TripKarma</value>
+  </data>
+  <data name="SettingsEnableTripKarmaDescription" xml:space="preserve">
+    <value>Know your carbon footprint, see trip stats and access extra app features.</value>
+  </data>
+  <data name="SettingsLocationServiceDescription" xml:space="preserve">
+    <value>Find places close to you and remain informed en route.</value>
+  </data>
+  <data name="SettingsLocationServiceText" xml:space="preserve">
+    <value>Allow location services</value>
+  </data>
+  <data name="SettingsMetric" xml:space="preserve">
+    <value>Use Metric system</value>
+  </data>
+  <data name="SettingsMetricDescription" xml:space="preserve">
+    <value>Use kilometers &amp; meters, if disabled Imperial system is used (miles &amp; yards).</value>
+  </data>
+  <data name="SettingsPopulateLocation" xml:space="preserve">
+    <value>Start with my location</value>
+  </data>
+  <data name="SettingsPopulateMostUsed" xml:space="preserve">
+    <value>Start with most frequent trip</value>
+  </data>
+  <data name="SettingsPopulateMostUsedDescription" xml:space="preserve">
+    <value>Always loads your most frequent trip when you start the app.</value>
+  </data>
+  <data name="SettingsPopulateRecent" xml:space="preserve">
+    <value>Start with my most recent trip</value>
+  </data>
+  <data name="SettingsPopulateRecentDescription" xml:space="preserve">
+    <value>Always loads your most recent trip when you start the app.</value>
+  </data>
+  <data name="SettingsShowIntermittentStops" xml:space="preserve">
+    <value>Show intermittent stops</value>
+  </data>
+  <data name="SettingsShowIntermittentStopsDescription" xml:space="preserve">
+    <value>Indicate all the stations along my route.</value>
+  </data>
+  <data name="SettingsShowWeather" xml:space="preserve">
+    <value>Show weather</value>
+  </data>
+  <data name="SettingsShowWeatherDescription" xml:space="preserve">
+    <value>Display the weather in the header of the app. Weather is updated hourly.</value>
+  </data>
+  <data name="SettingsSkipTripSelection" xml:space="preserve">
+    <value>Skip trip selection</value>
+  </data>
+  <data name="SettingsSkipTripSelectionDescription" xml:space="preserve">
+    <value>Go directly to the detail view when searching a trip. Note: You will not be presented with an Uber option when this setting is enabled.</value>
+  </data>
+  <data name="SettingsStoreRecent" xml:space="preserve">
+    <value>Keep history</value>
+  </data>
+  <data name="SettingsStoreRecentDescription" xml:space="preserve">
+    <value>Store your trips locally on your phone. Disable this option to delete existing trips.</value>
+  </data>
+  <data name="SettingsUber" xml:space="preserve">
+    <value>Use Uber</value>
+  </data>
+  <data name="SettingsUberDescription" xml:space="preserve">
+    <value>Always displays the fastest and cheapest Uber option below your public transport results.</value>
+  </data>
+  <data name="ShareLink" xml:space="preserve">
+    <value>http://get.Drumbleapp.com</value>
+  </data>
+  <data name="ShareText" xml:space="preserve">
+    <value>Hey! I'm using Drumble for all my public transport needs, you should check it out -</value>
+  </data>
+  <data name="SpamMailWarning" xml:space="preserve">
+    <value>Please check your junk mail if you do not receive a pin soon.</value>
+  </data>
+  <data name="SplashButtonTextSelectCountry" xml:space="preserve">
+    <value>Select a country ...</value>
+  </data>
+  <data name="SplashButtonTextSelectRegion" xml:space="preserve">
+    <value>Select a region ...</value>
+  </data>
+  <data name="SplashScreenConnectionErrorTextPart1" xml:space="preserve">
+    <value>An error has occurred, please</value>
+  </data>
+  <data name="SplashScreenConnectionErrorTextPart2" xml:space="preserve">
+    <value>tap here to try again.</value>
+  </data>
+  <data name="SplashScreenSignInText" xml:space="preserve">
+    <value>Sign in</value>
+  </data>
+  <data name="StationsNearbyLoadingStations" xml:space="preserve">
+    <value>Loading Stations ...</value>
+  </data>
+  <data name="StopSelectionLoadingStations" xml:space="preserve">
+    <value>Loading Stations ...</value>
+  </data>
+  <data name="TripDetailsBeginTripButtonText" xml:space="preserve">
+    <value>Begin Trip</value>
+  </data>
+  <data name="TripDetailsCancelTripButtonText" xml:space="preserve">
+    <value>Cancel</value>
+  </data>
+  <data name="UberCancelButton" xml:space="preserve">
+    <value>Cancel</value>
+  </data>
+  <data name="UberRefreshButton" xml:space="preserve">
+    <value>Refresh</value>
+  </data>
+  <data name="UberRetryButton" xml:space="preserve">
+    <value>Retry</value>
+  </data>
+  <data name="UserLocationMarkerText" xml:space="preserve">
+    <value>You</value>
+  </data>
+  <data name="WhereToDrumbleButtonText" xml:space="preserve">
+    <value>Drumble</value>
+  </data>
+  <data name="WhereToDrumbleCancelButtonText" xml:space="preserve">
+    <value>Cancel</value>
+  </data>
+  <data name="WhereToText" xml:space="preserve">
+    <value>Where to?</value>
+  </data>
+  <data name="AnnouncementsHideMenu" xml:space="preserve">
+    <value>hide this menu</value>
+  </data>
+  <data name="AnnouncementsPin" xml:space="preserve">
+    <value>pin announcements</value>
+  </data>
+  <data name="SettingsShowAnnouncementApplicationBar" xml:space="preserve">
+    <value>Show pin announcements</value>
+  </data>
+  <data name="SettingsShowAnnouncementApplicationBarDescription" xml:space="preserve">
+    <value>Shows the Windows Phone menu to allow you to pin announcements to your start.  </value>
+  </data>
+  <data name="SettingsShowTripApplicationBar" xml:space="preserve">
+    <value>Show pin trip</value>
+  </data>
+  <data name="SettingsShowTripApplicationBarDescription" xml:space="preserve">
+    <value>Shows the Windows Phone menu to allow you to pin trips to your start.</value>
+  </data>
+  <data name="TripDetailsHideMenu" xml:space="preserve">
+    <value>hide this menu</value>
+  </data>
+  <data name="TripDetailsPin" xml:space="preserve">
+    <value>pin this trip</value>
+  </data>
+  <data name="DebugMegabytes" xml:space="preserve">
+    <value>Mb</value>
+  </data>
+  <data name="SettingsChangeCountry" xml:space="preserve">
+    <value>change country</value>
+  </data>
+  <data name="SettingsResetApp" xml:space="preserve">
+    <value>reset app</value>
+  </data>
+  <data name="AboutReleaseNotes1" xml:space="preserve">
+    <value>Now you can request an Uber without leaving the app!</value>
+  </data>
+  <data name="AboutReleaseNotes2" xml:space="preserve">
+    <value>A Re Yeng competition removed.</value>
+  </data>
+  <data name="AboutReleaseNotes3" xml:space="preserve">
+    <value>You can now sign in with your Uber account.</value>
+  </data>
+  <data name="AboutReleaseNotes4" xml:space="preserve">
+    <value>Welcome to multimodal transport! Find your way from A to B using any combination of bus, rail, boat and taxi.</value>
+  </data>
+  <data name="TripDetailsViewMap" xml:space="preserve">
+    <value>view map</value>
+  </data>
+  <data name="LoginUberPopupText" xml:space="preserve">
+    <value>Sign in to Uber</value>
+  </data>
+  <data name="SettingsLoginUber" xml:space="preserve">
+    <value>Sign in to Uber</value>
+  </data>
+  <data name="SettingsLoginUberDescription" xml:space="preserve">
+    <value>Sign in to your Uber account to request an Uber from within the app. Disable this option to logout of your Uber account.</value>
+  </data>
+  <data name="UberTripDetailsDriver" xml:space="preserve">
+    <value>Driver:</value>
+  </data>
+  <data name="UberTripDetailsDriverPhoneNumber" xml:space="preserve">
+    <value>Driver Phone Number:</value>
+  </data>
+  <data name="UberTripDetailsDriverPicture" xml:space="preserve">
+    <value>Driver Picture:</value>
+  </data>
+  <data name="UberTripDetailsETA" xml:space="preserve">
+    <value>ETA:</value>
+  </data>
+  <data name="UberTripDetailsText" xml:space="preserve">
+    <value>Your Uber Trip:</value>
+  </data>
+  <data name="UberTripDetailsTripStatus" xml:space="preserve">
+    <value>Trip Status:</value>
+  </data>
+  <data name="UberTripDetailsVehicleLicense" xml:space="preserve">
+    <value>License Plate:</value>
+  </data>
+  <data name="UberTripDetailsVehicleMake" xml:space="preserve">
+    <value>Vehicle:</value>
+  </data>
+  <data name="CustomPopupMessageTypeInformation" xml:space="preserve">
+    <value>Information</value>
+  </data>
+  <data name="UberSurgePricingConfirmationPopupText" xml:space="preserve">
+    <value>Surge pricing is in effect, please confirm.</value>
+  </data>
+  <data name="UberFinishButtonText" xml:space="preserve">
+    <value>Finish</value>
+  </data>
+  <data name="UberFakeSurgeButton" xml:space="preserve">
+    <value>Fake Surge</value>
+  </data>
+</root>

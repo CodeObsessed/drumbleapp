@@ -1,0 +1,798 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>10.0.20506</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{B04C6505-385E-4CE4-89F0-6A9A5E9A14B6}</ProjectGuid>
+    <ProjectTypeGuids>{C089C8C0-30E0-4E22-80C0-CE093F111A43};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Drumble</RootNamespace>
+    <AssemblyName>Drumble</AssemblyName>
+    <TargetFrameworkIdentifier>WindowsPhone</TargetFrameworkIdentifier>
+    <TargetFrameworkVersion>v8.0</TargetFrameworkVersion>
+    <SilverlightVersion>$(TargetFrameworkVersion)</SilverlightVersion>
+    <SilverlightApplication>true</SilverlightApplication>
+    <SupportedCultures>en-US</SupportedCultures>
+    <XapOutputs>true</XapOutputs>
+    <GenerateSilverlightManifest>true</GenerateSilverlightManifest>
+    <XapFilename>Drumble.8.xap</XapFilename>
+    <SilverlightManifestTemplate>Properties\AppManifest.xml</SilverlightManifestTemplate>
+    <SilverlightAppEntry>DrumbleApp._8.App</SilverlightAppEntry>
+    <ValidateXaml>true</ValidateXaml>
+    <MinimumVisualStudioVersion>11.0</MinimumVisualStudioVersion>
+    <ThrowErrorsInValidation>true</ThrowErrorsInValidation>
+    <SccProjectName>SAK</SccProjectName>
+    <SccLocalPath>SAK</SccLocalPath>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccProvider>SAK</SccProvider>
+    <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">..\</SolutionDir>
+    <RestorePackages>true</RestorePackages>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>Bin\Debug</OutputPath>
+    <DefineConstants>DEBUG;TRACE;SILVERLIGHT;WINDOWS_PHONE</DefineConstants>
+    <NoStdLib>true</NoStdLib>
+    <NoConfig>true</NoConfig>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <RunCodeAnalysis>false</RunCodeAnalysis>
+    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>Bin\Release</OutputPath>
+    <DefineConstants>TRACE;SILVERLIGHT;WINDOWS_PHONE</DefineConstants>
+    <NoStdLib>true</NoStdLib>
+    <NoConfig>true</NoConfig>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>Bin\x86\Debug</OutputPath>
+    <DefineConstants>DEBUG;TRACE;SILVERLIGHT;WINDOWS_PHONE</DefineConstants>
+    <NoStdLib>true</NoStdLib>
+    <NoConfig>true</NoConfig>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|x86' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>Bin\x86\Release</OutputPath>
+    <DefineConstants>TRACE;SILVERLIGHT;WINDOWS_PHONE</DefineConstants>
+    <NoStdLib>true</NoStdLib>
+    <NoConfig>true</NoConfig>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|ARM' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>Bin\ARM\Debug</OutputPath>
+    <DefineConstants>DEBUG;TRACE;SILVERLIGHT;WINDOWS_PHONE</DefineConstants>
+    <NoStdLib>true</NoStdLib>
+    <NoConfig>true</NoConfig>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|ARM' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>Bin\ARM\Release</OutputPath>
+    <DefineConstants>TRACE;SILVERLIGHT;WINDOWS_PHONE</DefineConstants>
+    <NoStdLib>true</NoStdLib>
+    <NoConfig>true</NoConfig>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Include="..\DrumbleApp.Resources\Resources\AppResources.Designer.cs">
+      <Link>Resources\AppResources.Designer.cs</Link>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>AppResources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="..\DrumbleApp.Resources\Theme\ThemeManager.cs">
+      <Link>Theme\ThemeManager.cs</Link>
+    </Compile>
+    <Compile Include="..\Drumbleapp.shared\converters\MainMenuBackgroundColourConverter.cs">
+      <Link>Converters\MainMenuBackgroundColourConverter.cs</Link>
+    </Compile>
+    <Compile Include="..\Drumbleapp.shared\converters\MainMenuBackgroundImageConverter.cs">
+      <Link>Converters\MainMenuBackgroundImageConverter.cs</Link>
+    </Compile>
+    <Compile Include="App.xaml.cs">
+      <DependentUpon>App.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="GlobalSuppressions.cs" />
+    <Compile Include="LocalizedStrings.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="UserControls\Header.xaml.cs">
+      <DependentUpon>Header.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\Modes.xaml.cs">
+      <DependentUpon>Modes.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Utililties\MapPushPinDependency.cs" />
+    <Compile Include="ViewModelLocator.cs" />
+    <Compile Include="Views\About.xaml.cs">
+      <DependentUpon>About.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Announcements.xaml.cs">
+      <DependentUpon>Announcements.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\CountrySelection.xaml.cs">
+      <DependentUpon>CountrySelection.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\DateTimeSelection.xaml.cs">
+      <DependentUpon>DateTimeSelection.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Favourites.xaml.cs">
+      <DependentUpon>Favourites.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\MainMenu.xaml.cs">
+      <DependentUpon>MainMenu.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\MapPointSelection.xaml.cs">
+      <DependentUpon>MapPointSelection.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Maps.xaml.cs">
+      <DependentUpon>Maps.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Message.xaml.cs">
+      <DependentUpon>Message.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Modes.xaml.cs">
+      <DependentUpon>Modes.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\OperatorSelection.xaml.cs">
+      <DependentUpon>OperatorSelection.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Search.xaml.cs">
+      <DependentUpon>Search.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Settings.xaml.cs">
+      <DependentUpon>Settings.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Share.xaml.cs">
+      <DependentUpon>Share.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\SplashScreen.xaml.cs">
+      <DependentUpon>SplashScreen.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\TripDetails.xaml.cs">
+      <DependentUpon>TripDetails.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\TripSelection.xaml.cs">
+      <DependentUpon>TripSelection.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\UberAuthentication.xaml.cs">
+      <DependentUpon>UberAuthentication.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\UberMap.xaml.cs">
+      <DependentUpon>UberMap.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\UberSurgePricingConfirmation.xaml.cs">
+      <DependentUpon>UberSurgePricingConfirmation.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\UberTripDetails.xaml.cs">
+      <DependentUpon>UberTripDetails.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\WhereTo.xaml.cs">
+      <DependentUpon>WhereTo.xaml</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <ApplicationDefinition Include="App.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </ApplicationDefinition>
+    <Page Include="..\DrumbleApp.Resources\Theme\DefaultTheme.xaml">
+      <Link>Theme\DefaultTheme.xaml</Link>
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="..\DrumbleApp.Resources\Theme\ThemeResources.xaml">
+      <Link>Theme\ThemeResources.xaml</Link>
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="UserControls\Header.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="UserControls\Modes.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\About.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\Announcements.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\CountrySelection.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\DateTimeSelection.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\Favourites.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\MainMenu.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\MapPointSelection.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\Maps.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\Message.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\Modes.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\OperatorSelection.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\Search.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\Settings.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\Share.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\SplashScreen.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\TripDetails.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\TripSelection.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\UberAuthentication.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\UberMap.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\UberSurgePricingConfirmation.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\UberTripDetails.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\WhereTo.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="app.config" />
+    <None Include="packages.config" />
+    <None Include="Properties\AppManifest.xml" />
+    <None Include="Properties\WMAppManifest.xml">
+      <SubType>Designer</SubType>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="..\Drumbleapp.resources\images\32\b\PinBlack.png">
+      <Link>Images\32\B\PinBlack.png</Link>
+    </Content>
+    <Content Include="..\Drumbleapp.resources\images\32\lb\PinBlue.png">
+      <Link>Images\32\LB\PinBlue.png</Link>
+    </Content>
+    <Content Include="..\Drumbleapp.resources\images\32\r\alert.png">
+      <Link>Images\32\R\alert.png</Link>
+    </Content>
+    <Content Include="..\Drumbleapp.resources\images\64\gy\DrumbleSymbol-GreyA.png">
+      <Link>Images\64\GY\DrumbleSymbol-GreyA.png</Link>
+    </Content>
+    <Content Include="..\Drumbleapp.resources\images\64\gy\DrumbleSymbol-GreyB.png">
+      <Link>Images\64\GY\DrumbleSymbol-GreyB.png</Link>
+    </Content>
+    <Content Include="..\Drumbleapp.resources\images\64\gy\DrumbleSymbol-GreyC.png">
+      <Link>Images\64\GY\DrumbleSymbol-GreyC.png</Link>
+    </Content>
+    <Content Include="..\Drumbleapp.resources\images\64\gy\DrumbleSymbol-GreyD.png">
+      <Link>Images\64\GY\DrumbleSymbol-GreyD.png</Link>
+    </Content>
+    <Content Include="..\Drumbleapp.resources\images\64\gy\DrumbleSymbol-GreyE.png">
+      <Link>Images\64\GY\DrumbleSymbol-GreyE.png</Link>
+    </Content>
+    <Content Include="..\Drumbleapp.resources\images\64\gy\IconArrowExpandDown-Grey.png">
+      <Link>Images\64\GY\IconArrowExpandDown-Grey.png</Link>
+    </Content>
+    <Content Include="..\Drumbleapp.resources\images\64\gy\IconArrowExpandUp-Grey.png">
+      <Link>Images\64\GY\IconArrowExpandUp-Grey.png</Link>
+    </Content>
+    <Content Include="..\Drumbleapp.resources\images\64\gy\IconCenterOnGPS-Grey.png">
+      <Link>Images\64\GY\IconCenterOnGPS-Grey.png</Link>
+    </Content>
+    <Content Include="..\Drumbleapp.resources\images\64\lb\DrumbleSymbol-BlueA.png">
+      <Link>Images\64\LB\DrumbleSymbol-BlueA.png</Link>
+    </Content>
+    <Content Include="..\Drumbleapp.resources\images\64\lb\DrumbleSymbol-BlueB.png">
+      <Link>Images\64\LB\DrumbleSymbol-BlueB.png</Link>
+    </Content>
+    <Content Include="..\Drumbleapp.resources\images\64\lb\DrumbleSymbol-BlueC.png">
+      <Link>Images\64\LB\DrumbleSymbol-BlueC.png</Link>
+    </Content>
+    <Content Include="..\Drumbleapp.resources\images\64\lb\DrumbleSymbol-BlueD.png">
+      <Link>Images\64\LB\DrumbleSymbol-BlueD.png</Link>
+    </Content>
+    <Content Include="..\Drumbleapp.resources\images\64\lb\DrumbleSymbol-BlueE.png">
+      <Link>Images\64\LB\DrumbleSymbol-BlueE.png</Link>
+    </Content>
+    <Content Include="..\Drumbleapp.resources\images\64\lb\IconBack.png">
+      <Link>Images\64\LB\IconBack.png</Link>
+    </Content>
+    <Content Include="..\Drumbleapp.resources\images\64\lb\IconFavouritesAdd.png">
+      <Link>Images\64\LB\IconFavouritesAdd.png</Link>
+    </Content>
+    <Content Include="..\Drumbleapp.resources\images\64\lb\IconFavouritesRemove.png">
+      <Link>Images\64\LB\IconFavouritesRemove.png</Link>
+    </Content>
+    <Content Include="..\Drumbleapp.resources\images\64\lb\IconDrumble.png">
+      <Link>Images\64\LB\IconDrumble.png</Link>
+    </Content>
+    <Content Include="..\Drumbleapp.resources\images\64\lb\IconFullDate.png">
+      <Link>Images\64\LB\IconFullDate.png</Link>
+    </Content>
+    <Content Include="..\Drumbleapp.resources\images\64\lb\IconInvertPoints-Blue.png">
+      <Link>Images\64\LB\IconInvertPoints-Blue.png</Link>
+    </Content>
+    <Content Include="..\Drumbleapp.resources\images\64\lb\IconTimeInterval.png">
+      <Link>Images\64\LB\IconTimeInterval.png</Link>
+    </Content>
+    <Content Include="..\Drumbleapp.resources\images\64\lb\Map.png">
+      <Link>Images\64\LB\Map.png</Link>
+    </Content>
+    <Content Include="..\Drumbleapp.resources\images\64\lb\MarkerBlueHole.png">
+      <Link>Images\64\LB\MarkerBlueHole.png</Link>
+    </Content>
+    <Content Include="..\Drumbleapp.resources\images\64\lb\MenuAbout.png">
+      <Link>Images\64\LB\MenuAbout.png</Link>
+    </Content>
+    <Content Include="..\Drumbleapp.resources\images\64\lb\MenuAnnouncement.png">
+      <Link>Images\64\LB\MenuAnnouncement.png</Link>
+    </Content>
+    <Content Include="..\Drumbleapp.resources\images\64\lb\MenuChangeCountry.png">
+      <Link>Images\64\LB\MenuChangeCountry.png</Link>
+    </Content>
+    <Content Include="..\Drumbleapp.resources\images\64\lb\MenuExplore.png">
+      <Link>Images\64\LB\MenuExplore.png</Link>
+    </Content>
+    <Content Include="..\Drumbleapp.resources\images\64\lb\MenuFavourites.png">
+      <Link>Images\64\LB\MenuFavourites.png</Link>
+    </Content>
+    <Content Include="..\Drumbleapp.resources\images\64\lb\MenuMessageUs.png">
+      <Link>Images\64\LB\MenuMessageUs.png</Link>
+    </Content>
+    <Content Include="..\Drumbleapp.resources\images\64\lb\MenuRecent.png">
+      <Link>Images\64\LB\MenuRecent.png</Link>
+    </Content>
+    <Content Include="..\Drumbleapp.resources\images\64\lb\MenuSettings.png">
+      <Link>Images\64\LB\MenuSettings.png</Link>
+    </Content>
+    <Content Include="..\Drumbleapp.resources\images\64\lb\MenuShare.png">
+      <Link>Images\64\LB\MenuShare.png</Link>
+    </Content>
+    <Content Include="..\Drumbleapp.resources\images\64\lb\MenuStations.png">
+      <Link>Images\64\LB\MenuStations.png</Link>
+    </Content>
+    <Content Include="..\Drumbleapp.resources\images\64\lb\MenuTransportationMaps.png">
+      <Link>Images\64\LB\MenuTransportationMaps.png</Link>
+    </Content>
+    <Content Include="..\Drumbleapp.resources\images\64\lb\MenuWhereTo.png">
+      <Link>Images\64\LB\MenuWhereTo.png</Link>
+    </Content>
+    <Content Include="..\Drumbleapp.resources\images\64\w\Delete.png">
+      <Link>Images\64\W\Delete.png</Link>
+    </Content>
+    <Content Include="..\Drumbleapp.resources\images\64\w\FooterShare.png">
+      <Link>Images\64\W\FooterShare.png</Link>
+    </Content>
+    <Content Include="..\Drumbleapp.resources\images\64\w\FooterTripOptions.png">
+      <Link>Images\64\W\FooterTripOptions.png</Link>
+    </Content>
+    <Content Include="..\Drumbleapp.resources\images\64\w\IconAlerts.png">
+      <Link>Images\64\W\IconAlerts.png</Link>
+    </Content>
+    <Content Include="..\Drumbleapp.resources\images\64\w\IconAlertsIndicator.png">
+      <Link>Images\64\W\IconAlertsIndicator.png</Link>
+    </Content>
+    <Content Include="..\Drumbleapp.resources\images\64\w\IconArrowDown.png">
+      <Link>Images\64\W\IconArrowDown.png</Link>
+    </Content>
+    <Content Include="..\Drumbleapp.resources\images\64\w\IconArrowExpandDown.png">
+      <Link>Images\64\W\IconArrowExpandDown.png</Link>
+    </Content>
+    <Content Include="..\Drumbleapp.resources\images\64\w\IconArrowExpandUp.png">
+      <Link>Images\64\W\IconArrowExpandUp.png</Link>
+    </Content>
+    <Content Include="..\Drumbleapp.resources\images\64\w\IconArrowUp.png">
+      <Link>Images\64\W\IconArrowUp.png</Link>
+    </Content>
+    <Content Include="..\Drumbleapp.resources\images\64\w\IconDate.png">
+      <Link>Images\64\W\IconDate.png</Link>
+    </Content>
+    <Content Include="..\Drumbleapp.resources\images\64\w\IconFavouritesAdd.png">
+      <Link>Images\64\W\IconFavouritesAdd.png</Link>
+    </Content>
+    <Content Include="..\Drumbleapp.resources\images\64\w\IconFavouritesRemove.png">
+      <Link>Images\64\W\IconFavouritesRemove.png</Link>
+    </Content>
+    <Content Include="..\Drumbleapp.resources\images\64\w\IconFilter.png">
+      <Link>Images\64\W\IconFilter.png</Link>
+    </Content>
+    <Content Include="..\Drumbleapp.resources\images\64\w\IconFullDate-Off.png">
+      <Link>Images\64\W\IconFullDate-Off.png</Link>
+    </Content>
+    <Content Include="..\Drumbleapp.resources\images\64\w\IconFullDate.png">
+      <Link>Images\64\W\IconFullDate.png</Link>
+    </Content>
+    <Content Include="..\Drumbleapp.resources\images\64\w\IconGPS.png">
+      <Link>Images\64\W\IconGPS.png</Link>
+    </Content>
+    <Content Include="..\Drumbleapp.resources\images\64\w\IconInvertPoints.png">
+      <Link>Images\64\W\IconInvertPoints.png</Link>
+    </Content>
+    <Content Include="..\Drumbleapp.resources\images\64\w\IconReview.png">
+      <Link>Images\64\W\IconReview.png</Link>
+    </Content>
+    <Content Include="..\Drumbleapp.resources\images\64\w\IconSearch.png">
+      <Link>Images\64\W\IconSearch.png</Link>
+    </Content>
+    <Content Include="..\Drumbleapp.resources\images\64\w\IconTimeInterval-Off.png">
+      <Link>Images\64\W\IconTimeInterval-Off.png</Link>
+    </Content>
+    <Content Include="..\Drumbleapp.resources\images\64\w\IconTimeInterval.png">
+      <Link>Images\64\W\IconTimeInterval.png</Link>
+    </Content>
+    <Content Include="..\Drumbleapp.resources\images\64\w\MarkerWhiteHole.png">
+      <Link>Images\64\W\MarkerWhiteHole.png</Link>
+    </Content>
+    <Content Include="..\Drumbleapp.resources\images\64\w\MenuAbout.png">
+      <Link>Images\64\W\MenuAbout.png</Link>
+    </Content>
+    <Content Include="..\Drumbleapp.resources\images\64\w\MenuAnnouncement.png">
+      <Link>Images\64\W\MenuAnnouncement.png</Link>
+    </Content>
+    <Content Include="..\Drumbleapp.resources\images\64\w\MenuChangeCountry.png">
+      <Link>Images\64\W\MenuChangeCountry.png</Link>
+    </Content>
+    <Content Include="..\Drumbleapp.resources\images\64\w\MenuExplore.png">
+      <Link>Images\64\W\MenuExplore.png</Link>
+    </Content>
+    <Content Include="..\Drumbleapp.resources\images\64\w\MenuFavourites-Off.png">
+      <Link>Images\64\W\MenuFavourites-Off.png</Link>
+    </Content>
+    <Content Include="..\Drumbleapp.resources\images\64\w\MenuFavourites.png">
+      <Link>Images\64\W\MenuFavourites.png</Link>
+    </Content>
+    <Content Include="..\Drumbleapp.resources\images\64\w\MenuIcon.png">
+      <Link>Images\64\W\MenuIcon.png</Link>
+    </Content>
+    <Content Include="..\Drumbleapp.resources\images\64\w\MenuMessageUs.png">
+      <Link>Images\64\W\MenuMessageUs.png</Link>
+    </Content>
+    <Content Include="..\Drumbleapp.resources\images\64\w\MenuRecent-Off.png">
+      <Link>Images\64\W\MenuRecent-Off.png</Link>
+    </Content>
+    <Content Include="..\Drumbleapp.resources\images\64\w\MenuRecent.png">
+      <Link>Images\64\W\MenuRecent.png</Link>
+    </Content>
+    <Content Include="..\Drumbleapp.resources\images\64\w\MenuSettings.png">
+      <Link>Images\64\W\MenuSettings.png</Link>
+    </Content>
+    <Content Include="..\Drumbleapp.resources\images\64\w\MenuShare.png">
+      <Link>Images\64\W\MenuShare.png</Link>
+    </Content>
+    <Content Include="..\Drumbleapp.resources\images\64\w\MenuStations.png">
+      <Link>Images\64\W\MenuStations.png</Link>
+    </Content>
+    <Content Include="..\Drumbleapp.resources\images\64\w\MenuTransportationMaps.png">
+      <Link>Images\64\W\MenuTransportationMaps.png</Link>
+    </Content>
+    <Content Include="..\Drumbleapp.resources\images\64\w\MenuWhereTo.png">
+      <Link>Images\64\W\MenuWhereTo.png</Link>
+    </Content>
+    <Content Include="..\Drumbleapp.resources\images\64\w\ModeBoat-Off.png">
+      <Link>Images\64\W\ModeBoat-Off.png</Link>
+    </Content>
+    <Content Include="..\Drumbleapp.resources\images\64\w\ModeBoat.png">
+      <Link>Images\64\W\ModeBoat.png</Link>
+    </Content>
+    <Content Include="..\Drumbleapp.resources\images\64\w\ModeBus-Off.png">
+      <Link>Images\64\W\ModeBus-Off.png</Link>
+    </Content>
+    <Content Include="..\Drumbleapp.resources\images\64\w\ModeBus.png">
+      <Link>Images\64\W\ModeBus.png</Link>
+    </Content>
+    <Content Include="..\Drumbleapp.resources\images\64\w\ModePedestrian.png">
+      <Link>Images\64\W\ModePedestrian.png</Link>
+    </Content>
+    <Content Include="..\Drumbleapp.resources\images\64\w\ModeRail-Off.png">
+      <Link>Images\64\W\ModeRail-Off.png</Link>
+    </Content>
+    <Content Include="..\Drumbleapp.resources\images\64\w\ModeRail.png">
+      <Link>Images\64\W\ModeRail.png</Link>
+    </Content>
+    <Content Include="..\Drumbleapp.resources\images\64\w\ModeTaxi-Off.png">
+      <Link>Images\64\W\ModeTaxi-Off.png</Link>
+    </Content>
+    <Content Include="..\Drumbleapp.resources\images\64\w\ModeTaxi.png">
+      <Link>Images\64\W\ModeTaxi.png</Link>
+    </Content>
+    <Content Include="..\Drumbleapp.resources\images\64\w\ModeTourist-Off.png">
+      <Link>Images\64\W\ModeTourist-Off.png</Link>
+    </Content>
+    <Content Include="..\Drumbleapp.resources\images\64\w\ModeTourist.png">
+      <Link>Images\64\W\ModeTourist.png</Link>
+    </Content>
+    <Content Include="..\Drumbleapp.resources\images\64\w\ShakePhone.png">
+      <Link>Images\64\W\ShakePhone.png</Link>
+    </Content>
+    <Content Include="..\Drumbleapp.resources\images\64\w\SocialFacebook.png">
+      <Link>Images\64\W\SocialFacebook.png</Link>
+    </Content>
+    <Content Include="..\Drumbleapp.resources\images\64\w\SocialTwitter.png">
+      <Link>Images\64\W\SocialTwitter.png</Link>
+    </Content>
+    <Content Include="..\Drumbleapp.resources\images\64\w\TripKarmaWhite.png">
+      <Link>Images\64\W\TripKarmaWhite.png</Link>
+    </Content>
+    <Content Include="..\Drumbleapp.resources\images\backgrounds\Background.png">
+      <Link>Images\Backgrounds\Background.png</Link>
+    </Content>
+    <Content Include="..\Drumbleapp.resources\images\backgrounds\MapsBackground.png">
+      <Link>Images\Backgrounds\MapsBackground.png</Link>
+    </Content>
+    <Content Include="..\Drumbleapp.resources\images\custom\db\LineFull.png">
+      <Link>Images\Custom\DB\LineFull.png</Link>
+    </Content>
+    <Content Include="..\Drumbleapp.resources\images\custom\db\LineRight.png">
+      <Link>Images\Custom\DB\LineRight.png</Link>
+    </Content>
+    <Content Include="..\Drumbleapp.resources\images\custom\lb\IconArrowOptionLeft.png">
+      <Link>Images\Custom\LB\IconArrowOptionLeft.png</Link>
+    </Content>
+    <Content Include="..\Drumbleapp.resources\images\custom\lb\IconArrowOptionRight.png">
+      <Link>Images\Custom\LB\IconArrowOptionRight.png</Link>
+    </Content>
+    <Content Include="..\Drumbleapp.resources\images\custom\lb\LineFull.png">
+      <Link>Images\Custom\LB\LineFull.png</Link>
+    </Content>
+    <Content Include="..\Drumbleapp.resources\images\custom\lb\LineRight.png">
+      <Link>Images\Custom\LB\LineRight.png</Link>
+    </Content>
+    <Content Include="..\Drumbleapp.resources\images\custom\lb\SplashCityOff.png">
+      <Link>Images\Custom\LB\SplashCityOff.png</Link>
+    </Content>
+    <Content Include="..\Drumbleapp.resources\images\custom\lb\SplashCityOn.png">
+      <Link>Images\Custom\LB\SplashCityOn.png</Link>
+    </Content>
+    <Content Include="..\Drumbleapp.resources\images\custom\lb\TileFavouritesLeft.png">
+      <Link>Images\Custom\LB\TileFavouritesLeft.png</Link>
+    </Content>
+    <Content Include="..\Drumbleapp.resources\images\custom\lb\TileOptionsLeft.png">
+      <Link>Images\Custom\LB\TileOptionsLeft.png</Link>
+    </Content>
+    <Content Include="..\Drumbleapp.resources\images\custom\lb\TileOptionsLeftShort.png">
+      <Link>Images\Custom\LB\TileOptionsLeftShort.png</Link>
+    </Content>
+    <Content Include="..\Drumbleapp.resources\images\custom\w\IconArrowOptionLeft.png">
+      <Link>Images\Custom\W\IconArrowOptionLeft.png</Link>
+    </Content>
+    <Content Include="..\Drumbleapp.resources\images\custom\w\IconArrowOptionRight.png">
+      <Link>Images\Custom\W\IconArrowOptionRight.png</Link>
+    </Content>
+    <Content Include="..\DrumbleApp.Resources\Images\Custom\W\LongWait.png">
+      <Link>Images\Custom\W\LongWait.png</Link>
+    </Content>
+    <Content Include="..\DrumbleApp.Resources\Images\EcoPoints\EcoPointsLogo.png">
+      <Link>Images\EcoPoints\EcoPointsLogo.png</Link>
+    </Content>
+    <Content Include="..\Drumbleapp.resources\images\splash\DrumbleLogo.png">
+      <Link>Images\Splash\DrumbleLogo.png</Link>
+    </Content>
+    <Content Include="..\Drumbleapp.resources\images\splash\SplashFooter.png">
+      <Link>Images\Splash\SplashFooter.png</Link>
+    </Content>
+    <Content Include="..\Drumbleapp.resources\images\splash\SplashScreen.png">
+      <Link>Images\Splash\SplashScreen.png</Link>
+    </Content>
+    <Content Include="..\DrumbleApp.Resources\Images\Splash\SplashScreenImage.jpg">
+      <Link>SplashScreenImage.jpg</Link>
+    </Content>
+    <Content Include="..\Drumbleapp.resources\images\tiles\TileAnnouncement7.png">
+      <Link>Images\Tiles\TileAnnouncement7.png</Link>
+    </Content>
+    <Content Include="..\Drumbleapp.resources\images\tiles\TileTrip7.png">
+      <Link>Images\Tiles\TileTrip7.png</Link>
+    </Content>
+    <Content Include="..\Drumbleapp.resources\images\uber\Uber.png">
+      <Link>Images\Uber\Uber.png</Link>
+    </Content>
+    <Content Include="..\Drumbleapp.resources\images\weather\01d.png">
+      <Link>Images\Weather\01d.png</Link>
+    </Content>
+    <Content Include="..\Drumbleapp.resources\images\weather\01n.png">
+      <Link>Images\Weather\01n.png</Link>
+    </Content>
+    <Content Include="..\Drumbleapp.resources\images\weather\02d.png">
+      <Link>Images\Weather\02d.png</Link>
+    </Content>
+    <Content Include="..\Drumbleapp.resources\images\weather\02n.png">
+      <Link>Images\Weather\02n.png</Link>
+    </Content>
+    <Content Include="..\Drumbleapp.resources\images\weather\03d.png">
+      <Link>Images\Weather\03d.png</Link>
+    </Content>
+    <Content Include="..\Drumbleapp.resources\images\weather\03n.png">
+      <Link>Images\Weather\03n.png</Link>
+    </Content>
+    <Content Include="..\Drumbleapp.resources\images\weather\04d.png">
+      <Link>Images\Weather\04d.png</Link>
+    </Content>
+    <Content Include="..\Drumbleapp.resources\images\weather\04n.png">
+      <Link>Images\Weather\04n.png</Link>
+    </Content>
+    <Content Include="..\Drumbleapp.resources\images\weather\09d.png">
+      <Link>Images\Weather\09d.png</Link>
+    </Content>
+    <Content Include="..\Drumbleapp.resources\images\weather\09n.png">
+      <Link>Images\Weather\09n.png</Link>
+    </Content>
+    <Content Include="..\Drumbleapp.resources\images\weather\10d.png">
+      <Link>Images\Weather\10d.png</Link>
+    </Content>
+    <Content Include="..\Drumbleapp.resources\images\weather\10n.png">
+      <Link>Images\Weather\10n.png</Link>
+    </Content>
+    <Content Include="..\Drumbleapp.resources\images\weather\11d.png">
+      <Link>Images\Weather\11d.png</Link>
+    </Content>
+    <Content Include="..\Drumbleapp.resources\images\weather\11n.png">
+      <Link>Images\Weather\11n.png</Link>
+    </Content>
+    <Content Include="..\Drumbleapp.resources\images\weather\13d.png">
+      <Link>Images\Weather\13d.png</Link>
+    </Content>
+    <Content Include="..\Drumbleapp.resources\images\weather\13n.png">
+      <Link>Images\Weather\13n.png</Link>
+    </Content>
+    <Content Include="..\Drumbleapp.resources\images\weather\50d.png">
+      <Link>Images\Weather\50d.png</Link>
+    </Content>
+    <Content Include="..\Drumbleapp.resources\images\weather\50n.png">
+      <Link>Images\Weather\50n.png</Link>
+    </Content>
+    <Content Include="icon159x159.png" />
+    <Content Include="icon336x336.png" />
+    <Content Include="icon691x336.png" />
+    <Content Include="icon99x99.png" />
+    <Content Include="Toolkit.Content\ApplicationBar.Add.png" />
+    <Content Include="Toolkit.Content\ApplicationBar.Cancel.png" />
+    <Content Include="Toolkit.Content\ApplicationBar.Check.png" />
+    <Content Include="Toolkit.Content\ApplicationBar.Delete.png" />
+    <Content Include="Toolkit.Content\ApplicationBar.Select.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="..\DrumbleApp.Resources\Resources\AppResources.en-US.resx">
+      <Link>Resources\AppResources.en-US.resx</Link>
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\DrumbleApp.Resources\Resources\AppResources.resx">
+      <Link>Resources\AppResources.resx</Link>
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>AppResources.Designer.cs</LastGenOutput>
+      <CustomToolNamespace>Drumble.Resources</CustomToolNamespace>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup />
+  <ItemGroup>
+    <Reference Include="BindableApplicationBar">
+      <HintPath>..\packages\BindableApplicationBar.1.0.0\lib\sl4-windowsphone71\BindableApplicationBar.dll</HintPath>
+    </Reference>
+    <Reference Include="FlurryWP8SDK">
+      <HintPath>..\packages\FlurrySDK.3.1.2\lib\wp8\FlurryWP8SDK.dll</HintPath>
+    </Reference>
+    <Reference Include="GalaSoft.MvvmLight.Extras.WP71, Version=4.2.30.23589, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\MvvmLightLibs.4.2.30.0\lib\sl4-wp71\GalaSoft.MvvmLight.Extras.WP71.dll</HintPath>
+    </Reference>
+    <Reference Include="GalaSoft.MvvmLight.WP71, Version=4.2.30.23589, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\MvvmLightLibs.4.2.30.0\lib\sl4-wp71\GalaSoft.MvvmLight.WP71.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Phone.Controls.Toolkit">
+      <HintPath>..\packages\WPtoolkit.4.2013.08.16\lib\wp8\Microsoft.Phone.Controls.Toolkit.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Practices.ServiceLocation, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\MvvmLightLibs.4.2.30.0\lib\sl4-wp71\Microsoft.Practices.ServiceLocation.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Threading.Tasks, Version=1.0.12.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Microsoft.Bcl.Async.1.0.168\lib\wp8\Microsoft.Threading.Tasks.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Threading.Tasks.Extensions">
+      <HintPath>..\packages\Microsoft.Bcl.Async.1.0.168\lib\wp8\Microsoft.Threading.Tasks.Extensions.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Threading.Tasks.Extensions.Phone">
+      <HintPath>..\packages\Microsoft.Bcl.Async.1.0.168\lib\wp8\Microsoft.Threading.Tasks.Extensions.Phone.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Windows.Interactivity, Version=3.8.5.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\DrumbleApp.ShakeGestures\DrumbleApp.ShakeGestures.csproj">
+      <Project>{6D1F21F4-313E-4422-B078-1AABAB468118}</Project>
+      <Name>DrumbleApp.ShakeGestures</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\DrumbleApp.Shared\DrumbleApp.Shared.csproj">
+      <Project>{A0523E17-AE4B-45CE-AB2F-B592EC2C78BC}</Project>
+      <Name>DrumbleApp.Shared</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildExtensionsPath)\Microsoft\$(TargetFrameworkIdentifier)\$(TargetFrameworkVersion)\Microsoft.$(TargetFrameworkIdentifier).$(TargetFrameworkVersion).Overrides.targets" />
+  <Import Project="$(MSBuildExtensionsPath)\Microsoft\$(TargetFrameworkIdentifier)\$(TargetFrameworkVersion)\Microsoft.$(TargetFrameworkIdentifier).CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it.
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+  <ProjectExtensions />
+  <Import Project="$(SolutionDir)\.nuget\NuGet.targets" Condition="Exists('$(SolutionDir)\.nuget\NuGet.targets')" />
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Enable NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('$(SolutionDir)\.nuget\NuGet.targets')" Text="$([System.String]::Format('$(ErrorText)', '$(SolutionDir)\.nuget\NuGet.targets'))" />
+  </Target>
+  <Import Project="..\packages\Microsoft.Bcl.Build.1.0.14\tools\Microsoft.Bcl.Build.targets" Condition="Exists('..\packages\Microsoft.Bcl.Build.1.0.14\tools\Microsoft.Bcl.Build.targets')" />
+  <Target Name="EnsureBclBuildImported" BeforeTargets="BeforeBuild" Condition="'$(BclBuildImported)' == ''">
+    <Error Condition="!Exists('..\packages\Microsoft.Bcl.Build.1.0.14\tools\Microsoft.Bcl.Build.targets')" Text="This project references NuGet package(s) that are missing on this computer. Enable NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=317567." HelpKeyword="BCLBUILD2001" />
+    <Error Condition="Exists('..\packages\Microsoft.Bcl.Build.1.0.14\tools\Microsoft.Bcl.Build.targets')" Text="The build restored NuGet packages. Build the project again to include these packages in the build. For more information, see http://go.microsoft.com/fwlink/?LinkID=317568." HelpKeyword="BCLBUILD2002" />
+  </Target>
+</Project>

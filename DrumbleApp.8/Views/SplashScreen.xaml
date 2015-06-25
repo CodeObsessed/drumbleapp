@@ -1,0 +1,81 @@
+﻿<phone:PhoneApplicationPage
+    x:Class="Drumble.Views.SplashScreen"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:phone="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone"
+    xmlns:shell="clr-namespace:Microsoft.Phone.Shell;assembly=Microsoft.Phone"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:i="clr-namespace:System.Windows.Interactivity;assembly=System.Windows.Interactivity"
+    xmlns:cmd="clr-namespace:GalaSoft.MvvmLight.Command;assembly=GalaSoft.MvvmLight.Extras.WP71"
+    DataContext="{Binding SplashScreen, Source={StaticResource Locator}}"
+    SupportedOrientations="Portrait" Orientation="Portrait"
+    mc:Ignorable="d"
+    shell:SystemTray.IsVisible="False">
+
+    <i:Interaction.Triggers>
+        <i:EventTrigger EventName="Loaded">
+            <cmd:EventToCommand Command="{Binding PageLoadedCommand}"/>
+        </i:EventTrigger>
+        <i:EventTrigger EventName="Unloaded">
+            <cmd:EventToCommand Command="{Binding PageUnloadedCommand}"/>
+        </i:EventTrigger>
+    </i:Interaction.Triggers>
+
+    <Grid>
+        <Grid.Background>
+            <ImageBrush Stretch="Fill" ImageSource="/Images/Splash/SplashScreen.png" />
+        </Grid.Background>
+        
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="70"/>
+            <RowDefinition Height="40"/>
+        </Grid.RowDefinitions>
+
+        <Image Grid.Row="0" Margin="12" Source="/Images/Splash/DrumbleLogo.png"/>
+        
+        <Border Grid.Row="1" Margin="36,0,36,0" Background="{StaticResource DrumbleBlue}" Height="3"/>
+
+        <StackPanel Grid.Row="2" HorizontalAlignment="Stretch" VerticalAlignment="Center" Margin="0,30,0,0" Visibility="{Binding LoaderVisibility}">
+            <TextBlock Grid.Row="0" Style="{StaticResource DefaultText}" Text="{Binding LoaderText}" HorizontalAlignment="Center"></TextBlock>
+            <ProgressBar Grid.Row="0" Background="Transparent" Foreground="{StaticResource DrumbleBlue}" HorizontalAlignment="Stretch" VerticalAlignment="Center" IsIndeterminate="{Binding LoaderIsIndeterminate}" Visibility="{Binding LoaderVisibility}" Height="10" Margin="0,0,0,0"/>
+        </StackPanel>
+        
+        <Grid Grid.Row="2" VerticalAlignment="Center" HorizontalAlignment="Center" >
+            <Grid.RowDefinitions>
+                <RowDefinition/>
+                <!--<RowDefinition Height="40"/>-->
+            </Grid.RowDefinitions>
+
+            <Button Grid.Row="0" Padding="12,0,90,0" Visibility="{Binding CountrySelectorVisibility}" Command="{Binding CountrySelectButtonCommand}" Style="{StaticResource SplashScreenButtonStyle}" Content="{Binding CountrySelection}">
+            </Button>
+
+            <!--<HyperlinkButton Command="{Binding SignInCommand}" Visibility="{Binding CountrySelectorVisibility}" VerticalAlignment="Bottom" HorizontalAlignment="Right" Grid.Row="1" Content="{Binding Path=LocalizedResources.SplashScreenSignInText, Source={StaticResource LocalizedStrings}}">
+            </HyperlinkButton>-->
+
+        </Grid>
+
+        <Grid Grid.Row="2" VerticalAlignment="Center" HorizontalAlignment="Center" Visibility="{Binding RetryResourcesVisibility}">
+            <RichTextBox IsReadOnly="True" TextAlignment="Center" Width="350" Margin="0,0,0,0" Style="{StaticResource RichTextBoxStyle}">
+                <Paragraph>
+                    <Run Text="{Binding Path=LocalizedResources.SplashScreenConnectionErrorTextPart1, Source={StaticResource LocalizedStrings}}" />
+                    <Hyperlink Command="{Binding RetryResourcesCommand}">
+                        <Run Text="{Binding Path=LocalizedResources.SplashScreenConnectionErrorTextPart2, Source={StaticResource LocalizedStrings}}" />
+                    </Hyperlink>
+                </Paragraph>
+            </RichTextBox>
+        </Grid>
+
+        <HyperlinkButton Grid.Row="3" Margin="-12,0,-12,0" Command="{Binding PoweredByCommand}">
+            <HyperlinkButton.Background>
+                <ImageBrush ImageSource="/Images/Splash/SplashFooter.png"/>
+            </HyperlinkButton.Background>
+        </HyperlinkButton>
+
+        
+    </Grid>
+
+</phone:PhoneApplicationPage>

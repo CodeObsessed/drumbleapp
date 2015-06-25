@@ -1,0 +1,426 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>10.0.20506</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{A0523E17-AE4B-45CE-AB2F-B592EC2C78BC}</ProjectGuid>
+    <ProjectTypeGuids>{C089C8C0-30E0-4E22-80C0-CE093F111A43};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>DrumbleApp.Shared</RootNamespace>
+    <AssemblyName>DrumbleApp.Shared</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <SilverlightVersion>$(TargetFrameworkVersion)</SilverlightVersion>
+    <TargetFrameworkProfile>WindowsPhone71</TargetFrameworkProfile>
+    <TargetFrameworkIdentifier>Silverlight</TargetFrameworkIdentifier>
+    <SilverlightApplication>false</SilverlightApplication>
+    <ValidateXaml>true</ValidateXaml>
+    <ThrowErrorsInValidation>true</ThrowErrorsInValidation>
+    <SccProjectName>SAK</SccProjectName>
+    <SccLocalPath>SAK</SccLocalPath>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccProvider>SAK</SccProvider>
+    <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">..\</SolutionDir>
+    <RestorePackages>true</RestorePackages>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>Bin\Debug</OutputPath>
+    <DefineConstants>DEBUG;TRACE;SILVERLIGHT;WINDOWS_PHONE</DefineConstants>
+    <NoStdLib>true</NoStdLib>
+    <NoConfig>true</NoConfig>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>Bin\Release</OutputPath>
+    <DefineConstants>TRACE;SILVERLIGHT;WINDOWS_PHONE</DefineConstants>
+    <NoStdLib>true</NoStdLib>
+    <NoConfig>true</NoConfig>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Facebook">
+      <HintPath>..\packages\Facebook.6.6.0\lib\wp71\Facebook.dll</HintPath>
+    </Reference>
+    <Reference Include="Facebook.Client">
+      <HintPath>..\packages\Facebook.Client.0.8.5-alpha\lib\wp71\Facebook.Client.dll</HintPath>
+    </Reference>
+    <Reference Include="GalaSoft.MvvmLight.Extras.WP71, Version=4.2.30.23589, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\MvvmLightLibs.4.2.30.0\lib\sl4-wp71\GalaSoft.MvvmLight.Extras.WP71.dll</HintPath>
+    </Reference>
+    <Reference Include="GalaSoft.MvvmLight.WP71, Version=4.2.30.23589, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\MvvmLightLibs.4.2.30.0\lib\sl4-wp71\GalaSoft.MvvmLight.WP71.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Phone" />
+    <Reference Include="Microsoft.Practices.ServiceLocation, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\MvvmLightLibs.4.2.30.0\lib\sl4-wp71\Microsoft.Practices.ServiceLocation.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Threading.Tasks">
+      <HintPath>..\packages\Microsoft.Bcl.Async.1.0.168\lib\sl4-windowsphone71\Microsoft.Threading.Tasks.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Threading.Tasks.Extensions">
+      <HintPath>..\packages\Microsoft.Bcl.Async.1.0.168\lib\sl4-windowsphone71\Microsoft.Threading.Tasks.Extensions.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Threading.Tasks.Extensions.Phone">
+      <HintPath>..\packages\Microsoft.Bcl.Async.1.0.168\lib\sl4-windowsphone71\Microsoft.Threading.Tasks.Extensions.Phone.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=4.5.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Newtonsoft.Json.5.0.6\lib\portable-net40+sl4+wp7+win8\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="system.data.linq" />
+    <Reference Include="System.Device" />
+    <Reference Include="System.IO">
+      <HintPath>..\packages\Microsoft.Bcl.1.1.8\lib\sl4-windowsphone71\System.IO.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net.Http">
+      <HintPath>..\packages\Microsoft.Net.Http.2.2.20\lib\sl4-windowsphone71\System.Net.Http.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net.Http.Extensions">
+      <HintPath>..\packages\Microsoft.Net.Http.2.2.20\lib\sl4-windowsphone71\System.Net.Http.Extensions.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net.Http.Primitives">
+      <HintPath>..\packages\Microsoft.Net.Http.2.2.20\lib\sl4-windowsphone71\System.Net.Http.Primitives.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Runtime">
+      <HintPath>..\packages\Microsoft.Bcl.1.1.8\lib\sl4-windowsphone71\System.Runtime.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Threading.Tasks">
+      <HintPath>..\packages\Microsoft.Bcl.1.1.8\lib\sl4-windowsphone71\System.Threading.Tasks.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Windows" />
+    <Reference Include="system" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Windows.Interactivity, Version=3.8.5.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\MvvmLightLibs.4.2.30.0\lib\sl4-wp71\System.Windows.Interactivity.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Net" />
+    <Reference Include="mscorlib.extensions" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="ControlExtensions\UrlRichTextBox.cs" />
+    <Compile Include="Converters\DistanceConverter.cs" />
+    <Compile Include="Converters\MainMenuBackgroundImageConverter.cs" />
+    <Compile Include="Converters\MainMenuBackgroundColourConverter.cs" />
+    <Compile Include="Converters\ThemeColourConverter.cs" />
+    <Compile Include="Converters\TimeConverter.cs" />
+    <Compile Include="Data\Configuration\DatabaseSetup.cs" />
+    <Compile Include="Data\Configuration\UnitOfWork.cs" />
+    <Compile Include="Data\Factories\DataModelFactory.cs" />
+    <Compile Include="Data\Factories\EntityModelFactory.cs" />
+    <Compile Include="Data\Models\About.cs" />
+    <Compile Include="Data\Models\AppSetting.cs" />
+    <Compile Include="Data\Models\CacheSetting.cs" />
+    <Compile Include="Data\Models\UberTrip.cs" />
+    <Compile Include="Data\Models\Path.cs" />
+    <Compile Include="Data\Models\Weather.cs" />
+    <Compile Include="Data\Models\OperatorSetting.cs" />
+    <Compile Include="Data\Models\PlaceOfInterestCategory.cs" />
+    <Compile Include="Data\Models\PublicTransportOperator.cs" />
+    <Compile Include="Data\Models\RecentTrip.cs" />
+    <Compile Include="Data\Models\SearchItemCategory.cs" />
+    <Compile Include="Data\Models\TransportMode.cs" />
+    <Compile Include="Data\Models\User.cs" />
+    <Compile Include="Data\Repositories\AppSettingRepository.cs" />
+    <Compile Include="Data\Repositories\CacheSettingRepository.cs" />
+    <Compile Include="Data\Repositories\UberTripRepository.cs" />
+    <Compile Include="Data\Repositories\PathRepository.cs" />
+    <Compile Include="Data\Repositories\WeatherRepository.cs" />
+    <Compile Include="Data\Repositories\FavouriteRepository.cs" />
+    <Compile Include="Data\Repositories\GenericRepository.cs" />
+    <Compile Include="Data\Repositories\OperatorSettingRepository.cs" />
+    <Compile Include="Data\Repositories\PlaceOfInterestCategoryRepository.cs" />
+    <Compile Include="Data\Repositories\PublicTransportOperatorRepository.cs" />
+    <Compile Include="Data\Repositories\RecentTripRepository.cs" />
+    <Compile Include="Data\Repositories\SearchItemCategoryRepository.cs" />
+    <Compile Include="Data\Repositories\TransportModeRepository.cs" />
+    <Compile Include="Data\Repositories\UserRepository.cs" />
+    <Compile Include="Data\Schema\CacheContext.cs" />
+    <Compile Include="Entities\Announcement.cs" />
+    <Compile Include="Entities\CacheSetting.cs" />
+    <Compile Include="Entities\UberTrip.cs" />
+    <Compile Include="Entities\Favourite.cs" />
+    <Compile Include="Entities\OperatorSetting.cs" />
+    <Compile Include="Entities\Path.cs" />
+    <Compile Include="Entities\PathOption.cs" />
+    <Compile Include="Entities\PlaceOfInterest.cs" />
+    <Compile Include="Entities\PlaceOfInterestCategory.cs" />
+    <Compile Include="Entities\PublicStop.cs" />
+    <Compile Include="Entities\PublicStopPoint.cs" />
+    <Compile Include="Entities\PublicTransportOperator.cs" />
+    <Compile Include="Entities\Recent.cs" />
+    <Compile Include="Entities\Route.cs" />
+    <Compile Include="Entities\RouteStop.cs" />
+    <Compile Include="Entities\SearchItemCategory.cs" />
+    <Compile Include="Entities\Stage.cs" />
+    <Compile Include="Entities\TransportMode.cs" />
+    <Compile Include="Entities\Trip.cs" />
+    <Compile Include="Entities\Weather.cs" />
+    <Compile Include="Enums\AboutItem.cs" />
+    <Compile Include="Enums\ApplicationTransportMode.cs" />
+    <Compile Include="Enums\FavouritesPageState.cs" />
+    <Compile Include="Enums\GpsWatcherState.cs" />
+    <Compile Include="Enums\MapPointSelection.cs" />
+    <Compile Include="Enums\Popup.cs" />
+    <Compile Include="Enums\RecentTripsPageState.cs" />
+    <Compile Include="Enums\ResourceType.cs" />
+    <Compile Include="Enums\SearchCategory.cs" />
+    <Compile Include="Enums\SearchType.cs" />
+    <Compile Include="Enums\UberOAuthGrantType.cs" />
+    <Compile Include="Infrastructure\Constants\Constants.cs" />
+    <Compile Include="Infrastructure\Extensions\HttpClientExtensions.cs" />
+    <Compile Include="Infrastructure\Helpers\Facebook.cs" />
+    <Compile Include="Infrastructure\Helpers\Imagable.cs" />
+    <Compile Include="Infrastructure\Services\Aggregate\AggregateService.cs" />
+    <Compile Include="Infrastructure\Services\Api\Drumble\ResultModel\Models\AboutResultModel.cs" />
+    <Compile Include="Infrastructure\Services\Api\Drumble\ResultModel\Models\ResourceResultModel.cs" />
+    <Compile Include="Infrastructure\Services\Api\Drumble\ResultModel\Results\ContactResult.cs" />
+    <Compile Include="Infrastructure\Services\Api\Drumble\ResultModel\Wrappers\ResourceJsonWrapper.cs" />
+    <Compile Include="Infrastructure\Services\Api\Uber\Model\UberMap.cs" />
+    <Compile Include="Infrastructure\Services\Api\Uber\Model\UberError.cs" />
+    <Compile Include="Infrastructure\Services\Api\Uber\Model\UberDriver.cs" />
+    <Compile Include="Infrastructure\Services\Api\Uber\Model\UberLocation.cs" />
+    <Compile Include="Infrastructure\Services\Api\Uber\Model\UberMeta.cs" />
+    <Compile Include="Infrastructure\Services\Api\Uber\Model\UberOAuthResponse.cs" />
+    <Compile Include="Infrastructure\Services\Api\Uber\Model\UberRequest.cs" />
+    <Compile Include="Infrastructure\Services\Api\Uber\Model\UberSurgeConfirmation.cs" />
+    <Compile Include="Infrastructure\Services\Api\Uber\Model\UberVehicle.cs" />
+    <Compile Include="Infrastructure\Services\Api\Uber\ResultModel\UberErrorResponseModel.cs" />
+    <Compile Include="ValueObjects\UberMap.cs" />
+    <Compile Include="Infrastructure\Services\Api\Uber\UberService.cs" />
+    <Compile Include="Infrastructure\Services\Api\Uber\Wrappers\UberTimeResultWrapper.cs" />
+    <Compile Include="Infrastructure\Services\Api\Bumble\ResultModel\ModelFactory.cs" />
+    <Compile Include="Infrastructure\Services\Api\Bumble\ResultModel\Models\AddressResultModel.cs" />
+    <Compile Include="Infrastructure\Services\Api\Bumble\ResultModel\Models\AnnouncementResultModel.cs" />
+    <Compile Include="Infrastructure\Services\Api\Bumble\ResultModel\Models\IncidentLocationResultModel.cs" />
+    <Compile Include="Infrastructure\Services\Api\Bumble\ResultModel\Models\LocationResultModel.cs" />
+    <Compile Include="Infrastructure\Services\Api\Bumble\ResultModel\Models\MapRouteResultModel.cs" />
+    <Compile Include="Infrastructure\Services\Api\Bumble\ResultModel\Models\OperatorResultModel.cs" />
+    <Compile Include="Infrastructure\Services\Api\Bumble\ResultModel\Models\PathOptionModel.cs" />
+    <Compile Include="Infrastructure\Services\Api\Bumble\ResultModel\Models\PointResultModel.cs" />
+    <Compile Include="Infrastructure\Services\Api\Bumble\ResultModel\Models\RouteResultModel.cs" />
+    <Compile Include="Infrastructure\Services\Api\Bumble\ResultModel\Models\RouteStopResultModel.cs" />
+    <Compile Include="Infrastructure\Services\Api\Bumble\ResultModel\Models\SearchItemResultModel.cs" />
+    <Compile Include="Infrastructure\Services\Api\Bumble\ResultModel\Models\StagePointResultModel.cs" />
+    <Compile Include="Infrastructure\Services\Api\Bumble\ResultModel\Models\StageResultModel.cs" />
+    <Compile Include="Infrastructure\Services\Api\Bumble\ResultModel\Models\StopPointResultModel.cs" />
+    <Compile Include="Infrastructure\Services\Api\Bumble\ResultModel\Models\StopResultModel.cs" />
+    <Compile Include="Infrastructure\Services\Api\Bumble\ResultModel\Models\TimeResultModel.cs" />
+    <Compile Include="Infrastructure\Services\Api\Bumble\ResultModel\ResultBuilder.cs" />
+    <Compile Include="Infrastructure\Services\Api\Bumble\ResultModel\Results\GetPathResult.cs" />
+    <Compile Include="Infrastructure\Services\Api\Bumble\ResultModel\Wrappers\AnnouncementJsonWrapper.cs" />
+    <Compile Include="Infrastructure\Services\Api\Bumble\ResultModel\Wrappers\GeoCodeJsonWrapper.cs" />
+    <Compile Include="Infrastructure\Services\Api\Bumble\ResultModel\Wrappers\GetOperatorsJsonWrapper.cs" />
+    <Compile Include="Infrastructure\Services\Api\Bumble\ResultModel\Wrappers\GetStopsJsonWrapper.cs" />
+    <Compile Include="Infrastructure\Services\Api\Bumble\ResultModel\Wrappers\PointOfInterestJsonWrapper.cs" />
+    <Compile Include="Infrastructure\Services\Api\Bumble\ResultModel\Wrappers\SearchItemsJsonWrapper.cs" />
+    <Compile Include="Infrastructure\Services\Api\Bumble\ResultModel\Wrappers\TripJsonWrapper.cs" />
+    <Compile Include="Infrastructure\Services\Api\Bumble\BumbleApiService.cs" />
+    <Compile Include="Infrastructure\Services\Api\Uber\ModelFactory.cs" />
+    <Compile Include="Infrastructure\Services\Api\Uber\Model\UberPrice.cs" />
+    <Compile Include="Infrastructure\Services\Api\Uber\Model\UberTime.cs" />
+    <Compile Include="Infrastructure\Services\Api\Uber\ResultBuilder.cs" />
+    <Compile Include="Infrastructure\Services\Api\Uber\ResultModel\UberTimeResultModel.cs" />
+    <Compile Include="Infrastructure\Services\Api\Uber\ResultModel\UberPriceResultModel.cs" />
+    <Compile Include="Infrastructure\Services\Api\Uber\UberApi.cs" />
+    <Compile Include="Infrastructure\Services\Api\Uber\Wrappers\UberPriceResultWrapper.cs" />
+    <Compile Include="Infrastructure\Services\Weather\Models\Weather.cs" />
+    <Compile Include="Infrastructure\Services\Weather\OpenWeatherMapApi.cs" />
+    <Compile Include="Infrastructure\Services\Weather\ResultModel\WeatherResultModel.cs" />
+    <Compile Include="Interfaces\IUberTripRepository.cs" />
+    <Compile Include="Interfaces\IAggregateService.cs" />
+    <Compile Include="Interfaces\IInMemoryApplicationSettingModel.cs" />
+    <Compile Include="Interfaces\IPathRepository.cs" />
+    <Compile Include="Interfaces\IUberService.cs" />
+    <Compile Include="Interfaces\IWeatherRepository.cs" />
+    <Compile Include="Interfaces\ICacheSettingRepository.cs" />
+    <Compile Include="Interfaces\IFavouriteRepository.cs" />
+    <Compile Include="Interfaces\IOperatorSettingRepository.cs" />
+    <Compile Include="Interfaces\IPlaceOfInterestCategoryRepository.cs" />
+    <Compile Include="Interfaces\IPublicStopRepository.cs" />
+    <Compile Include="Interfaces\IPublicTransportOperatorRepository.cs" />
+    <Compile Include="Interfaces\IRecentTripRepository.cs" />
+    <Compile Include="Interfaces\ISearchItemCategoryRepository.cs" />
+    <Compile Include="Interfaces\ITransportModeRepository.cs" />
+    <Compile Include="Interfaces\IWeatherApi.cs" />
+    <Compile Include="Interfaces\IBumbleApiService.cs" />
+    <Compile Include="Messages\Base\BaseMessage.cs" />
+    <Compile Include="Messages\Classes\AppCommandMessage.cs" />
+    <Compile Include="Messages\Classes\AuthoriseMessage.cs" />
+    <Compile Include="Messages\Classes\NewAnnouncementsMessage.cs" />
+    <Compile Include="Messages\Classes\PageLoadMessage.cs" />
+    <Compile Include="Messages\Classes\MapPointMessage.cs" />
+    <Compile Include="Messages\Classes\SearchItemMessage.cs" />
+    <Compile Include="Messages\Classes\ShakeGestureMessage.cs" />
+    <Compile Include="Messages\Classes\TripMessage.cs" />
+    <Compile Include="Messages\Classes\FlickMessage.cs" />
+    <Compile Include="Messages\Classes\PageTitleMessage.cs" />
+    <Compile Include="Messages\Classes\WhereToMessage.cs" />
+    <Compile Include="Messages\Classes\PointOnMapMessage.cs" />
+    <Compile Include="Messages\Classes\IdentifyMessage.cs" />
+    <Compile Include="Messages\Classes\StationsAndPlacesOfInterestModeMessage.cs" />
+    <Compile Include="Messages\Classes\TwitterAccessMessage.cs" />
+    <Compile Include="Messages\Classes\SplashScreenMessage.cs" />
+    <Compile Include="Messages\Classes\LoginMessage.cs" />
+    <Compile Include="Messages\Classes\GpsWatcherResponseMessage.cs" />
+    <Compile Include="Messages\Classes\GpsWatcherMessage.cs" />
+    <Compile Include="Messages\Classes\LoadingBarMessage.cs" />
+    <Compile Include="Messages\Classes\DepartureTimeSelectionMessage.cs" />
+    <Compile Include="Messages\Classes\DepartureTimeMessage.cs" />
+    <Compile Include="Messages\Classes\FavouriteMessage.cs" />
+    <Compile Include="Messages\Classes\ProfileMessage.cs" />
+    <Compile Include="Messages\Classes\RecentTripMessage.cs" />
+    <Compile Include="Messages\Enums\AppCommandMessageReason.cs" />
+    <Compile Include="Messages\Enums\AuthoriseMessageReason.cs" />
+    <Compile Include="Messages\Enums\FlickMessageReason.cs" />
+    <Compile Include="Messages\Enums\PointOnMapMessageReason.cs" />
+    <Compile Include="Messages\Enums\SearchItemMessageReason.cs" />
+    <Compile Include="Messages\Enums\StationsAndPlacesOfInterestModeReason.cs" />
+    <Compile Include="Messages\Enums\IdentifyMessageReason.cs" />
+    <Compile Include="Messages\Enums\TwitterAccessMessageReason.cs" />
+    <Compile Include="Messages\Enums\SplashScreenMessageReason.cs" />
+    <Compile Include="Messages\Enums\GpsWatcherResponseMessageReason.cs" />
+    <Compile Include="Messages\Enums\GpsWatcherMessageReason.cs" />
+    <Compile Include="Messages\Enums\LoadingBarMessageReason.cs" />
+    <Compile Include="Messages\Enums\DepartureTimeSelectionMessageReason.cs" />
+    <Compile Include="Messages\Enums\DepartureTimeMessageReason.cs" />
+    <Compile Include="Messages\Enums\FavouriteMessageReason.cs" />
+    <Compile Include="Messages\Enums\LoginMessageReason.cs" />
+    <Compile Include="Messages\Enums\ProfileMessageReason.cs" />
+    <Compile Include="Messages\Enums\RecentTripMessageReason.cs" />
+    <Compile Include="Models\SearchTypeModel.cs" />
+    <Compile Include="Models\InMemoryApplicationSettingModel.cs" />
+    <Compile Include="Models\MapPointSelectionGeoCoordinateModel.cs" />
+    <Compile Include="Models\TripResultsModel.cs" />
+    <Compile Include="Models\UberTripOptionModel.cs" />
+    <Compile Include="Models\WhereToModel.cs" />
+    <Compile Include="Models\OperatorModeModel.cs" />
+    <Compile Include="Models\PathResultsModel.cs" />
+    <Compile Include="Models\SearchBoxModel.cs" />
+    <Compile Include="Models\StageModel.cs" />
+    <Compile Include="Models\TripOptionModel.cs" />
+    <Compile Include="ValueObjects\Address.cs" />
+    <Compile Include="ValueObjects\Coordinate.cs" />
+    <Compile Include="ValueObjects\Pin.cs" />
+    <Compile Include="ValueObjects\TripRoute.cs" />
+    <Compile Include="ValueObjects\TwitterInfo.cs" />
+    <Compile Include="ValueObjects\Country.cs" />
+    <Compile Include="Entities\User.cs" />
+    <Compile Include="Enums\ApplicationSetting.cs" />
+    <Compile Include="Enums\ApplicationPage.cs" />
+    <Compile Include="Enums\CustomPopupMessageType.cs" />
+    <Compile Include="Enums\PageUseType.cs" />
+    <Compile Include="Enums\ThemeColour.cs" />
+    <Compile Include="Infrastructure\Analytics\AnalyticsBase.cs" />
+    <Compile Include="Infrastructure\Extensions\ObservableCollectionExtender.cs" />
+    <Compile Include="Infrastructure\Services\Api\Common\ErrorResponseModel.cs" />
+    <Compile Include="Infrastructure\Services\Api\Common\RestResponse.cs" />
+    <Compile Include="Infrastructure\Services\Api\Common\RestService.cs" />
+    <Compile Include="Infrastructure\Services\Api\Drumble\DrumbleApiService.cs" />
+    <Compile Include="Infrastructure\Services\Api\Drumble\ResultModel\ModelFactory.cs" />
+    <Compile Include="Infrastructure\Services\Api\Drumble\ResultModel\ResultBuilder.cs" />
+    <Compile Include="Infrastructure\Services\Api\Drumble\ResultModel\Results\RegisterResult.cs" />
+    <Compile Include="Infrastructure\Services\Navigation\NavigationService.cs" />
+    <Compile Include="Entities\AppSetting.cs" />
+    <Compile Include="Interfaces\IAppSettingRepository.cs" />
+    <Compile Include="Interfaces\IDrumbleApiService.cs" />
+    <Compile Include="Interfaces\IGenericRepository.cs" />
+    <Compile Include="Interfaces\INavigationService.cs" />
+    <Compile Include="Interfaces\IUnitOfWork.cs" />
+    <Compile Include="Interfaces\IUserRepository.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Resources\AppResources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>AppResources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="ValueObjects\CustomPopupMessage.cs" />
+    <Compile Include="ValueObjects\CustomPopupMessageWithAction.cs" />
+    <Compile Include="ValueObjects\Duration.cs" />
+    <Compile Include="ValueObjects\Email.cs" />
+    <Compile Include="ValueObjects\FacebookInfo.cs" />
+    <Compile Include="ValueObjects\IncidentLocation.cs" />
+    <Compile Include="ValueObjects\MainMenuItem.cs" />
+    <Compile Include="ValueObjects\PlaceOfInterest.cs" />
+    <Compile Include="ValueObjects\PredefinedDepartureTime.cs" />
+    <Compile Include="ValueObjects\SearchItem.cs" />
+    <Compile Include="ValueObjects\Token.cs" />
+    <Compile Include="ValueObjects\Resource.cs" />
+    <Compile Include="ValueObjects\TwitterAccess.cs" />
+    <Compile Include="ValueObjects\UberAuthenticationDetails.cs" />
+    <Compile Include="ValueObjects\UberDriver.cs" />
+    <Compile Include="ValueObjects\UberRequest.cs" />
+    <Compile Include="ValueObjects\UberVehicle.cs" />
+    <Compile Include="ViewModels\UberAuthenticationViewModel.cs" />
+    <Compile Include="ValueObjects\UberInfo.cs" />
+    <Compile Include="ValueObjects\UberOAuthCredentials.cs" />
+    <Compile Include="ValueObjects\UberOption.cs" />
+    <Compile Include="ValueObjects\WaitingStage.cs" />
+    <Compile Include="ValueObjects\WhereToPoint.cs" />
+    <Compile Include="ViewModels\AboutViewModel.cs" />
+    <Compile Include="ViewModels\AnnouncementsViewModel.cs" />
+    <Compile Include="ViewModels\HeaderViewModel.cs" />
+    <Compile Include="ViewModels\MapPointSelectionViewModel.cs" />
+    <Compile Include="ViewModels\MapsViewModel.cs" />
+    <Compile Include="ViewModels\FavouritesViewModel.cs" />
+    <Compile Include="ViewModels\DateTimeSelectionViewModel.cs" />
+    <Compile Include="ViewModels\MainMenuViewModel.cs" />
+    <Compile Include="ViewModels\MessageUsViewModel.cs" />
+    <Compile Include="ViewModels\ModesViewModel.cs" />
+    <Compile Include="ViewModels\SearchViewModel.cs" />
+    <Compile Include="ViewModels\SettingsViewModel.cs" />
+    <Compile Include="ViewModels\SplashScreenViewModel.cs" />
+    <Compile Include="ViewModels\TripDetailsViewModel.cs" />
+    <Compile Include="ViewModels\TripSelectionViewModel.cs" />
+    <Compile Include="ViewModels\UberMapViewModel.cs" />
+    <Compile Include="ViewModels\UberTripDetailsViewModel.cs" />
+    <Compile Include="ViewModels\WhereToViewModel.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\AppResources.en-US.resx">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\AppResources.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>AppResources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildExtensionsPath)\Microsoft\Silverlight for Phone\$(TargetFrameworkVersion)\Microsoft.Silverlight.$(TargetFrameworkProfile).Overrides.targets" />
+  <Import Project="$(MSBuildExtensionsPath)\Microsoft\Silverlight for Phone\$(TargetFrameworkVersion)\Microsoft.Silverlight.CSharp.targets" />
+  <ProjectExtensions />
+  <Import Project="$(SolutionDir)\.nuget\NuGet.targets" Condition="Exists('$(SolutionDir)\.nuget\NuGet.targets')" />
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Enable NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('$(SolutionDir)\.nuget\NuGet.targets')" Text="$([System.String]::Format('$(ErrorText)', '$(SolutionDir)\.nuget\NuGet.targets'))" />
+  </Target>
+  <Import Project="..\packages\Microsoft.Bcl.Build.1.0.14\tools\Microsoft.Bcl.Build.targets" Condition="Exists('..\packages\Microsoft.Bcl.Build.1.0.14\tools\Microsoft.Bcl.Build.targets')" />
+  <Target Name="EnsureBclBuildImported" BeforeTargets="BeforeBuild" Condition="'$(BclBuildImported)' == ''">
+    <Error Condition="!Exists('..\packages\Microsoft.Bcl.Build.1.0.14\tools\Microsoft.Bcl.Build.targets')" Text="This project references NuGet package(s) that are missing on this computer. Enable NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=317567." HelpKeyword="BCLBUILD2001" />
+    <Error Condition="Exists('..\packages\Microsoft.Bcl.Build.1.0.14\tools\Microsoft.Bcl.Build.targets')" Text="The build restored NuGet packages. Build the project again to include these packages in the build. For more information, see http://go.microsoft.com/fwlink/?LinkID=317568." HelpKeyword="BCLBUILD2002" />
+  </Target>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

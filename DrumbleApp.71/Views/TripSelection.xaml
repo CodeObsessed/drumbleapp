@@ -1,0 +1,252 @@
+﻿<phone:PhoneApplicationPage
+    x:Class="Drumble.Views.TripSelection"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:phone="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone"
+    xmlns:shell="clr-namespace:Microsoft.Phone.Shell;assembly=Microsoft.Phone"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:usercontrols="clr-namespace:Drumble.UserControls"
+    xmlns:i="clr-namespace:System.Windows.Interactivity;assembly=System.Windows.Interactivity"
+    xmlns:cmd="clr-namespace:GalaSoft.MvvmLight.Command;assembly=GalaSoft.MvvmLight.Extras.WP71"
+    DataContext="{Binding TripSelection, Source={StaticResource Locator}}"
+    SupportedOrientations="Portrait" Orientation="Portrait"
+    mc:Ignorable="d"
+    shell:SystemTray.IsVisible="False">
+
+    <i:Interaction.Triggers>
+        <i:EventTrigger EventName="Loaded">
+            <cmd:EventToCommand Command="{Binding PageLoadedCommand}"/>
+        </i:EventTrigger>
+        <i:EventTrigger EventName="Unloaded">
+            <cmd:EventToCommand Command="{Binding PageUnloadedCommand}"/>
+        </i:EventTrigger>
+    </i:Interaction.Triggers>
+
+    <Grid Style="{StaticResource DefaultPageGrid}">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="70"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <usercontrols:Header x:Name="Header" Grid.Row="0" />
+
+        <usercontrols:Modes Grid.Row="1" ShowFooter="False"/>
+
+        <Grid Grid.Row="2" Background="{StaticResource DarkGrey}">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="55" />
+                <RowDefinition Height="2" />
+                <RowDefinition Height="55" />
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="60"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+
+            <Image Margin="11" Grid.Row="0" Grid.Column="0" Source="/Images/64/W/MarkerWhiteHole.png" />
+
+            <TextBlock Text="{Binding PathResultsModel.Location.ShortAddressText}" VerticalAlignment="Center" Grid.Row="0" Grid.Column="1" TextTrimming="None" TextWrapping="NoWrap" Style="{StaticResource AddressText}" />
+            
+            <Border Grid.Row="1" Grid.Column="1" Background="{StaticResource LightBlue}"/>
+
+            <Image Margin="11" Grid.Row="2" Grid.Column="0" Source="/Images/64/W/MarkerWhiteHole.png" />
+
+            <TextBlock Text="{Binding PathResultsModel.Destination.ShortAddressText}" VerticalAlignment="Center" Grid.Row="2" Grid.Column="1" TextTrimming="None" TextWrapping="NoWrap" Style="{StaticResource AddressText}" />
+        </Grid>
+
+        <TextBlock Grid.Row="3" Text="{Binding Path=LocalizedResources.SelectATripText, Source={StaticResource LocalizedStrings}}" VerticalAlignment="Center" Margin="30,0,0,5" Style="{StaticResource WhereToText}" />
+
+        <ListBox Grid.Row="4" Margin="24,0,24,0" ItemsSource="{Binding PathResultsModel.PathOptions}" SelectedItem="{Binding SelectedPathOption, Mode=TwoWay}">
+            <ListBox.ItemTemplate>
+                <DataTemplate>
+                    <Grid Margin="0,0,0,12" Background="{StaticResource DarkBlue}">
+                        <Grid Visibility="{Binding PathOptionVisibility}" Background="{StaticResource Clickable}" Height="Auto" Margin="2">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="122"/>
+                                <RowDefinition Height="Auto"/>
+                            </Grid.RowDefinitions>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="80"/>
+                                <ColumnDefinition Width="*" />
+                            </Grid.ColumnDefinitions>
+
+                            <Grid Grid.Column="0" Grid.Row="0" Grid.RowSpan="2" Background="{StaticResource DarkBlue}">
+                                <Grid VerticalAlignment="Top" Height="60" Background="{StaticResource DarkDarkGrey}">
+                                    <Grid>
+                                        <Grid.Background>
+                                            <ImageBrush ImageSource="/Images/Custom/LB/TileOptionsLeftShort.png" />
+                                        </Grid.Background>
+
+                                        <TextBlock Text="{Binding Letter}" Margin="17,8,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Style="{StaticResource TripLetterText}" />
+                                    </Grid>
+                                </Grid>
+
+                                <TextBlock Text="{Binding EstimatedTotalCost}" Margin="7,0,0,5" VerticalAlignment="Bottom" HorizontalAlignment="Left" Style="{StaticResource PathOptionsTimesText}" />
+                            </Grid>
+
+                            <Grid Grid.Column="1"  Grid.Row="0" Margin="10,5,5,5">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition />
+                                    <ColumnDefinition Width="45" />
+                                </Grid.ColumnDefinitions>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="30" />
+                                    <RowDefinition Height="36" />
+                                    <RowDefinition Height="30" />
+                                    <RowDefinition Height="14" />
+                                </Grid.RowDefinitions>
+
+                                <TextBlock Grid.Row="0" Grid.Column="0" Text="{Binding DepartureTime}" Style="{StaticResource SmallListItemText}" VerticalAlignment="Top"/>
+
+                                <ItemsControl Grid.Row="1" ScrollViewer.VerticalScrollBarVisibility="Disabled" Grid.Column="0" ItemsSource="{Binding Stages}" Height="33" VerticalAlignment="Bottom">
+                                    <ItemsControl.ItemsPanel>
+                                        <ItemsPanelTemplate>
+                                            <StackPanel Orientation="Horizontal"></StackPanel>
+                                        </ItemsPanelTemplate>
+                                    </ItemsControl.ItemsPanel>
+                                    <ItemsControl.ItemTemplate>
+                                        <DataTemplate>
+                                            <StackPanel Width="35">
+                                                <Image Width="28" Height="28" HorizontalAlignment="Left" VerticalAlignment="Top" Source="{Binding Mode.ModeImage}"/>
+                                                <Border HorizontalAlignment="Stretch" Margin="0,2,0,0" Height="3" VerticalAlignment="Bottom" Background="{Binding Colour}"/>
+                                            </StackPanel>
+                                        </DataTemplate>
+                                    </ItemsControl.ItemTemplate>
+                                </ItemsControl>
+
+                                <Image Visibility="{Binding AnnouncementsVisibility}" Grid.Row="0" Grid.RowSpan="2" Grid.Column="1" VerticalAlignment="Top" Width="40" Height="40" Source="/Images/64/W/IconAlerts.png" />
+                                <TextBlock Visibility="{Binding AnnouncementsVisibility}" Grid.Row="0" Grid.RowSpan="2" Grid.Column="1" Margin="-21,4,0,0" Text="{Binding AnnouncementCountDisplay}" Style="{StaticResource ExtraSmallListItemText}" TextAlignment="Center" VerticalAlignment="Top"/>
+
+                                <Grid Grid.Row="2" Grid.ColumnSpan="2"  VerticalAlignment="Top">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="Auto"/>
+                                        <ColumnDefinition Width="Auto"/>
+                                        <ColumnDefinition Width="Auto"/>
+                                    </Grid.ColumnDefinitions>
+
+                                    <TextBlock Text="{Binding TimeDisplay}" Grid.Column="0" Style="{StaticResource PathOptionsTimesText}" />
+
+                                    <TextBlock Margin="2,0,2,0" Text="➜" Grid.Column="1" Style="{StaticResource PathOptionsTimesText}" />
+
+                                    <TextBlock Text="{Binding DurationDisplay}" Grid.Column="2" Style="{StaticResource PathOptionsTimesText}" />
+                                </Grid>
+
+                                <ItemsControl Grid.Row="3" ScrollViewer.VerticalScrollBarVisibility="Disabled" Grid.Column="0" Grid.ColumnSpan="2" ItemsSource="{Binding StageDisplays}" Height="14" VerticalAlignment="Top">
+                                    <ItemsControl.ItemsPanel>
+                                        <ItemsPanelTemplate>
+                                            <StackPanel Orientation="Horizontal"></StackPanel>
+                                        </ItemsPanelTemplate>
+                                    </ItemsControl.ItemsPanel>
+                                    <ItemsControl.ItemTemplate>
+                                        <DataTemplate>
+                                            <Border Background="{StaticResource DarkDarkGrey}" Height="14">
+                                                <Border HorizontalAlignment="Stretch" VerticalAlignment="Center" Width="{Binding Width}" Height="8" Background="{Binding Colour}"/>
+                                            </Border>
+                                        </DataTemplate>
+                                    </ItemsControl.ItemTemplate>
+                                </ItemsControl>
+                            </Grid>
+
+                            <Border Grid.Row="1" Grid.Column="1" Background="{StaticResource Clickable}" Visibility="{Binding WarningVisibility}">
+                                <TextBlock Margin="10,-5,10,5" HorizontalAlignment="Left" TextWrapping="Wrap" Text="{Binding WarningDisplay}"  Style="{StaticResource SubSmallListItemTextWarning}" VerticalAlignment="Top"/>
+                            </Border>
+                        </Grid>
+                        <Grid Visibility="{Binding UberOptionVisibility}" Background="{StaticResource LightGrey}" Height="122" Margin="2">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="80"/>
+                                <ColumnDefinition Width="*" />
+                            </Grid.ColumnDefinitions>
+
+                            <Grid Grid.Column="0" Grid.Row="0" Background="{StaticResource DarkBlue}">
+                                <Grid VerticalAlignment="Top" Height="60" Background="{StaticResource DarkDarkGrey}">
+                                    <Grid>
+                                        <Grid.Background>
+                                            <ImageBrush ImageSource="/Images/Custom/LB/TileOptionsLeftShort.png" />
+                                        </Grid.Background>
+
+                                        <TextBlock Text="{Binding Letter}" Margin="17,8,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Style="{StaticResource TripLetterText}" />
+                                    </Grid>
+                                </Grid>
+
+                                <TextBlock Text="{Binding UberEstimatedCost}" Margin="7,0,0,5" VerticalAlignment="Bottom" HorizontalAlignment="Left" Style="{StaticResource PathOptionsTimesText}" TextWrapping="Wrap" />
+                            </Grid>
+
+                            <Grid Grid.Column="1" Grid.Row="0" Margin="10,8,5,5">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="32" />
+                                    <RowDefinition Height="30" />
+                                    <RowDefinition Height="30" />
+                                    <RowDefinition Height="17" />
+                                </Grid.RowDefinitions>
+
+                                <Grid Grid.Row="0">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="36"/>
+                                        <ColumnDefinition Width="*"/>
+                                        <ColumnDefinition Width="Auto"/>
+                                    </Grid.ColumnDefinitions>
+
+                                    <Image Source="/Images/Uber/Uber.png" Width="32" Height="32" Grid.Column="0" VerticalAlignment="Top" HorizontalAlignment="Left" />
+
+                                    <TextBlock Grid.Column="1" Text="{Binding UberGetText}" Style="{StaticResource SmallListItemText}" VerticalAlignment="Center"/>
+
+                                    <HyperlinkButton Grid.Column="2" HorizontalAlignment="Right" Style="{StaticResource UberRefreshText}" VerticalAlignment="Center" Content="{Binding Path=LocalizedResources.UberRefreshButton, Source={StaticResource LocalizedStrings}}" Visibility="{Binding UberDetailsVisibility}" Command="{Binding UberRefreshCommand}" />
+
+                                    <HyperlinkButton Grid.Column="2" HorizontalAlignment="Right" Style="{StaticResource UberRefreshText}" VerticalAlignment="Center" Content="{Binding Path=LocalizedResources.UberCancelButton, Source={StaticResource LocalizedStrings}}" Visibility="{Binding UberLoaderVisibility}" Command="{Binding UberCancelCommand}" />
+                                    
+                                    <HyperlinkButton Grid.Column="2" HorizontalAlignment="Right" Style="{StaticResource UberRefreshText}" VerticalAlignment="Center" Content="{Binding Path=LocalizedResources.UberRetryButton, Source={StaticResource LocalizedStrings}}" Visibility="{Binding UberRetryVisibility}" Command="{Binding UberRetryCommand}" />
+                                </Grid>
+
+                                
+                                <Grid Grid.Row="2" Visibility="{Binding UberDetailsVisibility}" VerticalAlignment="Top">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="Auto"/>
+                                        <ColumnDefinition Width="Auto"/>
+                                        <ColumnDefinition Width="Auto"/>
+                                    </Grid.ColumnDefinitions>
+
+                                    <TextBlock Text="{Binding TimeDisplay}" Grid.Column="0" Style="{StaticResource PathOptionsTimesText}" />
+
+                                    <TextBlock Margin="2,0,2,0" Text="➜" Grid.Column="1" Style="{StaticResource PathOptionsTimesText}" />
+
+                                    <TextBlock Text="{Binding DurationDisplay}" Grid.Column="2" Style="{StaticResource PathOptionsTimesText}" />
+                                </Grid>
+
+                                <ItemsControl Grid.Row="3" Visibility="{Binding UberDetailsVisibility}" ScrollViewer.VerticalScrollBarVisibility="Disabled" Grid.Column="0" Grid.ColumnSpan="2" ItemsSource="{Binding StageDisplays}" Height="14" VerticalAlignment="Top">
+                                    <ItemsControl.ItemsPanel>
+                                        <ItemsPanelTemplate>
+                                            <StackPanel Orientation="Horizontal"></StackPanel>
+                                        </ItemsPanelTemplate>
+                                    </ItemsControl.ItemsPanel>
+                                    <ItemsControl.ItemTemplate>
+                                        <DataTemplate>
+                                            <Border Background="{StaticResource DarkDarkGrey}" Height="14">
+                                                <Grid>
+                                                    <Border HorizontalAlignment="Stretch" VerticalAlignment="Center" Width="{Binding Width}" Height="8" Background="{Binding Colour}"/>
+                                                    <Image Visibility="{Binding LongWaitVisibility}" VerticalAlignment="Center" Height="8" Source="/Images/Custom/W/LongWait.png" />
+                                                </Grid>
+                                            </Border>
+                                        </DataTemplate>
+                                    </ItemsControl.ItemTemplate>
+                                </ItemsControl>
+
+                                <ProgressBar Grid.Row="1" Grid.RowSpan="3" Background="Transparent" Visibility="{Binding UberLoaderVisibility}" Foreground="{StaticResource DrumbleBlue}" HorizontalAlignment="Stretch" VerticalAlignment="Center" IsIndeterminate="{Binding UberIsLoading}" Height="10" Margin="0,0,0,0"/>
+
+                            </Grid>
+                        </Grid>
+                    </Grid>
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+            <ListBox.ItemContainerStyle>
+                <Style TargetType="ListBoxItem">
+                    <Setter Property="HorizontalContentAlignment" Value="Stretch"/>
+                </Style>
+            </ListBox.ItemContainerStyle>
+        </ListBox>
+    </Grid>
+
+</phone:PhoneApplicationPage>

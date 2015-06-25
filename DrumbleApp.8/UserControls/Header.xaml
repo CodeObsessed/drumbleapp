@@ -1,0 +1,139 @@
+﻿<UserControl x:Class="Drumble.UserControls.Header"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:i="clr-namespace:System.Windows.Interactivity;assembly=System.Windows.Interactivity"
+    xmlns:cmd="clr-namespace:GalaSoft.MvvmLight.Command;assembly=GalaSoft.MvvmLight.Extras.WP71"
+    mc:Ignorable="d" 
+    DataContext="{Binding Header, Source={StaticResource Locator}}"
+    >
+
+    <i:Interaction.Triggers>
+        <i:EventTrigger EventName="Loaded">
+            <cmd:EventToCommand Command="{Binding PageLoadedCommand}"/>
+        </i:EventTrigger>
+    </i:Interaction.Triggers>
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="60"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+
+        <Grid Grid.Row="0" Background="{StaticResource Black}">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="Auto"/>
+            </Grid.ColumnDefinitions>
+
+            <ProgressBar Grid.ColumnSpan="3" Background="Transparent" Foreground="{StaticResource DrumbleBlue}" HorizontalAlignment="Stretch" VerticalAlignment="Top" IsIndeterminate="{Binding LoaderProgressBarIsIndeterminate}" Visibility="{Binding LoaderProgressBarVisibility}" Height="10" Margin="0,0,0,0"/>
+
+            <Button Style="{StaticResource ImageButtonStyle}" Tap="Button_Tap">
+                <Image x:Name="BackButtonImage" Source="/Images/64/LB/IconDrumble.png" Margin="5"/>
+            </Button>
+
+            <TextBlock Grid.Column="1" HorizontalAlignment="Left" VerticalAlignment="Center" Text="{Binding PageTitleText}" Style="{StaticResource HeaderText}" />
+
+            <TextBlock x:Name="Memory" Grid.Column="2" Style="{StaticResource HeaderText}" />
+
+            <Image Grid.Column="2" Margin="5" Visibility="{Binding WeatherIconImageVisibility}" Source="{Binding WeatherIconImageSource}" />
+        </Grid>
+
+        <Grid Grid.Row="1" Height="60" Background="{StaticResource Clickable}" Margin="0" Visibility="{Binding GpsPopupVisibility}">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="100"/>
+            </Grid.ColumnDefinitions>
+
+            <Button Grid.Column="0" Style="{StaticResource ImageButtonStyle}" HorizontalAlignment="Stretch" HorizontalContentAlignment="Left" VerticalAlignment="Center" Command="{Binding EnableGpsCommand}">
+                <StackPanel Orientation="Horizontal">
+                    <Image Grid.Column="0" Source="/Images/64/W/IconGPS.png" Margin="8" />
+                    <StackPanel VerticalAlignment="Center">
+                        <TextBlock Grid.Column="1" Text="{Binding Path=LocalizedResources.MainMenuEnableGpsPopupText, Source={StaticResource LocalizedStrings}}" Style="{StaticResource PopupText}" />
+                        <Line X1="0" Y1="0" X2="120" Y2="0" Stroke="{StaticResource White}" StrokeDashArray="8,4" StrokeThickness="1" Margin="0" VerticalAlignment="Center" Height="4"/>
+                    </StackPanel>
+                </StackPanel>
+            </Button>
+            <Button Grid.Column="1" Style="{StaticResource PopupCloseImageButtonStyle}" Content="x" Background="{StaticResource DarkRed}" Command="{Binding HideGpsCommand}">
+            </Button>
+        </Grid>
+
+        <Grid Grid.Row="1" Height="60" Background="{StaticResource Clickable}" Margin="0" Visibility="{Binding PrivateModesPopupVisibility}">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="100"/>
+            </Grid.ColumnDefinitions>
+
+            <Button Grid.Column="0" Style="{StaticResource ImageButtonStyle}" HorizontalAlignment="Stretch" HorizontalContentAlignment="Left" VerticalAlignment="Center" Command="{Binding PrivateModesCommand}">
+                <StackPanel Orientation="Horizontal">
+                    <Image Grid.Column="0" Source="/Images/64/W/MenuAbout.png" Margin="8" />
+                    <StackPanel VerticalAlignment="Center">
+                        <TextBlock Grid.Column="1" Text="{Binding PrivateModePopupText}" Style="{StaticResource PopupText}" />
+                        <Line X1="0" Y1="0" X2="290" Y2="0" Stroke="{StaticResource White}" StrokeDashArray="8,4" StrokeThickness="1" Margin="0" VerticalAlignment="Center" Height="4"/>
+                    </StackPanel>
+                </StackPanel>
+            </Button>
+            <Button Grid.Column="1" Style="{StaticResource PopupCloseImageButtonStyle}" Content="x" Background="{StaticResource DarkRed}" Command="{Binding HidePrivateModesCommand}">
+            </Button>
+        </Grid>
+
+        <Grid Grid.Row="1" Height="60" Background="{StaticResource Clickable}" Margin="0" Visibility="{Binding RateAppPopupVisibility}">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="100"/>
+            </Grid.ColumnDefinitions>
+
+            <Button Grid.Column="0" Style="{StaticResource ImageButtonStyle}" HorizontalAlignment="Stretch" HorizontalContentAlignment="Left" VerticalAlignment="Center" Command="{Binding RateAppCommand}">
+                <StackPanel Orientation="Horizontal">
+                    <Image Grid.Column="0" Source="/Images/64/W/IconReview.png" Margin="8" />
+                    <StackPanel VerticalAlignment="Center">
+                        <TextBlock Grid.Column="1" Text="{Binding Path=LocalizedResources.MessageUsRateAppPopupText, Source={StaticResource LocalizedStrings}}" Style="{StaticResource PopupText}" />
+                        <Line X1="0" Y1="0" X2="200" Y2="0" Stroke="{StaticResource White}" StrokeDashArray="8,4" StrokeThickness="1" Margin="0" VerticalAlignment="Center" Height="4"/>
+                    </StackPanel>
+                </StackPanel>
+            </Button>
+            <Button Grid.Column="1" Style="{StaticResource PopupCloseImageButtonStyle}" Content="x" Background="{StaticResource DarkRed}" Command="{Binding HideRateAppCommand}">
+            </Button>
+        </Grid>
+
+        <Grid Grid.Row="1" Height="60" Background="{StaticResource Clickable}" Margin="0" Visibility="{Binding LoginUberPopupVisibility}">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="100"/>
+            </Grid.ColumnDefinitions>
+
+            <Button Grid.Column="0" Style="{StaticResource ImageButtonStyle}" HorizontalAlignment="Stretch" HorizontalContentAlignment="Left" VerticalAlignment="Center" Command="{Binding LoginUberCommand}">
+                <StackPanel Orientation="Horizontal">
+                    <Image Grid.Column="0" Source="/Images/Uber/Uber.png" Margin="8" />
+                    <StackPanel VerticalAlignment="Center">
+                        <TextBlock Grid.Column="1" Text="{Binding Path=LocalizedResources.LoginUberPopupText, Source={StaticResource LocalizedStrings}}" Style="{StaticResource PopupText}" />
+                        <Line X1="0" Y1="0" X2="160" Y2="0" Stroke="{StaticResource White}" StrokeDashArray="8,4" StrokeThickness="1" Margin="0" VerticalAlignment="Center" Height="4"/>
+                    </StackPanel>
+                </StackPanel>
+            </Button>
+            <Button Grid.Column="1" Style="{StaticResource PopupCloseImageButtonStyle}" Content="x" Background="{StaticResource DarkRed}" Command="{Binding HideLoginUberCommand}">
+            </Button>
+        </Grid>
+
+        <Grid Grid.Row="1" Height="60" Background="{StaticResource Clickable}" Margin="0" Visibility="{Binding LoginUberPopupVisibility}">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="100"/>
+            </Grid.ColumnDefinitions>
+
+            <Button Grid.Column="0" Style="{StaticResource ImageButtonStyle}" HorizontalAlignment="Stretch" HorizontalContentAlignment="Left" VerticalAlignment="Center" Command="{Binding LoginUberCommand}">
+                <StackPanel Orientation="Horizontal">
+                    <Image Grid.Column="0" Source="/Images/Uber/Uber.png" Margin="8" />
+                    <StackPanel VerticalAlignment="Center">
+                        <TextBlock Grid.Column="1" Text="{Binding Path=LocalizedResources.LoginUberPopupText, Source={StaticResource LocalizedStrings}}" Style="{StaticResource PopupText}" />
+                        <Line X1="0" Y1="0" X2="160" Y2="0" Stroke="{StaticResource White}" StrokeDashArray="8,4" StrokeThickness="1" Margin="0" VerticalAlignment="Center" Height="4"/>
+                    </StackPanel>
+                </StackPanel>
+            </Button>
+            <Button Grid.Column="1" Style="{StaticResource PopupCloseImageButtonStyle}" Content="x" Background="{StaticResource DarkRed}" Command="{Binding HideLoginUberCommand}">
+            </Button>
+        </Grid>
+    </Grid>
+</UserControl>

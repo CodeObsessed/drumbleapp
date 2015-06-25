@@ -1,0 +1,183 @@
+﻿<phone:PhoneApplicationPage
+    x:Class="Drumble.Views.UberTripDetails"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:phone="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone"
+    xmlns:shell="clr-namespace:Microsoft.Phone.Shell;assembly=Microsoft.Phone"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:usercontrols="clr-namespace:Drumble.UserControls"
+    xmlns:i="clr-namespace:System.Windows.Interactivity;assembly=System.Windows.Interactivity"
+    xmlns:cmd="clr-namespace:GalaSoft.MvvmLight.Command;assembly=GalaSoft.MvvmLight.Extras.WP71"
+    xmlns:bar="clr-namespace:BindableApplicationBar;assembly=BindableApplicationBar"
+    DataContext="{Binding UberTripDetails, Source={StaticResource Locator}}"
+    SupportedOrientations="Portrait" Orientation="Portrait"
+    mc:Ignorable="d"
+    shell:SystemTray.IsVisible="False">
+
+    <i:Interaction.Triggers>
+        <i:EventTrigger EventName="Loaded">
+            <cmd:EventToCommand Command="{Binding PageLoadedCommand}"/>
+        </i:EventTrigger>
+        <i:EventTrigger EventName="Unloaded">
+            <cmd:EventToCommand Command="{Binding PageUnloadedCommand}"/>
+        </i:EventTrigger>
+    </i:Interaction.Triggers>
+
+    <Grid Style="{StaticResource DefaultPageGrid}">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="70"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+
+        <usercontrols:Header Grid.Row="0" />
+
+        <Grid Grid.Row="1" Background="{StaticResource DarkGrey}">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="55" />
+                <RowDefinition Height="2" />
+                <RowDefinition Height="55" />
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="60"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+
+            <Image Margin="11" Grid.Row="0" Grid.Column="0" Source="/Images/64/W/MarkerWhiteHole.png" />
+
+            <TextBlock Text="{Binding LocationText}" VerticalAlignment="Center" Grid.Row="0" Grid.Column="1" TextTrimming="None" TextWrapping="NoWrap" Style="{StaticResource AddressText}" />
+
+            <Border Grid.Row="1" Grid.Column="1" Background="{StaticResource LightBlue}"/>
+
+            <Image Margin="11" Grid.Row="2" Grid.Column="0" Source="/Images/64/W/MarkerWhiteHole.png" />
+
+            <TextBlock Text="{Binding DestinationText}" VerticalAlignment="Center" Grid.Row="2" Grid.Column="1" TextTrimming="None" TextWrapping="NoWrap" Style="{StaticResource AddressText}" />
+        </Grid>
+
+        <TextBlock Grid.Row="2" Text="{Binding Path=LocalizedResources.UberTripDetailsText, Source={StaticResource LocalizedStrings}}" VerticalAlignment="Center" Margin="12,0,0,5" Style="{StaticResource WhereToText}" />
+
+        <!--<Button Grid.Row="2" HorizontalAlignment="Right" Command="{Binding MapCommand}">Map</Button>-->
+        
+        <ScrollViewer Grid.Row="3" Margin="12">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="*" />
+                </Grid.RowDefinitions>
+
+                <TextBlock Grid.Row="0" Text="{Binding Path=LocalizedResources.UberTripDetailsTripStatus, Source={StaticResource LocalizedStrings}}" Style="{StaticResource UberTripDetailsDescriptionText}" VerticalAlignment="Center" Margin="0"/>
+
+                <TextBlock Grid.Row="1" Text="{Binding TripStatus}" Style="{StaticResource UberTripDetailsText}" VerticalAlignment="Center" Margin="0"/>
+
+                <Grid Grid.Row="2" Visibility="{Binding TripDetailsVisibility}" VerticalAlignment="Top">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="*" />
+                    </Grid.RowDefinitions>
+
+                    <TextBlock Grid.Row="0" Text="{Binding Path=LocalizedResources.UberTripDetailsVehicleMake, Source={StaticResource LocalizedStrings}}" Style="{StaticResource UberTripDetailsDescriptionText}" VerticalAlignment="Center" Margin="0"/>
+                    <TextBlock Grid.Row="1" Text="{Binding UberRequest.UberVehicle.DisplayText}" Style="{StaticResource UberTripDetailsText}" VerticalAlignment="Center" Margin="0"/>
+
+                    <TextBlock Grid.Row="2" Visibility="{Binding EtaVisibility}" Text="{Binding Path=LocalizedResources.UberTripDetailsETA, Source={StaticResource LocalizedStrings}}" Style="{StaticResource UberTripDetailsDescriptionText}" VerticalAlignment="Center" Margin="0"/>
+                    <TextBlock Grid.Row="3" Visibility="{Binding EtaVisibility}" Text="{Binding UberRequest.EtaText}" Style="{StaticResource UberTripDetailsText}" VerticalAlignment="Center" Margin="0"/>
+                    
+                    <TextBlock Grid.Row="4" Text="{Binding Path=LocalizedResources.UberTripDetailsVehicleLicense, Source={StaticResource LocalizedStrings}}" Style="{StaticResource UberTripDetailsDescriptionText}" VerticalAlignment="Center" Margin="0"/>
+                    <TextBlock Grid.Row="5" Text="{Binding UberRequest.UberVehicle.LicensePlate}" Style="{StaticResource UberTripDetailsText}" VerticalAlignment="Center" Margin="0"/>
+
+                    <TextBlock Grid.Row="6" Text="{Binding Path=LocalizedResources.UberTripDetailsDriver, Source={StaticResource LocalizedStrings}}" Style="{StaticResource UberTripDetailsDescriptionText}" VerticalAlignment="Center" Margin="0"/>
+                    <TextBlock Grid.Row="7" Text="{Binding UberRequest.UberDriver.Name}" Style="{StaticResource UberTripDetailsText}" VerticalAlignment="Center" Margin="0"/>
+
+                    <TextBlock Grid.Row="8" Text="{Binding Path=LocalizedResources.UberTripDetailsDriverPhoneNumber, Source={StaticResource LocalizedStrings}}" Style="{StaticResource UberTripDetailsDescriptionText}" VerticalAlignment="Center" Margin="0"/>
+
+                    <Button Grid.Row="9" Margin="-8,0,0,0" VerticalAlignment="Center" HorizontalAlignment="Left" Style="{StaticResource TransparentButtonStyle}" Height="40" Command="{Binding CallNumberCommand}">
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="*"/>
+                                <RowDefinition Height="3"/>
+                            </Grid.RowDefinitions>
+                            <TextBlock Grid.Row="0" Text="{Binding UberRequest.UberDriver.PhoneNumber}"  Style="{StaticResource UberTripDetailsText}" />
+                            <Border Grid.Row="1" Background="{StaticResource LightLightGrey}" Height="2" VerticalAlignment="Bottom"></Border>
+                        </Grid>
+
+                    </Button>
+                    <TextBlock   Style="{StaticResource UberTripDetailsText}"  Margin="0"/>
+
+                    <TextBlock Grid.Row="10" Text="{Binding Path=LocalizedResources.UberTripDetailsDriverPicture, Source={StaticResource LocalizedStrings}}" Style="{StaticResource UberTripDetailsDescriptionText}" VerticalAlignment="Center" Margin="0" />
+                    <Image Source="{Binding UberRequest.UberDriver.PictureUrl}" Grid.Row="11" Grid.Column="1" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="0,5,0,0"></Image>
+                    
+                </Grid>
+            
+            </Grid>
+        </ScrollViewer>
+
+        <Grid Grid.Row="4" Height="60" Visibility="{Binding RetryOrCancelVisibility}">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="2"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+
+            <Border Grid.Row="0" Grid.ColumnSpan="2" Background="{StaticResource LightGrey}" />
+
+            <Button Grid.Row="1" Grid.Column="0" Command="{Binding RetryButtonCommand}" Style="{StaticResource ActiveFooterButtonStyle}" Content="{Binding Path=LocalizedResources.UberRetryButtonText, Source={StaticResource LocalizedStrings}}">
+            </Button>
+
+            <Button  Grid.Row="1" Grid.Column="1" Command="{Binding CancelButtonCommand}" Style="{StaticResource InActiveFooterButtonStyle}" Content="{Binding Path=LocalizedResources.UberCancelButtonText, Source={StaticResource LocalizedStrings}}">
+            </Button>
+        </Grid>
+
+        <Grid Grid.Row="4" Height="60" Visibility="{Binding FinishCancelVisibility}">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="2"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+
+            <Border Grid.Row="0" Grid.ColumnSpan="2" Background="{StaticResource LightGrey}" />
+
+            <Button Grid.Row="1" Command="{Binding FinishButtonCommand}" Style="{StaticResource ActiveFooterButtonStyle}" Content="{Binding Path=LocalizedResources.UberFinishButtonText, Source={StaticResource LocalizedStrings}}">
+            </Button>
+        </Grid>
+
+        <Grid Grid.Row="4" Height="60" Visibility="{Binding CancelVisibility}">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="2"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+
+            <Border Grid.Row="0" Grid.ColumnSpan="2" Background="{StaticResource LightGrey}" />
+
+            <Button  Grid.Row="1" Command="{Binding CancelButtonCommand}" Style="{StaticResource InActiveFooterButtonStyle}" Content="{Binding Path=LocalizedResources.UberCancelButtonText, Source={StaticResource LocalizedStrings}}">
+            </Button>
+        </Grid>
+    </Grid>
+
+    <!--<bar:Bindable.ApplicationBar>
+        <bar:BindableApplicationBar IsMenuEnabled="True" Mode="Minimized">
+            <bar:BindableApplicationBar.MenuItems>
+                <bar:BindableApplicationBarMenuItem Text="Fake accept trip" Command="{Binding FakeAcceptTripCommand}" />
+                <bar:BindableApplicationBarMenuItem Text="Fake arrival" Command="{Binding FakeArrivalCommand}" />
+                <bar:BindableApplicationBarMenuItem Text="Fake in progress" Command="{Binding FakeInProgressCommand}" />
+                <bar:BindableApplicationBarMenuItem Text="Fake driver cancellation" Command="{Binding FakeDriverCancelCommand}" />
+                <bar:BindableApplicationBarMenuItem Text="Fake complete" Command="{Binding FakeCompleteCommand}" />
+            </bar:BindableApplicationBar.MenuItems>
+        </bar:BindableApplicationBar>
+    </bar:Bindable.ApplicationBar>-->
+
+</phone:PhoneApplicationPage>

@@ -1,0 +1,774 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="AnnouncementBackgroundTaskDescription" xml:space="preserve">
+    <value>This is a background task to check for new announcements in the past hour.</value>
+  </data>
+  <data name="AnnouncementBackgrounTaskDisabledPopupText" xml:space="preserve">
+    <value>Please make sure that background agents for this application have been enabled in your phone settings.</value>
+  </data>
+  <data name="ApiErrorPopupMessageBadRequest" xml:space="preserve">
+    <value>We're sorry, there is an error in your data, please try again later.</value>
+  </data>
+  <data name="ApiErrorPopupMessageEmailNotFound" xml:space="preserve">
+    <value>Specified email was not found.</value>
+  </data>
+  <data name="ApiErrorPopupMessageInternalServerError" xml:space="preserve">
+    <value>We're sorry, there was an error, but rest assured as we are working on it! Please try again later.</value>
+  </data>
+  <data name="ApiErrorPopupMessageInvalidPin" xml:space="preserve">
+    <value>Invalid pin, please try again.</value>
+  </data>
+  <data name="ApiErrorPopupMessageNoNetwork" xml:space="preserve">
+    <value>Please check your internet connection and try again.</value>
+  </data>
+  <data name="ApiErrorPopupMessageNoResources" xml:space="preserve">
+    <value>No data was found for your region. Please try a different region.</value>
+  </data>
+  <data name="ApiErrorPopupMessageNoRouteFound" xml:space="preserve">
+    <value>No route was found for your request.</value>
+  </data>
+  <data name="ApiErrorPopupMessageNotFound" xml:space="preserve">
+    <value>We're sorry, a connection could not be made, please try again later.</value>
+  </data>
+  <data name="ApiErrorPopupMessageRegionNotSupported" xml:space="preserve">
+    <value>This feature is not supported in your region.</value>
+  </data>
+  <data name="ApiErrorPopupMessageTimeout" xml:space="preserve">
+    <value>Your request took too long, please try again.</value>
+  </data>
+  <data name="ApiErrorPopupMessageUnknownError" xml:space="preserve">
+    <value>We're sorry, something went wrong, please try again later.</value>
+  </data>
+  <data name="ApiErrorPopupMessageUpdateApp" xml:space="preserve">
+    <value>A critical update is required to continue using the app. Please check the market place and update your app.</value>
+  </data>
+  <data name="ApiErrorPopupMessageUserAccountDeactivated" xml:space="preserve">
+    <value>Your account has been disabled, please contact support for assistance.</value>
+  </data>
+  <data name="ApiErrorPopupMessageUserAlreadyAuthorised" xml:space="preserve">
+    <value>That user is already authorized and cannot be replaced, you will need to login to continue.</value>
+  </data>
+  <data name="ApiErrorPopupMessageUserNotFound" xml:space="preserve">
+    <value>The user could no longer be found, please try again.</value>
+  </data>
+  <data name="ApiErrorTaskCancelled" xml:space="preserve">
+    <value>Cancelled</value>
+  </data>
+  <data name="CompanyWebsiteLink" xml:space="preserve">
+    <value>http://www.Bumble.com</value>
+  </data>
+  <data name="CountrySelectionConfirmationPopupText" xml:space="preserve">
+    <value>You have chosen {0}, is this correct?</value>
+  </data>
+  <data name="CustomPopupGenericGoToSettings" xml:space="preserve">
+    <value>settings</value>
+  </data>
+  <data name="CustomPopupGenericGpsFailureMessage" xml:space="preserve">
+    <value>Failed to get your location.</value>
+  </data>
+  <data name="CustomPopupGenericLocationDisabledMessage" xml:space="preserve">
+    <value>Location services must be enabled to use this feature.</value>
+  </data>
+  <data name="CustomPopupGenericMessageDoNotShow" xml:space="preserve">
+    <value>don't show</value>
+  </data>
+  <data name="CustomPopupGenericNoMessage" xml:space="preserve">
+    <value>no</value>
+  </data>
+  <data name="CustomPopupGenericNoThanksMessage" xml:space="preserve">
+    <value>no thanks</value>
+  </data>
+  <data name="CustomPopupGenericOkGotItMessage" xml:space="preserve">
+    <value>ok, got it!</value>
+  </data>
+  <data name="CustomPopupGenericOkMessage" xml:space="preserve">
+    <value>ok</value>
+  </data>
+  <data name="CustomPopupGenericOkSureMessage" xml:space="preserve">
+    <value>ok, sure!</value>
+  </data>
+  <data name="CustomPopupGenericYesMessage" xml:space="preserve">
+    <value>yes</value>
+  </data>
+  <data name="CustomPopupMessageTypeError" xml:space="preserve">
+    <value>Error</value>
+  </data>
+  <data name="CustomPopupMessageTypeInformation" xml:space="preserve">
+    <value>Information</value>
+  </data>
+  <data name="CustomPopupMessageTypeSuccess" xml:space="preserve">
+    <value>Success</value>
+  </data>
+  <data name="CustomPopupMessageTypeWarning" xml:space="preserve">
+    <value>Warning</value>
+  </data>
+  <data name="FavouriteLastUsedText" xml:space="preserve">
+    <value>Last used</value>
+  </data>
+  <data name="FavouritesAlreadyExistsErrorPopupText" xml:space="preserve">
+    <value>This trip is already in your favourites.</value>
+  </data>
+  <data name="FavouritesRemovedFromFavourites" xml:space="preserve">
+    <value>Favourite removed.</value>
+  </data>
+  <data name="FavouritesSearchTextBoxWaterMark" xml:space="preserve">
+    <value>Search ...</value>
+  </data>
+  <data name="FavouritesSuccessfullyAddedPopupText" xml:space="preserve">
+    <value>Trip added to your favourites.</value>
+  </data>
+  <data name="HeaderAbout" xml:space="preserve">
+    <value>About</value>
+  </data>
+  <data name="HeaderAnnouncements" xml:space="preserve">
+    <value>Announcements</value>
+  </data>
+  <data name="HeaderChooseDestination" xml:space="preserve">
+    <value>Choose Destination</value>
+  </data>
+  <data name="HeaderChooseLocation" xml:space="preserve">
+    <value>Choose Location</value>
+  </data>
+  <data name="HeaderChooseOperator" xml:space="preserve">
+    <value>Choose an Operator</value>
+  </data>
+  <data name="HeaderCountrySelection" xml:space="preserve">
+    <value>Select a Country</value>
+  </data>
+  <data name="HeaderDateTimeArrival" xml:space="preserve">
+    <value>Select Arrival Time</value>
+  </data>
+  <data name="HeaderDateTimeDeparture" xml:space="preserve">
+    <value>Select Departure Time</value>
+  </data>
+  <data name="HeaderExploreCity" xml:space="preserve">
+    <value>Explore your City</value>
+  </data>
+  <data name="HeaderFavourites" xml:space="preserve">
+    <value>Favourite Trips</value>
+  </data>
+  <data name="HeaderFilterPoiCategories" xml:space="preserve">
+    <value>Filter Place Categories</value>
+  </data>
+  <data name="HeaderIdentify" xml:space="preserve">
+    <value>Authorise</value>
+  </data>
+  <data name="HeaderLogin" xml:space="preserve">
+    <value>Login</value>
+  </data>
+  <data name="HeaderMainMenu" xml:space="preserve">
+    <value>Main Menu</value>
+  </data>
+  <data name="HeaderMaps" xml:space="preserve">
+    <value>Transportation Maps</value>
+  </data>
+  <data name="HeaderMessage" xml:space="preserve">
+    <value>Message Drumble</value>
+  </data>
+  <data name="HeaderMode" xml:space="preserve">
+    <value>Modes Filter</value>
+  </data>
+  <data name="HeaderPointA" xml:space="preserve">
+    <value>Choose Point A</value>
+  </data>
+  <data name="HeaderPointB" xml:space="preserve">
+    <value>Choose Point B</value>
+  </data>
+  <data name="HeaderProfile" xml:space="preserve">
+    <value>My Profile</value>
+  </data>
+  <data name="HeaderRecent" xml:space="preserve">
+    <value>Recent Trips</value>
+  </data>
+  <data name="HeaderRegionSelection" xml:space="preserve">
+    <value>Select a Region</value>
+  </data>
+  <data name="HeaderRegister" xml:space="preserve">
+    <value>Register</value>
+  </data>
+  <data name="HeaderSearch" xml:space="preserve">
+    <value>Enter Search Text</value>
+  </data>
+  <data name="HeaderSettings" xml:space="preserve">
+    <value>App Settings</value>
+  </data>
+  <data name="HeaderShare" xml:space="preserve">
+    <value>Tell a Friend</value>
+  </data>
+  <data name="HeaderStationsNearby" xml:space="preserve">
+    <value>Select a Station</value>
+  </data>
+  <data name="HeaderTimeSelection" xml:space="preserve">
+    <value>Select a Time</value>
+  </data>
+  <data name="HeaderTripDetails" xml:space="preserve">
+    <value>Trip Details</value>
+  </data>
+  <data name="HeaderTripKarma" xml:space="preserve">
+    <value>Trip Karma</value>
+  </data>
+  <data name="HeaderTripSelection" xml:space="preserve">
+    <value>Trip Selection</value>
+  </data>
+  <data name="HeaderWhereTo" xml:space="preserve">
+    <value>Find a Trip</value>
+  </data>
+  <data name="Hour" xml:space="preserve">
+    <value>h</value>
+  </data>
+  <data name="IdentifyNoPinPopupText" xml:space="preserve">
+    <value>Please enter a valid pin.</value>
+  </data>
+  <data name="IdentifyOneTimePinWaterMarkText" xml:space="preserve">
+    <value>One Time Pin</value>
+  </data>
+  <data name="IdentifyOtpSentPopupText" xml:space="preserve">
+    <value>A one time pin has been sent to {0}.</value>
+  </data>
+  <data name="InvalidEmailAlert" xml:space="preserve">
+    <value>Invalid email address.</value>
+  </data>
+  <data name="InvalidOneTimePinAlert" xml:space="preserve">
+    <value>Invalid pin. It needs to be a {0} digit number.</value>
+  </data>
+  <data name="LocationAppDisabledErrorMessage" xml:space="preserve">
+    <value>Location services must be enabled to use this feature, you can enable location services in settings.</value>
+  </data>
+  <data name="LoginEmailTextBoxWaterMark" xml:space="preserve">
+    <value>Email</value>
+  </data>
+  <data name="LoginNoEmailErrorPopupText" xml:space="preserve">
+    <value>Please enter a valid email address.</value>
+  </data>
+  <data name="MainMenuAbout" xml:space="preserve">
+    <value>About</value>
+  </data>
+  <data name="MainMenuAnnouncementsDelays" xml:space="preserve">
+    <value>Announcements</value>
+  </data>
+  <data name="MainMenuChangeCountry" xml:space="preserve">
+    <value>Change country</value>
+  </data>
+  <data name="MainMenuFavouritesRecent" xml:space="preserve">
+    <value>Favourite &amp; recent trips</value>
+  </data>
+  <data name="MainMenuDrumble" xml:space="preserve">
+    <value>Drumble</value>
+  </data>
+  <data name="MainMenuMaps" xml:space="preserve">
+    <value>Transportation maps</value>
+  </data>
+  <data name="MainMenuMessageUs" xml:space="preserve">
+    <value>Message us</value>
+  </data>
+  <data name="MainMenuPlacesOfInterest" xml:space="preserve">
+    <value>Places of interest</value>
+  </data>
+  <data name="MainMenuSettings" xml:space="preserve">
+    <value>Settings</value>
+  </data>
+  <data name="MainMenuShareApp" xml:space="preserve">
+    <value>Share app</value>
+  </data>
+  <data name="MainMenuStationsStops" xml:space="preserve">
+    <value>Stations &amp; stops</value>
+  </data>
+  <data name="MapPointSelectionHeaderA" xml:space="preserve">
+    <value>Place Point A</value>
+  </data>
+  <data name="MapPointSelectionHeaderB" xml:space="preserve">
+    <value>Place Point B</value>
+  </data>
+  <data name="MapPointSelectionHelpPopupText" xml:space="preserve">
+    <value>Press and hold the map to place a point.</value>
+  </data>
+  <data name="MapPointSelectionNoPointsPlacedPopupText" xml:space="preserve">
+    <value>You have not placed any points on the map.</value>
+  </data>
+  <data name="MapPointSelectionRemovedPointPopupText" xml:space="preserve">
+    <value>Removed point {0}</value>
+  </data>
+  <data name="MapsSelectOperatorText" xml:space="preserve">
+    <value>Select an Operator</value>
+  </data>
+  <data name="MessageUsEmailTextBoxWaterMark" xml:space="preserve">
+    <value>Your Email</value>
+  </data>
+  <data name="MessageUsNoMessagePopupText" xml:space="preserve">
+    <value>Please enter a message.</value>
+  </data>
+  <data name="MessageUsSubjectTextBoxWaterMark" xml:space="preserve">
+    <value>Subject</value>
+  </data>
+  <data name="MessageUsSuccessPopupText" xml:space="preserve">
+    <value>Thanks for your feedback.</value>
+  </data>
+  <data name="MessageUsTextBoxWaterMark" xml:space="preserve">
+    <value>Enter your feedback here.</value>
+  </data>
+  <data name="Minute" xml:space="preserve">
+    <value>min</value>
+  </data>
+  <data name="ModeBoat" xml:space="preserve">
+    <value>Boat</value>
+  </data>
+  <data name="ModeBus" xml:space="preserve">
+    <value>Bus</value>
+  </data>
+  <data name="ModePrivateTransportPopupText" xml:space="preserve">
+    <value>{0} Private Transport Mode(s).</value>
+  </data>
+  <data name="ModeRail" xml:space="preserve">
+    <value>Rail</value>
+  </data>
+  <data name="ModeTaxi" xml:space="preserve">
+    <value>Taxi</value>
+  </data>
+  <data name="PlacesOfInterestNoMapResultsPopupText" xml:space="preserve">
+    <value>No results to display on the map, have you tried searching?</value>
+  </data>
+  <data name="PlacesOfInterestTextBoxWaterMark" xml:space="preserve">
+    <value>Search places nearby ...</value>
+  </data>
+  <data name="PredefinedDepartureTime120" xml:space="preserve">
+    <value>2 hours</value>
+  </data>
+  <data name="PredefinedDepartureTime1440" xml:space="preserve">
+    <value>1 day</value>
+  </data>
+  <data name="PredefinedDepartureTime15" xml:space="preserve">
+    <value>15 minutes</value>
+  </data>
+  <data name="PredefinedDepartureTime240" xml:space="preserve">
+    <value>4 hours</value>
+  </data>
+  <data name="PredefinedDepartureTime30" xml:space="preserve">
+    <value>30 minutes</value>
+  </data>
+  <data name="PredefinedDepartureTime45" xml:space="preserve">
+    <value>45 minutes</value>
+  </data>
+  <data name="PredefinedDepartureTime480" xml:space="preserve">
+    <value>8 hours</value>
+  </data>
+  <data name="PredefinedDepartureTime60" xml:space="preserve">
+    <value>1 hour</value>
+  </data>
+  <data name="PredefinedDepartureTime90" xml:space="preserve">
+    <value>1 hour 30 minutes</value>
+  </data>
+  <data name="PredefinedDepartureTime960" xml:space="preserve">
+    <value>16 hours</value>
+  </data>
+  <data name="PredefinedDepartureTimeNow" xml:space="preserve">
+    <value>Now</value>
+  </data>
+  <data name="ProfileLoginPopupButtonText" xml:space="preserve">
+    <value>log in</value>
+  </data>
+  <data name="ProfileNotRegisteredPopupText" xml:space="preserve">
+    <value>You need to have an account with us to use this feature. What would you like to do?</value>
+  </data>
+  <data name="ProfileRegisterPopupButtonText" xml:space="preserve">
+    <value>register</value>
+  </data>
+  <data name="RecentLastUsedText" xml:space="preserve">
+    <value>Last used</value>
+  </data>
+  <data name="RecentTripsAddedToFavourites" xml:space="preserve">
+    <value>Trip added to your favourites.</value>
+  </data>
+  <data name="RecentTripsRemovedFromFavourites" xml:space="preserve">
+    <value>Trip removed from your favourites.</value>
+  </data>
+  <data name="RegisterFacebookErrorPopupText" xml:space="preserve">
+    <value>An error occured while accessing Facebook, please try again later.</value>
+  </data>
+  <data name="SearchStationsAndPlacesOfInterestTextBoxWatermark" xml:space="preserve">
+    <value>Search ...</value>
+  </data>
+  <data name="SearchStationsTextBoxWaterMark" xml:space="preserve">
+    <value>Search Stations ...</value>
+  </data>
+  <data name="SearchTextBoxWaterMark" xml:space="preserve">
+    <value>Search ...</value>
+  </data>
+  <data name="SettingsSavedPopupMessage" xml:space="preserve">
+    <value>Settings saved</value>
+  </data>
+  <data name="SplashButtonTextSelectCountry" xml:space="preserve">
+    <value>Select a country ...</value>
+  </data>
+  <data name="SplashButtonTextSelectRegion" xml:space="preserve">
+    <value>Select a region ...</value>
+  </data>
+  <data name="SplashLoaderTextAbout" xml:space="preserve">
+    <value>Updating policies ...</value>
+  </data>
+  <data name="SplashLoaderTextCheckingForUpdates" xml:space="preserve">
+    <value>Loading...</value>
+  </data>
+  <data name="SplashLoaderTextComplete" xml:space="preserve">
+    <value>Complete.</value>
+  </data>
+  <data name="SplashLoaderTextCountries" xml:space="preserve">
+    <value>Downloading supported countries ...</value>
+  </data>
+  <data name="SplashLoaderTextDownloadingCountryData" xml:space="preserve">
+    <value>Downloading data for: {0} ...</value>
+  </data>
+  <data name="SplashLoaderTextRegistration" xml:space="preserve">
+    <value>Checking API availability ...</value>
+  </data>
+  <data name="TripDetailsArrivingAt" xml:space="preserve">
+    <value>Arrive at {0} ({1})</value>
+  </data>
+  <data name="TripDetailsPlatformText" xml:space="preserve">
+    <value>Platform</value>
+  </data>
+  <data name="TripDetailsVehicleText" xml:space="preserve">
+    <value>Vehicle</value>
+  </data>
+  <data name="TripSelectionArriveNextDayWarning" xml:space="preserve">
+    <value>Trip arrives the next day.</value>
+  </data>
+  <data name="TripSelectionCompleteTrip" xml:space="preserve">
+    <value>Trip is complete.</value>
+  </data>
+  <data name="TripSelectionDepartNextDayWarning" xml:space="preserve">
+    <value>Trip departs the next day.</value>
+  </data>
+  <data name="TripSelectionLeavingIn" xml:space="preserve">
+    <value>Leave in {0}</value>
+  </data>
+  <data name="TripSelectionLeavingNow" xml:space="preserve">
+    <value>Leave now</value>
+  </data>
+  <data name="TripSelectionLongWaitArrivingNextDayWarning" xml:space="preserve">
+    <value>Trip includes a lengthly wait and arrives the next day.</value>
+  </data>
+  <data name="TripSelectionLongWaitDepartNextDayWarning" xml:space="preserve">
+    <value>Trip includes a lengthly wait and departs the next day.</value>
+  </data>
+  <data name="TripSelectionLongWaitWarning" xml:space="preserve">
+    <value>Trip includes a lengthly wait.</value>
+  </data>
+  <data name="TripSelectionMinutes" xml:space="preserve">
+    <value>minutes</value>
+  </data>
+  <data name="TripSelectionMinutesRemain" xml:space="preserve">
+    <value>minutes remain</value>
+  </data>
+  <data name="TripSelectionNoAlertsPopupText" xml:space="preserve">
+    <value>No alerts for this trip.</value>
+  </data>
+  <data name="TripSelectionTimeDisplay" xml:space="preserve">
+    <value>{0} - {1}</value>
+  </data>
+  <data name="TripSelectionTripEnded" xml:space="preserve">
+    <value>Trip completed {0} ago.</value>
+  </data>
+  <data name="TripSelectionTripStarted" xml:space="preserve">
+    <value>Trip began {0} ago.</value>
+  </data>
+  <data name="UberGetAnUberText" xml:space="preserve">
+    <value>Get an Uber in {0}.</value>
+  </data>
+  <data name="UberLoadingText" xml:space="preserve">
+    <value>Checking Uber ...</value>
+  </data>
+  <data name="UberNotFoundText" xml:space="preserve">
+    <value>Uber not found.</value>
+  </data>
+  <data name="WaitingStageName" xml:space="preserve">
+    <value>Wait</value>
+  </data>
+  <data name="WhereToArrivingAtText" xml:space="preserve">
+    <value>Arrive {0}</value>
+  </data>
+  <data name="WhereToArrivingInText" xml:space="preserve">
+    <value>Arriving in {0}</value>
+  </data>
+  <data name="WhereToArrivingText" xml:space="preserve">
+    <value>Arriving {0}</value>
+  </data>
+  <data name="WhereToCustomDateErrorPopupText" xml:space="preserve">
+    <value>Your departure date cannot be in the past.</value>
+  </data>
+  <data name="WhereToDepartingAtText" xml:space="preserve">
+    <value>Depart {0}</value>
+  </data>
+  <data name="WhereToDepartingInText" xml:space="preserve">
+    <value>Departing in {0}</value>
+  </data>
+  <data name="WhereToDepartingText" xml:space="preserve">
+    <value>Departing {0}</value>
+  </data>
+  <data name="WhereToDestinationErrorPopupText" xml:space="preserve">
+    <value>Please specify a valid destination.</value>
+  </data>
+  <data name="WhereToDestinationTextBoxWaterMark" xml:space="preserve">
+    <value>Destination</value>
+  </data>
+  <data name="WhereToDropdownOptionClosestStops" xml:space="preserve">
+    <value>Stations &amp; stops</value>
+  </data>
+  <data name="WhereToDropdownOptionCurrentLocation" xml:space="preserve">
+    <value>Use my location</value>
+  </data>
+  <data name="WhereToDropdownOptionJustSearch" xml:space="preserve">
+    <value>Search places</value>
+  </data>
+  <data name="WhereToDropdownOptionSelectOnMap" xml:space="preserve">
+    <value>Find on map</value>
+  </data>
+  <data name="WhereToFindingAddressWaterMark" xml:space="preserve">
+    <value>Finding address ...</value>
+  </data>
+  <data name="WhereToFindingLocationTextBoxWaterMark" xml:space="preserve">
+    <value>Finding location ...</value>
+  </data>
+  <data name="WhereToLocationErrorPopupText" xml:space="preserve">
+    <value>Please specify a valid location.</value>
+  </data>
+  <data name="WhereToLocationTextBoxWaterMark" xml:space="preserve">
+    <value>Location</value>
+  </data>
+  <data name="WhereToNoModesErrorPopupText" xml:space="preserve">
+    <value>Please include at least one mode of transport in your request.</value>
+  </data>
+  <data name="AnnouncementsLiveTileText" xml:space="preserve">
+    <value>Announcements</value>
+  </data>
+  <data name="TileAlreadyPinnedErrorText" xml:space="preserve">
+    <value>Tile already pinned to your start.</value>
+  </data>
+  <data name="TripDetailsLiveTileText" xml:space="preserve">
+    <value>Trip to {0}</value>
+  </data>
+  <data name="TripDetailsLiveTileBackText" xml:space="preserve">
+    <value>{0}: {1} to {2}</value>
+  </data>
+  <data name="WhereToNoResultsFound" xml:space="preserve">
+    <value>No results found.</value>
+  </data>
+  <data name="UnkownAddress" xml:space="preserve">
+    <value>Unknown address.</value>
+  </data>
+  <data name="MessageUsContactNumberTextBoxWaterMark" xml:space="preserve">
+    <value>Your Phone Number</value>
+  </data>
+  <data name="MessageUsNameTextBoxWaterMark" xml:space="preserve">
+    <value>Your Name</value>
+  </data>
+  <data name="MessageUsNoContactNumberPopupText" xml:space="preserve">
+    <value>Please enter a contact number.</value>
+  </data>
+  <data name="MessageUsNoNamePopupText" xml:space="preserve">
+    <value>Please enter your name</value>
+  </data>
+  <data name="MessageUsSelectTermsAndConditionsPopupText" xml:space="preserve">
+    <value>You must agree to the terms and conditions to enter.</value>
+  </data>
+  <data name="MessageUsNoEmailPopupText" xml:space="preserve">
+    <value>Please enter your email address.</value>
+  </data>
+  <data name="UberErrorAuthenticating" xml:space="preserve">
+    <value>An error occurred somewhere in the process, please try again.</value>
+  </data>
+  <data name="ApproxCost" xml:space="preserve">
+    <value>Approx Fare</value>
+  </data>
+  <data name="TripSelectionRequestUberPopupText" xml:space="preserve">
+    <value>Would you like to request an Uber? Note: This will charge your account.</value>
+  </data>
+  <data name="HeaderUberTripDetails" xml:space="preserve">
+    <value>Uber Trip Details</value>
+  </data>
+  <data name="UberDriverCanceledPopupText" xml:space="preserve">
+    <value>Sorry, but the driver cancelled your request.</value>
+  </data>
+  <data name="UberNoDriversPopupText" xml:space="preserve">
+    <value>Sorry, but there were no drivers available to fulfill your request.</value>
+  </data>
+  <data name="UberRequestRecievedPopupText" xml:space="preserve">
+    <value>Your request has been made! This page will continue to monitor your trip.</value>
+  </data>
+  <data name="UberTripStatusAccepted" xml:space="preserve">
+    <value>Accepted</value>
+  </data>
+  <data name="UberTripStatusArriving" xml:space="preserve">
+    <value>Arriving</value>
+  </data>
+  <data name="UberTripStatusCompleted" xml:space="preserve">
+    <value>Completed</value>
+  </data>
+  <data name="UberTripStatusDriverCanceled" xml:space="preserve">
+    <value>Driver Cancelled</value>
+  </data>
+  <data name="UberTripStatusError" xml:space="preserve">
+    <value>Unknown Error</value>
+  </data>
+  <data name="UberTripStatusInProgress" xml:space="preserve">
+    <value>In Progress</value>
+  </data>
+  <data name="UberTripStatusNoDrivers" xml:space="preserve">
+    <value>No Drivers</value>
+  </data>
+  <data name="UberTripStatusProcessing" xml:space="preserve">
+    <value>Processing</value>
+  </data>
+  <data name="UberTripStatusRequesting" xml:space="preserve">
+    <value>Requesting</value>
+  </data>
+  <data name="WhereToContinueTripButtonText" xml:space="preserve">
+    <value>Continue my last trip.</value>
+  </data>
+  <data name="CustomPopupGenericCancelMessage" xml:space="preserve">
+    <value>Cancel</value>
+  </data>
+  <data name="UberTripStatusRiderCanceled" xml:space="preserve">
+    <value>Cancelled</value>
+  </data>
+  <data name="ApiErrorPopupMessageUnauthorizedError" xml:space="preserve">
+    <value>Unauthorised</value>
+  </data>
+  <data name="UberTripStatusUnauthorized" xml:space="preserve">
+    <value>Unauthorised</value>
+  </data>
+  <data name="ApiErrorPopupMessageNotFoundError" xml:space="preserve">
+    <value>Not found</value>
+  </data>
+  <data name="UberTripCancelConfirmPopupText" xml:space="preserve">
+    <value>Are you sure you wish to cancel your trip?</value>
+  </data>
+  <data name="UberTripCancelFailure" xml:space="preserve">
+    <value>Your trip could not be cancelled anymore.</value>
+  </data>
+  <data name="UberTripCancelled" xml:space="preserve">
+    <value>Your trip was cancelled.</value>
+  </data>
+  <data name="UberTripFinishedPopupText" xml:space="preserve">
+    <value>Thanks for using Uber, your trip will no longer be monitored within the app. You can always use the official Uber app to continue to monitor your trip.</value>
+  </data>
+  <data name="WhereToContinueUberTripButtonText" xml:space="preserve">
+    <value>Continue my Uber trip.</value>
+  </data>
+</root>

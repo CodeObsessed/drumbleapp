@@ -1,0 +1,348 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>10.0.20506</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{ACE17179-2087-4DFB-A61D-CB2EE3FCBE75}</ProjectGuid>
+    <ProjectTypeGuids>{C089C8C0-30E0-4E22-80C0-CE093F111A43};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>DrumbleApp.Resources</RootNamespace>
+    <AssemblyName>DrumbleApp.Resources</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <SilverlightVersion>$(TargetFrameworkVersion)</SilverlightVersion>
+    <TargetFrameworkProfile>WindowsPhone71</TargetFrameworkProfile>
+    <TargetFrameworkIdentifier>Silverlight</TargetFrameworkIdentifier>
+    <SilverlightApplication>false</SilverlightApplication>
+    <ValidateXaml>true</ValidateXaml>
+    <ThrowErrorsInValidation>true</ThrowErrorsInValidation>
+    <SccProjectName>SAK</SccProjectName>
+    <SccLocalPath>SAK</SccLocalPath>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccProvider>SAK</SccProvider>
+    <SupportedCultures>en-US</SupportedCultures>
+    <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">..\</SolutionDir>
+    <RestorePackages>true</RestorePackages>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>Bin\Debug</OutputPath>
+    <DefineConstants>DEBUG;TRACE;SILVERLIGHT;WINDOWS_PHONE</DefineConstants>
+    <NoStdLib>true</NoStdLib>
+    <NoConfig>true</NoConfig>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>Bin\Release</OutputPath>
+    <DefineConstants>TRACE;SILVERLIGHT;WINDOWS_PHONE</DefineConstants>
+    <NoStdLib>true</NoStdLib>
+    <NoConfig>true</NoConfig>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="GalaSoft.MvvmLight.Extras.WP71, Version=4.2.30.23589, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\MvvmLightLibs.4.2.30.0\lib\sl4-wp71\GalaSoft.MvvmLight.Extras.WP71.dll</HintPath>
+    </Reference>
+    <Reference Include="GalaSoft.MvvmLight.WP71, Version=4.2.30.23589, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\MvvmLightLibs.4.2.30.0\lib\sl4-wp71\GalaSoft.MvvmLight.WP71.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Phone" />
+    <Reference Include="Microsoft.Practices.ServiceLocation, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\MvvmLightLibs.4.2.30.0\lib\sl4-wp71\Microsoft.Practices.ServiceLocation.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Windows" />
+    <Reference Include="system" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Windows.Interactivity, Version=3.8.5.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\MvvmLightLibs.4.2.30.0\lib\sl4-wp71\System.Windows.Interactivity.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Net" />
+    <Reference Include="mscorlib.extensions" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Resources\AppResources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>AppResources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Theme\ThemeManager.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\AppResources.en-US.resx" />
+    <EmbeddedResource Include="Resources\AppResources.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>AppResources.Designer.cs</LastGenOutput>
+      <CustomToolNamespace>Drumble.Resources</CustomToolNamespace>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Images\128\B\MarkerBlackA.png" />
+    <Content Include="Images\128\B\MarkerBlackB.png" />
+    <Content Include="Images\128\DB\LineFull-DB.png" />
+    <Content Include="Images\128\DB\LineLeft.png" />
+    <Content Include="Images\128\GY\DrumbleSymbol-GreyA.png" />
+    <Content Include="Images\128\GY\DrumbleSymbol-GreyB.png" />
+    <Content Include="Images\128\GY\DrumbleSymbol-GreyC.png" />
+    <Content Include="Images\128\GY\DrumbleSymbol-GreyD.png" />
+    <Content Include="Images\128\GY\DrumbleSymbol-GreyE.png" />
+    <Content Include="Images\128\GY\IconArrowExpandDown-Grey.png" />
+    <Content Include="Images\128\GY\IconCenterOnGPS-Grey.png" />
+    <Content Include="Images\128\GY\IconStations-Grey.png" />
+    <Content Include="Images\128\LB\DrumbleSymbol-BlueA.png" />
+    <Content Include="Images\128\LB\DrumbleSymbol-BlueB.png" />
+    <Content Include="Images\128\LB\DrumbleSymbol-BlueC.png" />
+    <Content Include="Images\128\LB\DrumbleSymbol-BlueD.png" />
+    <Content Include="Images\128\LB\DrumbleSymbol-BlueE.png" />
+    <Content Include="Images\128\LB\IconArrowOptionLeft.png" />
+    <Content Include="Images\128\LB\IconArrowOptionRight.png" />
+    <Content Include="Images\128\LB\IconBack.png" />
+    <Content Include="Images\128\LB\IconFavouritesAdd.png" />
+    <Content Include="Images\128\LB\IconFavouritesRemove.png" />
+    <Content Include="Images\128\LB\IconFilter-Blue.png" />
+    <Content Include="Images\128\LB\IconFullDate-Blue.png" />
+    <Content Include="Images\128\LB\IconInvertPoints-Blue.png" />
+    <Content Include="Images\128\LB\IconStations-Blue.png" />
+    <Content Include="Images\128\LB\IconTimeInterval-Blue.png" />
+    <Content Include="Images\128\LB\LineFull-LB.png" />
+    <Content Include="Images\128\LB\LineLeft.png" />
+    <Content Include="Images\128\LB\LineRight-LB.png" />
+    <Content Include="Images\128\DB\LineRight-DB.png" />
+    <Content Include="Images\128\LB\Map.png" />
+    <Content Include="Images\128\LB\MarkerBlueA.png" />
+    <Content Include="Images\128\LB\MarkerBlueB.png" />
+    <Content Include="Images\128\LB\MenuAbout.png" />
+    <Content Include="Images\128\LB\MenuAnnouncement.png" />
+    <Content Include="Images\128\LB\MenuExplore.png" />
+    <Content Include="Images\128\LB\MenuFavourites.png" />
+    <Content Include="Images\128\LB\MenuMessageUs.png" />
+    <Content Include="Images\128\LB\MenuRecent.png" />
+    <Content Include="Images\128\LB\MenuSettings.png" />
+    <Content Include="Images\128\LB\MenuStations.png" />
+    <Content Include="Images\128\LB\MenuTransportationMaps.png" />
+    <Content Include="Images\128\LB\MenuWhereTo.png" />
+    <Content Include="Images\128\LB\SplashCityOff.png" />
+    <Content Include="Images\128\LB\SplashCityOn.png" />
+    <Content Include="Images\128\LB\TileFavouritesLeft.png" />
+    <Content Include="Images\128\LB\TileOptionsLeft.png" />
+    <Content Include="Images\128\W\Delete.png" />
+    <Content Include="Images\128\W\FooterShare.png" />
+    <Content Include="Images\128\W\FooterTripOptions.png" />
+    <Content Include="Images\128\W\IconAlerts.png" />
+    <Content Include="Images\128\W\IconArrowDown.png" />
+    <Content Include="Images\128\W\IconArrowExpandDown.png" />
+    <Content Include="Images\128\W\IconArrowExpandUp.png" />
+    <Content Include="Images\128\W\IconArrowOptionLeft.png" />
+    <Content Include="Images\128\W\IconArrowOptionRight.png" />
+    <Content Include="Images\128\W\IconArrowUp.png" />
+    <Content Include="Images\128\W\IconDate.png" />
+    <Content Include="Images\128\W\IconFavouritesAdd.png" />
+    <Content Include="Images\128\W\IconFavouritesRemove.png" />
+    <Content Include="Images\128\W\IconFilter.png" />
+    <Content Include="Images\128\W\IconFullDate-Off.png" />
+    <Content Include="Images\128\W\IconFullDate.png" />
+    <Content Include="Images\128\W\IconGPS.png" />
+    <Content Include="Images\128\W\IconInvertPoints.png" />
+    <Content Include="Images\128\W\IconReview.png" />
+    <Content Include="Images\128\W\IconSearch.png" />
+    <Content Include="Images\128\W\IconTimeInterval-Off.png" />
+    <Content Include="Images\128\W\IconTimeInterval.png" />
+    <Content Include="Images\128\W\MarkerWhiteHole.png" />
+    <Content Include="Images\128\W\MenuIcon.png" />
+    <Content Include="Images\128\W\MenuAbout.png" />
+    <Content Include="Images\128\W\MenuAnnouncement.png" />
+    <Content Include="Images\128\W\MenuExplore.png" />
+    <Content Include="Images\128\W\MenuFavourites.png" />
+    <Content Include="Images\128\W\MenuMessageUs.png" />
+    <Content Include="Images\128\W\MenuRecent.png" />
+    <Content Include="Images\128\W\MenuSettings.png" />
+    <Content Include="Images\128\W\MenuStations.png" />
+    <Content Include="Images\128\W\MenuTransportationMaps.png" />
+    <Content Include="Images\128\W\MenuWhereTo.png" />
+    <Content Include="Images\128\W\ModeBus-Off.png" />
+    <Content Include="Images\128\W\ModeBus.png" />
+    <Content Include="Images\128\W\ModeBoat-Off.png" />
+    <Content Include="Images\128\W\ModeBoat.png" />
+    <Content Include="Images\128\W\ModeRail-Off.png" />
+    <Content Include="Images\128\W\ModeRail.png" />
+    <Content Include="Images\128\W\ModeTourist-Off.png" />
+    <Content Include="Images\128\W\ModeTourist.png" />
+    <Content Include="Images\128\W\SocialFacebook.png" />
+    <Content Include="Images\128\W\SocialTwitter.png" />
+    <Content Include="Images\128\W\TripKarmaWhite.png" />
+    <Content Include="Images\32\B\PinBlack.png" />
+    <Content Include="Images\32\LB\PinBlue.png" />
+    <Content Include="Images\32\R\alert.png" />
+    <Content Include="Images\64\GY\DrumbleSymbol-GreyA.png" />
+    <Content Include="Images\64\GY\DrumbleSymbol-GreyB.png" />
+    <Content Include="Images\64\GY\DrumbleSymbol-GreyC.png" />
+    <Content Include="Images\64\GY\DrumbleSymbol-GreyD.png" />
+    <Content Include="Images\64\GY\DrumbleSymbol-GreyE.png" />
+    <Content Include="Images\64\GY\IconArrowExpandDown-Grey.png" />
+    <Content Include="Images\64\GY\IconArrowExpandUp-Grey.png" />
+    <Content Include="Images\64\GY\IconCenterOnGPS-Grey.png" />
+    <Content Include="Images\64\LB\DrumbleSymbol-BlueA.png" />
+    <Content Include="Images\64\LB\DrumbleSymbol-BlueB.png" />
+    <Content Include="Images\64\LB\DrumbleSymbol-BlueC.png" />
+    <Content Include="Images\64\LB\DrumbleSymbol-BlueD.png" />
+    <Content Include="Images\64\LB\DrumbleSymbol-BlueE.png" />
+    <Content Include="Images\64\LB\IconBack.png" />
+    <Content Include="Images\64\LB\IconFavouritesAdd.png" />
+    <Content Include="Images\64\LB\IconFavouritesRemove.png" />
+    <Content Include="Images\64\LB\IconDrumble.png" />
+    <Content Include="Images\64\LB\IconFullDate.png" />
+    <Content Include="Images\64\LB\IconInvertPoints-Blue.png" />
+    <Content Include="Images\64\LB\IconTimeInterval.png" />
+    <Content Include="Images\64\LB\Map.png" />
+    <Content Include="Images\64\LB\MarkerBlueHole.png" />
+    <Content Include="Images\64\LB\MenuAbout.png" />
+    <Content Include="Images\64\LB\MenuAnnouncement.png" />
+    <Content Include="Images\64\LB\MenuChangeCountry.png" />
+    <Content Include="Images\64\LB\MenuExplore.png" />
+    <Content Include="Images\64\LB\MenuFavourites.png" />
+    <Content Include="Images\64\LB\MenuMessageUs.png" />
+    <Content Include="Images\64\LB\MenuRecent.png" />
+    <Content Include="Images\64\LB\MenuSettings.png" />
+    <Content Include="Images\64\LB\MenuShare.png" />
+    <Content Include="Images\64\LB\MenuStations.png" />
+    <Content Include="Images\64\LB\MenuTransportationMaps.png" />
+    <Content Include="Images\64\LB\MenuWhereTo.png" />
+    <Content Include="Images\64\W\Delete.png" />
+    <Content Include="Images\64\W\FooterShare.png" />
+    <Content Include="Images\64\W\FooterTripOptions.png" />
+    <Content Include="Images\64\W\IconAlerts.png" />
+    <Content Include="Images\64\W\IconAlertsIndicator.png" />
+    <Content Include="Images\64\W\IconArrowDown.png" />
+    <Content Include="Images\64\W\IconArrowExpandDown.png" />
+    <Content Include="Images\64\W\IconArrowExpandUp.png" />
+    <Content Include="Images\64\W\IconArrowUp.png" />
+    <Content Include="Images\64\W\IconDate.png" />
+    <Content Include="Images\64\W\IconFavouritesAdd.png" />
+    <Content Include="Images\64\W\IconFavouritesRemove.png" />
+    <Content Include="Images\64\W\IconFilter.png" />
+    <Content Include="Images\64\W\IconFullDate-Off.png" />
+    <Content Include="Images\64\W\IconFullDate.png" />
+    <Content Include="Images\64\W\IconGPS.png" />
+    <Content Include="Images\64\W\IconInvertPoints.png" />
+    <Content Include="Images\64\W\IconReview.png" />
+    <Content Include="Images\64\W\IconSearch.png" />
+    <Content Include="Images\64\W\IconTimeInterval-Off.png" />
+    <Content Include="Images\64\W\IconTimeInterval.png" />
+    <Content Include="Images\64\W\MarkerWhiteHole.png" />
+    <Content Include="Images\64\W\MenuAbout.png" />
+    <Content Include="Images\64\W\MenuAnnouncement.png" />
+    <Content Include="Images\64\W\MenuChangeCountry.png" />
+    <Content Include="Images\64\W\MenuExplore.png" />
+    <Content Include="Images\64\W\MenuFavourites-Off.png" />
+    <Content Include="Images\64\W\MenuFavourites.png" />
+    <Content Include="Images\64\W\MenuIcon.png" />
+    <Content Include="Images\64\W\MenuMessageUs.png" />
+    <Content Include="Images\64\W\MenuRecent-Off.png" />
+    <Content Include="Images\64\W\MenuRecent.png" />
+    <Content Include="Images\64\W\MenuSettings.png" />
+    <Content Include="Images\64\W\MenuShare.png" />
+    <Content Include="Images\64\W\MenuStations.png" />
+    <Content Include="Images\64\W\MenuTransportationMaps.png" />
+    <Content Include="Images\64\W\MenuWhereTo.png" />
+    <Content Include="Images\64\W\ModeBoat-Off.png" />
+    <Content Include="Images\64\W\ModeBoat.png" />
+    <Content Include="Images\64\W\ModeBus-Off.png" />
+    <Content Include="Images\64\W\ModeBus.png" />
+    <Content Include="Images\64\W\ModeRail-Off.png" />
+    <Content Include="Images\64\W\ModeRail.png" />
+    <Content Include="Images\64\W\ModeTaxi-Off.png" />
+    <Content Include="Images\64\W\ModeTaxi.png" />
+    <Content Include="Images\64\W\ModeTourist-Off.png" />
+    <Content Include="Images\64\W\ModeTourist.png" />
+    <Content Include="Images\64\W\ShakePhone.png" />
+    <Content Include="Images\64\W\SocialFacebook.png" />
+    <Content Include="Images\64\W\SocialTwitter.png" />
+    <Content Include="Images\64\W\TripKarmaWhite.png" />
+    <Content Include="Images\64\W\ModePedestrian.png" />
+    <Content Include="Images\Backgrounds\AppStoreBG.png" />
+    <Content Include="Images\Backgrounds\Background.png" />
+    <Content Include="Images\Backgrounds\MapsBackground.png" />
+    <Content Include="Images\Custom\DB\LineFull.png" />
+    <Content Include="Images\Custom\DB\LineRight.png" />
+    <Content Include="Images\Custom\LB\IconArrowOptionLeft.png" />
+    <Content Include="Images\Custom\LB\IconArrowOptionRight.png" />
+    <Content Include="Images\Custom\LB\LineFull.png" />
+    <Content Include="Images\Custom\LB\LineRight.png" />
+    <Content Include="Images\Custom\LB\SplashCityOff.png" />
+    <Content Include="Images\Custom\LB\SplashCityOn.png" />
+    <Content Include="Images\Custom\LB\TileFavouritesLeft.png" />
+    <Content Include="Images\Custom\LB\TileOptionsLeft.png" />
+    <Content Include="Images\Custom\LB\TileOptionsLeftShort.png" />
+    <Content Include="Images\Custom\W\IconArrowOptionLeft.png" />
+    <Content Include="Images\Custom\W\IconArrowOptionRight.png" />
+    <Content Include="Images\Custom\W\LongWait.png" />
+    <Content Include="Images\EcoPoints\EcoPointsLogo.png" />
+    <Content Include="Images\Splash\DrumbleLogo.png" />
+    <Content Include="Images\Splash\SplashFooter.png" />
+    <Content Include="Images\Splash\SplashScreen.png" />
+    <Content Include="Images\Splash\SplashScreenImage.jpg" />
+    <Content Include="Images\Tiles\TileAnnouncement7.png" />
+    <Content Include="Images\Tiles\TileTrip7.png" />
+    <Content Include="Images\Uber\Uber.png" />
+    <Content Include="Images\Weather\01d.png" />
+    <Content Include="Images\Weather\01n.png" />
+    <Content Include="Images\Weather\02d.png" />
+    <Content Include="Images\Weather\02n.png" />
+    <Content Include="Images\Weather\03d.png" />
+    <Content Include="Images\Weather\03n.png" />
+    <Content Include="Images\Weather\04d.png" />
+    <Content Include="Images\Weather\04n.png" />
+    <Content Include="Images\Weather\09d.png" />
+    <Content Include="Images\Weather\09n.png" />
+    <Content Include="Images\Weather\10d.png" />
+    <Content Include="Images\Weather\10n.png" />
+    <Content Include="Images\Weather\11d.png" />
+    <Content Include="Images\Weather\11n.png" />
+    <Content Include="Images\Weather\13d.png" />
+    <Content Include="Images\Weather\13n.png" />
+    <Content Include="Images\Weather\50d.png" />
+    <Content Include="Images\Weather\50n.png" />
+  </ItemGroup>
+  <ItemGroup />
+  <ItemGroup>
+    <Page Include="Theme\ThemeResources.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Theme\DefaultTheme.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <Import Project="$(MSBuildExtensionsPath)\Microsoft\Silverlight for Phone\$(TargetFrameworkVersion)\Microsoft.Silverlight.$(TargetFrameworkProfile).Overrides.targets" />
+  <Import Project="$(MSBuildExtensionsPath)\Microsoft\Silverlight for Phone\$(TargetFrameworkVersion)\Microsoft.Silverlight.CSharp.targets" />
+  <ProjectExtensions />
+  <Import Project="$(SolutionDir)\.nuget\NuGet.targets" Condition="Exists('$(SolutionDir)\.nuget\NuGet.targets')" />
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Enable NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('$(SolutionDir)\.nuget\NuGet.targets')" Text="$([System.String]::Format('$(ErrorText)', '$(SolutionDir)\.nuget\NuGet.targets'))" />
+  </Target>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
